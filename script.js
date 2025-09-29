@@ -1,28 +1,35 @@
-// Theme Switcher
-const themeButtons = document.querySelectorAll('.theme-btn');
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
+
+// Theme cycle: light -> dark -> color -> light
+const themes = ['light', 'dark', 'color'];
+let currentThemeIndex = 0;
 
 // Load saved theme or default to light
 const savedTheme = localStorage.getItem('theme') || 'light';
-body.setAttribute('data-theme', savedTheme);
-updateActiveThemeButton(savedTheme);
+currentThemeIndex = themes.indexOf(savedTheme);
+if (currentThemeIndex === -1) currentThemeIndex = 0;
 
-themeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const theme = button.getAttribute('data-theme');
-        body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        updateActiveThemeButton(theme);
-    });
+body.setAttribute('data-theme', themes[currentThemeIndex]);
+updateThemeIcon(themes[currentThemeIndex]);
+
+themeToggle.addEventListener('click', () => {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    const newTheme = themes[currentThemeIndex];
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
 });
 
-function updateActiveThemeButton(activeTheme) {
-    themeButtons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-theme') === activeTheme) {
-            btn.classList.add('active');
-        }
-    });
+function updateThemeIcon(theme) {
+    const iconMap = {
+        'light': 'icons/sun.svg',
+        'dark': 'icons/moon.svg',
+        'color': 'icons/palette.svg'
+    };
+    themeIcon.src = iconMap[theme];
 }
 
 // Mobile Navigation Toggle

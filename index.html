@@ -120,34 +120,23 @@
             <div class="footer-grid">
                 <!-- Columns 1-4: TLV, IL + time -->
                 <div class="footer-timezone">
-                    <span class="text-nav color-foreground">TLV, IL</span>
-                    <span class="text-nav color-foreground" id="time-tlv">IST 12:27:16</span>
+                    <span class="text-nav color-foreground">TLV, IL <span id="time-tlv">IST 12:27:16</span></span>
                 </div>
                 
                 <!-- Columns 5-8: BER, DE + time -->
                 <div class="footer-timezone">
-                    <span class="text-nav color-foreground">BER, DE</span>
-                    <span class="text-nav color-foreground" id="time-ber">CET 11:27:16</span>
+                    <span class="text-nav color-foreground">BER, DE <span id="time-ber">CET 11:27:16</span></span>
                 </div>
                 
                 <!-- Columns 9-12: CNX, TH + time + theme switcher -->
                 <div class="footer-right">
                     <div class="footer-timezone">
-                        <span class="text-nav color-foreground">CNX, TH</span>
-                        <span class="text-nav color-foreground" id="time-cnx">ICT 17:27:16</span>
+                        <span class="text-nav color-foreground">CNX, TH <span id="time-cnx">ICT 17:27:16</span></span>
                     </div>
                     <div class="footer-theme">
-                        <div class="theme-switcher">
-                            <button class="theme-btn" data-theme="light" title="Light Mode">
-                                <img src="icons/sun.svg" alt="Light Mode" class="theme-icon">
-                            </button>
-                            <button class="theme-btn" data-theme="dark" title="Dark Mode">
-                                <img src="icons/moon.svg" alt="Dark Mode" class="theme-icon">
-                            </button>
-                            <button class="theme-btn" data-theme="color" title="Color Mode">
-                                <img src="icons/palette.svg" alt="Color Mode" class="theme-icon">
-                            </button>
-                        </div>
+                        <button class="theme-toggle-btn" id="theme-toggle">
+                            <img src="icons/sun.svg" alt="Toggle theme" class="theme-icon" id="theme-icon">
+                        </button>
                     </div>
                 </div>
             </div>
