@@ -291,9 +291,23 @@ body {
     position: relative;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    text-decoration: underline;
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: hsl(var(--color-foreground));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
 }
 
 .theme-switcher {
@@ -435,6 +449,31 @@ body {
     max-width: 100%;
 }
 
+/* Marquee effect for song and album names */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.marquee-container .text-cursive {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+    background-color: hsl(var(--color-primary) / 0.1);
+    padding: 2px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 /* Main About Text (Columns 1-6) */
 .main-about {
     grid-column: 1 / 7;
@@ -454,11 +493,22 @@ body {
 .learn-more {
     text-decoration: none;
     transition: all 0.3s ease;
-    border-bottom: 1px solid transparent;
+    position: relative;
 }
 
-.learn-more:hover {
-    text-decoration: underline;
+.learn-more::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: hsl(var(--color-foreground));
+    transition: width 0.3s ease;
+}
+
+.learn-more:hover::after {
+    width: 100%;
 }
 
 /* Additional styles can be added here for future pages */
