@@ -704,7 +704,10 @@ body {
     margin-bottom: 20px;
 }
 
-.about-main-text h1:last-of-type,
+.about-main-text h1:last-of-type {
+    margin-bottom: 20px;
+}
+
 .about-main-text p:last-of-type {
     margin-bottom: 0;
 }
