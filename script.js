@@ -33,7 +33,7 @@ function updateThemeIcon(theme) {
     const iconMap = {
         'light': 'icons/sun.svg',
         'dark': 'icons/moon.svg',
-        'color': 'icons/whale.svg'
+        'color': 'icons/circle.svg'
     };
     themeIcon.src = iconMap[theme];
 }
