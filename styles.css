@@ -459,18 +459,23 @@ body {
     border-radius: 2px;
 }
 
-.marquee-container .text-cursive {
+.marquee-text {
     display: inline-block;
-    animation: marquee 15s linear infinite;
+    animation: marquee 20s linear infinite;
     white-space: nowrap;
+}
+
+.marquee-text span {
+    display: inline-block;
+    margin-right: 2em;
 }
 
 @keyframes marquee {
     0% {
-        transform: translateX(100%);
+        transform: translateX(0);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
     }
 }
 
