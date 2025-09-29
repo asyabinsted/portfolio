@@ -163,9 +163,9 @@ function updateTime() {
         second: '2-digit'
     });
     const tlvElement = document.getElementById('time-tlv');
-    tlvElement.textContent = `IST ${tlvTimeString}`;
-    tlvElement.style.opacity = '0.7';
-    setTimeout(() => tlvElement.style.opacity = '1', 50);
+    if (tlvElement) {
+        tlvElement.textContent = `IST ${tlvTimeString}`;
+    }
     
     // Berlin (CET - UTC+1, but UTC+2 during DST)
     const berTimeString = now.toLocaleTimeString('en-GB', { 
@@ -176,9 +176,9 @@ function updateTime() {
         second: '2-digit'
     });
     const berElement = document.getElementById('time-ber');
-    berElement.textContent = `CET ${berTimeString}`;
-    berElement.style.opacity = '0.7';
-    setTimeout(() => berElement.style.opacity = '1', 50);
+    if (berElement) {
+        berElement.textContent = `CET ${berTimeString}`;
+    }
     
     // Chiang Mai (ICT - UTC+7)
     const cnxTimeString = now.toLocaleTimeString('en-GB', { 
@@ -189,25 +189,17 @@ function updateTime() {
         second: '2-digit'
     });
     const cnxElement = document.getElementById('time-cnx');
-    cnxElement.textContent = `ICT ${cnxTimeString}`;
-    cnxElement.style.opacity = '0.7';
-    setTimeout(() => cnxElement.style.opacity = '1', 50);
+    if (cnxElement) {
+        cnxElement.textContent = `ICT ${cnxTimeString}`;
+    }
 }
 
-// Update time immediately and then every second
-updateTime();
-setInterval(updateTime, 1000);
+// Update time when page loads and then every second
+document.addEventListener('DOMContentLoaded', function() {
+    updateTime();
+    setInterval(updateTime, 1000);
+});
 
-// Add visual indicator that time is live
-function addLiveIndicator() {
-    const timeElements = document.querySelectorAll('#time-tlv, #time-ber, #time-cnx');
-    timeElements.forEach(element => {
-        element.style.transition = 'opacity 0.1s ease';
-    });
-}
-
-// Initialize live indicator
-addLiveIndicator();
 
 // Add loading animation
 window.addEventListener('load', () => {
