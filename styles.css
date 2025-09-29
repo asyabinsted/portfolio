@@ -640,6 +640,87 @@ body {
     box-shadow: none !important;
 }
 
+/* About Page Styles */
+.about-page {
+    margin-top: 0;
+}
+
+.about-check-section,
+.about-say-hello-section,
+.about-follow-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-check-section {
+    grid-column: 1 / 5;
+}
+
+.about-say-hello-section {
+    grid-column: 5 / 9;
+}
+
+.about-follow-section {
+    grid-column: 9 / 13;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.about-link {
+    text-decoration: none;
+    color: hsl(var(--color-foreground));
+    transition: all 0.3s ease;
+}
+
+.about-link:hover {
+    text-decoration: underline;
+}
+
+.about-main-text {
+    grid-column: 1 / 13;
+    margin-top: 40px;
+    max-width: 60%;
+}
+
+.about-main-text p {
+    margin-bottom: 20px;
+}
+
+.about-main-text p:last-of-type {
+    margin-bottom: 0;
+}
+
+.about-selected-work {
+    margin-top: 30px;
+}
+
+.about-selected-work-link {
+    text-decoration: none;
+    color: hsl(var(--color-foreground));
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.about-selected-work-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: hsl(var(--color-foreground));
+    transition: width 0.3s ease;
+}
+
+.about-selected-work-link:hover::after {
+    width: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .header-grid,
@@ -754,6 +835,18 @@ body {
     }
     
     .main-about {
+        max-width: 100%;
+    }
+    
+    /* About page responsive */
+    .about-check-section,
+    .about-say-hello-section,
+    .about-follow-section {
+        grid-column: 1 / 13;
+        margin-bottom: 20px;
+    }
+    
+    .about-main-text {
         max-width: 100%;
     }
 }
