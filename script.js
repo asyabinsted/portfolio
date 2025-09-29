@@ -55,8 +55,41 @@ if (hamburger && navMenu) {
     }));
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Single-page navigation
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('section[id]').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Show selected page
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.style.display = 'block';
+    }
+    
+    // Update active navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
+}
+
+// Navigation click handlers
+document.querySelectorAll('[data-page]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pageId = this.getAttribute('data-page');
+        showPage(pageId);
+    });
+});
+
+// Smooth scrolling for other anchor links
+document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
@@ -220,6 +253,9 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTime();
     setInterval(updateTime, 1000);
     console.log('Time update interval set');
+    
+    // Initialize page navigation - show index page by default
+    showPage('index');
 });
 
 // Also try immediate execution as fallback
