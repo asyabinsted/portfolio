@@ -407,11 +407,20 @@ body {
 .music-info {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+}
+
+.music-song-wrapper,
+.music-album-wrapper {
+    display: flex;
+    flex-direction: column;
     gap: 0;
 }
 
-.music-info .text-h3,
-.music-info .text-body {
+.music-song-wrapper .text-nav,
+.music-song-wrapper .text-cursive,
+.music-album-wrapper .text-nav,
+.music-album-wrapper .text-cursive {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
