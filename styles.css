@@ -592,6 +592,7 @@ body {
     height: 16px;
     filter: none;
     transition: all 0.3s ease;
+    color: inherit;
 }
 
 [data-theme="light"] .theme-icon {
@@ -604,8 +605,12 @@ body {
 
 [data-theme="color"] .theme-icon {
     filter: none;
-    color: hsl(var(--color-primary));
-    fill: hsl(var(--color-primary));
+    color: hsl(var(--color-primary)) !important;
+}
+
+[data-theme="color"] .theme-icon * {
+    fill: hsl(var(--color-primary)) !important;
+    stroke: hsl(var(--color-primary)) !important;
 }
 
 /* Responsive Design */
