@@ -211,6 +211,21 @@ body {
     background: transparent;
     z-index: 1000;
     padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+/* Header color inversion when overlapped */
+.header.overlapped {
+    background: hsl(var(--color-foreground) / 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.header.overlapped .color-foreground {
+    color: hsl(var(--color-background)) !important;
+}
+
+.header.overlapped .theme-icon {
+    filter: invert(1) !important;
 }
 
 .header-grid {
@@ -540,6 +555,21 @@ body {
     background: transparent;
     padding: 10px 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Footer color inversion when overlapped */
+.footer.overlapped {
+    background: hsl(var(--color-foreground) / 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.footer.overlapped .color-foreground {
+    color: hsl(var(--color-background)) !important;
+}
+
+.footer.overlapped .theme-icon {
+    filter: invert(1) !important;
 }
 
 .footer-grid {

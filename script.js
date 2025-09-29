@@ -125,16 +125,47 @@ document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
+// Header and footer color inversion on scroll
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = 'none';
+    const header = document.querySelector('.header');
+    const footer = document.querySelector('.footer');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (header) {
+        const headerRect = header.getBoundingClientRect();
+        const headerBottom = headerRect.bottom;
+        
+        // Check if main content overlaps with header
+        if (mainContent) {
+            const mainRect = mainContent.getBoundingClientRect();
+            const mainTop = mainRect.top;
+            
+            if (mainTop < headerBottom) {
+                // Content is overlapping header - invert colors
+                header.classList.add('overlapped');
+            } else {
+                // No overlap - normal colors
+                header.classList.remove('overlapped');
+            }
+        }
+    }
+    
+    if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const footerTop = footerRect.top;
+        
+        // Check if main content overlaps with footer
+        if (mainContent) {
+            const mainRect = mainContent.getBoundingClientRect();
+            const mainBottom = mainRect.bottom;
+            
+            if (mainBottom > footerTop) {
+                // Content is overlapping footer - invert colors
+                footer.classList.add('overlapped');
+            } else {
+                // No overlap - normal colors
+                footer.classList.remove('overlapped');
+            }
         }
     }
 });
