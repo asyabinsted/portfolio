@@ -276,7 +276,7 @@ body {
     grid-column: 10;
 }
 
-.header-nav-item:nth-child(11) {
+.header-nav-item:nth-child(4) {
     grid-column: 11;
 }
 
