@@ -701,11 +701,11 @@ body {
 
 .about-main-text h1,
 .about-main-text p {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .about-main-text h1:last-of-type {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .about-main-text p:last-of-type {
