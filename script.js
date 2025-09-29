@@ -27,7 +27,7 @@ function updateThemeIcon(theme) {
     const iconMap = {
         'light': 'icons/sun.svg',
         'dark': 'icons/moon.svg',
-        'color': 'icons/palette.svg'
+        'color': 'icons/paint.svg'
     };
     themeIcon.src = iconMap[theme];
 }
