@@ -654,15 +654,19 @@ body {
 }
 
 .about-check-section {
-    grid-column: 1 / 5;
+    grid-column: 1 / 3;
 }
 
 .about-say-hello-section {
-    grid-column: 5 / 9;
+    grid-column: 4 / 8;
+}
+
+.about-empty-section {
+    grid-column: 8 / 10;
 }
 
 .about-follow-section {
-    grid-column: 9 / 13;
+    grid-column: 10 / 13;
 }
 
 .about-links {
