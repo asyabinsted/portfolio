@@ -154,43 +154,60 @@ window.addEventListener('load', () => {
 function updateTime() {
     const now = new Date();
     
-    // Tel Aviv (IST - UTC+2)
-    const tlvTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Jerusalem"}));
-    const tlvTimeString = tlvTime.toLocaleTimeString('en-GB', { 
+    // Tel Aviv (IST - UTC+2, but UTC+3 during DST)
+    const tlvTimeString = now.toLocaleTimeString('en-GB', { 
         timeZone: 'Asia/Jerusalem',
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
     });
-    document.getElementById('time-tlv').textContent = `IST ${tlvTimeString}`;
+    const tlvElement = document.getElementById('time-tlv');
+    tlvElement.textContent = `IST ${tlvTimeString}`;
+    tlvElement.style.opacity = '0.7';
+    setTimeout(() => tlvElement.style.opacity = '1', 50);
     
-    // Berlin (CET - UTC+1)
-    const berTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
-    const berTimeString = berTime.toLocaleTimeString('en-GB', { 
+    // Berlin (CET - UTC+1, but UTC+2 during DST)
+    const berTimeString = now.toLocaleTimeString('en-GB', { 
         timeZone: 'Europe/Berlin',
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
     });
-    document.getElementById('time-ber').textContent = `CET ${berTimeString}`;
+    const berElement = document.getElementById('time-ber');
+    berElement.textContent = `CET ${berTimeString}`;
+    berElement.style.opacity = '0.7';
+    setTimeout(() => berElement.style.opacity = '1', 50);
     
     // Chiang Mai (ICT - UTC+7)
-    const cnxTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}));
-    const cnxTimeString = cnxTime.toLocaleTimeString('en-GB', { 
+    const cnxTimeString = now.toLocaleTimeString('en-GB', { 
         timeZone: 'Asia/Bangkok',
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
     });
-    document.getElementById('time-cnx').textContent = `ICT ${cnxTimeString}`;
+    const cnxElement = document.getElementById('time-cnx');
+    cnxElement.textContent = `ICT ${cnxTimeString}`;
+    cnxElement.style.opacity = '0.7';
+    setTimeout(() => cnxElement.style.opacity = '1', 50);
 }
 
 // Update time immediately and then every second
 updateTime();
 setInterval(updateTime, 1000);
+
+// Add visual indicator that time is live
+function addLiveIndicator() {
+    const timeElements = document.querySelectorAll('#time-tlv, #time-ber, #time-cnx');
+    timeElements.forEach(element => {
+        element.style.transition = 'opacity 0.1s ease';
+    });
+}
+
+// Initialize live indicator
+addLiveIndicator();
 
 // Add loading animation
 window.addEventListener('load', () => {
