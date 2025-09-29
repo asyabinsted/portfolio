@@ -159,6 +159,7 @@ window.addEventListener('load', () => {
 
 // Live Time Updates
 function updateTime() {
+    console.log('updateTime called');
     const now = new Date();
     
     // Tel Aviv (IST - UTC+2, but UTC+3 during DST)
@@ -170,8 +171,10 @@ function updateTime() {
         second: '2-digit'
     });
     const tlvElement = document.getElementById('time-tlv');
+    console.log('TLV element found:', tlvElement);
     if (tlvElement) {
         tlvElement.textContent = `IST ${tlvTimeString}`;
+        console.log('TLV time updated to:', `IST ${tlvTimeString}`);
     }
     
     // Berlin (CET - UTC+1, but UTC+2 during DST)
@@ -203,8 +206,10 @@ function updateTime() {
 
 // Update time when page loads and then every second
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, updating time...');
     updateTime();
     setInterval(updateTime, 1000);
+    console.log('Time update interval set');
 });
 
 
