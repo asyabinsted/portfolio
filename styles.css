@@ -531,10 +531,6 @@ body {
     transition: all 0.3s ease;
 }
 
-.theme-toggle-btn:hover {
-    background-color: hsl(var(--color-primary) / 0.1);
-}
-
 
 .theme-icon {
     width: 16px;
@@ -553,6 +549,8 @@ body {
 
 [data-theme="color"] .theme-icon {
     filter: none;
+    color: hsl(var(--color-primary));
+    fill: hsl(var(--color-primary));
 }
 
 /* Responsive Design */
