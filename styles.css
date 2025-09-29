@@ -626,11 +626,11 @@ body {
 }
 
 [data-theme="color"] .theme-icon svg {
-    display: none !important;
+    opacity: 0 !important;
 }
 
 [data-theme="color"] .theme-icon img {
-    display: none !important;
+    opacity: 0 !important;
 }
 
 /* Responsive Design */
