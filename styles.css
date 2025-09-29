@@ -454,14 +454,14 @@ body {
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
+    background-color: hsl(var(--color-primary) / 0.1);
+    padding: 2px 4px;
+    border-radius: 2px;
 }
 
 .marquee-container .text-cursive {
     display: inline-block;
     animation: marquee 15s linear infinite;
-    background-color: hsl(var(--color-primary) / 0.1);
-    padding: 2px 4px;
-    border-radius: 2px;
     white-space: nowrap;
 }
 
