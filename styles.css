@@ -603,25 +603,29 @@ body {
 .theme-icon {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
+    filter: none;
     transition: all 0.3s ease;
-    display: block;
+    color: inherit;
 }
 
 [data-theme="light"] .theme-icon {
-    background-color: hsl(var(--color-foreground));
+    filter: none;
 }
 
 [data-theme="dark"] .theme-icon {
-    background-color: hsl(var(--color-foreground));
+    filter: invert(1);
 }
 
 [data-theme="color"] .theme-icon {
-    background-color: hsl(var(--color-primary));
+    filter: none !important;
+    background-color: hsl(var(--color-primary)) !important;
+    border-radius: 50% !important;
+    width: 16px !important;
+    height: 16px !important;
 }
 
-.theme-icon svg {
-    display: none;
+[data-theme="color"] .theme-icon svg {
+    display: none !important;
 }
 
 /* Responsive Design */
