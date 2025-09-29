@@ -675,10 +675,22 @@ body {
     text-decoration: none;
     color: hsl(var(--color-foreground));
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.about-link:hover {
-    text-decoration: underline;
+.about-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: hsl(var(--color-foreground));
+    transition: width 0.3s ease;
+}
+
+.about-link:hover::after {
+    width: 100%;
 }
 
 .about-main-text {
@@ -687,11 +699,11 @@ body {
     max-width: 60%;
 }
 
-.about-main-text p {
+.about-main-text h1 {
     margin-bottom: 20px;
 }
 
-.about-main-text p:last-of-type {
+.about-main-text h1:last-of-type {
     margin-bottom: 0;
 }
 
@@ -704,6 +716,7 @@ body {
     color: hsl(var(--color-foreground));
     position: relative;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .about-selected-work-link::after {
