@@ -57,15 +57,22 @@ if (hamburger && navMenu) {
 
 // Single-page navigation
 function showPage(pageId) {
+    console.log('showPage called with:', pageId);
+    
     // Hide all pages
     document.querySelectorAll('section[id]').forEach(section => {
+        console.log('Hiding section:', section.id);
         section.style.display = 'none';
     });
     
     // Show selected page
     const targetPage = document.getElementById(pageId);
+    console.log('Target page found:', targetPage);
     if (targetPage) {
         targetPage.style.display = 'block';
+        console.log('Showing page:', pageId);
+    } else {
+        console.error('Page not found:', pageId);
     }
     
     // Update active navigation
@@ -74,6 +81,7 @@ function showPage(pageId) {
     });
     
     const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+    console.log('Active link found:', activeLink);
     if (activeLink) {
         activeLink.classList.add('active');
     }
@@ -81,9 +89,11 @@ function showPage(pageId) {
 
 // Navigation click handlers
 document.querySelectorAll('[data-page]').forEach(link => {
+    console.log('Adding click handler to:', link);
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const pageId = this.getAttribute('data-page');
+        console.log('Navigation clicked, pageId:', pageId);
         showPage(pageId);
     });
 });
