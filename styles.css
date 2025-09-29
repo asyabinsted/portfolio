@@ -623,14 +623,35 @@ body {
     width: 16px !important;
     height: 16px !important;
     background-image: none !important;
+    position: relative !important;
 }
 
 [data-theme="color"] .theme-icon svg {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
 }
 
 [data-theme="color"] .theme-icon img {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+[data-theme="color"] .theme-icon::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: hsl(var(--color-primary)) !important;
+    border-radius: 50% !important;
+    z-index: 10 !important;
 }
 
 .theme-toggle-btn:focus {
