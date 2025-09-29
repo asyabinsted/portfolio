@@ -33,7 +33,7 @@ function updateThemeIcon(theme) {
     const iconMap = {
         'light': 'icons/sun.svg',
         'dark': 'icons/moon.svg',
-        'color': 'icons/sun.svg' // Use sun.svg but CSS will hide it and show circle
+        'color': 'icons/whale.svg'
     };
     themeIcon.src = iconMap[theme];
 }
