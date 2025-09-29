@@ -626,11 +626,21 @@ body {
 }
 
 [data-theme="color"] .theme-icon svg {
-    opacity: 0 !important;
+    display: none !important;
 }
 
 [data-theme="color"] .theme-icon img {
-    opacity: 0 !important;
+    display: none !important;
+}
+
+.theme-toggle-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.theme-toggle-btn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* Responsive Design */
