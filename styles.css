@@ -653,6 +653,12 @@ body {
     gap: 16px;
 }
 
+.about-check-section h3,
+.about-say-hello-section h3,
+.about-follow-section h3 {
+    margin: 0;
+}
+
 .about-check-section {
     grid-column: 1 / 5;
 }
