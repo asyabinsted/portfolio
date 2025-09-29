@@ -408,12 +408,21 @@ body {
 /* Music Section (Columns 10-12) */
 .music-section {
     grid-column: 10 / 13;
+    line-height: 1.2;
 }
 
 .music-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
+}
+
+.music-info .text-h3,
+.music-info .text-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 /* Main About Text (Columns 1-6) */
