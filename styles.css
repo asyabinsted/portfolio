@@ -386,9 +386,9 @@ body {
 }
 
 .avatar-container {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 174px;
+    height: 228px;
+    border-radius: 6px;
     overflow: hidden;
     border: 2px solid hsl(var(--color-foreground) / 0.1);
 }
@@ -593,8 +593,8 @@ body {
     }
     
     .avatar-container {
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 171px;
     }
     
     .footer-timezone:nth-child(1),
@@ -622,8 +622,8 @@ body {
     }
     
     .avatar-container {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 131px;
     }
     
     .main-about {
