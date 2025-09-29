@@ -150,6 +150,48 @@ window.addEventListener('load', () => {
     }
 });
 
+// Live Time Updates
+function updateTime() {
+    const now = new Date();
+    
+    // Tel Aviv (IST - UTC+2)
+    const tlvTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Jerusalem"}));
+    const tlvTimeString = tlvTime.toLocaleTimeString('en-GB', { 
+        timeZone: 'Asia/Jerusalem',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('time-tlv').textContent = `IST ${tlvTimeString}`;
+    
+    // Berlin (CET - UTC+1)
+    const berTime = new Date(now.toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+    const berTimeString = berTime.toLocaleTimeString('en-GB', { 
+        timeZone: 'Europe/Berlin',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('time-ber').textContent = `CET ${berTimeString}`;
+    
+    // Chiang Mai (ICT - UTC+7)
+    const cnxTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Bangkok"}));
+    const cnxTimeString = cnxTime.toLocaleTimeString('en-GB', { 
+        timeZone: 'Asia/Bangkok',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('time-cnx').textContent = `ICT ${cnxTimeString}`;
+}
+
+// Update time immediately and then every second
+updateTime();
+setInterval(updateTime, 1000);
+
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
@@ -165,18 +207,6 @@ style.textContent = `
     
     body.loaded {
         opacity: 1;
-    }
-    
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
     }
 `;
 document.head.appendChild(style);
