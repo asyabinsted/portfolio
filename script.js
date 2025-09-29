@@ -1,3 +1,30 @@
+// Theme Switcher
+const themeButtons = document.querySelectorAll('.theme-btn');
+const body = document.body;
+
+// Load saved theme or default to light
+const savedTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', savedTheme);
+updateActiveThemeButton(savedTheme);
+
+themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const theme = button.getAttribute('data-theme');
+        body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateActiveThemeButton(theme);
+    });
+});
+
+function updateActiveThemeButton(activeTheme) {
+    themeButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-theme') === activeTheme) {
+            btn.classList.add('active');
+        }
+    });
+}
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');

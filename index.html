@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Design Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Portfolio</a>
+                <a href="#home" class="text-nav color-primary">Portfolio</a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link text-nav">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="#about" class="nav-link text-nav">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#projects" class="nav-link text-nav">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link text-nav">Contact</a>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-controls">
+                <div class="theme-switcher">
+                    <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
+                    <button class="theme-btn" data-theme="dark" title="Dark Mode">🌙</button>
+                    <button class="theme-btn" data-theme="color" title="Color Mode">🎨</button>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -40,15 +47,15 @@
         <section id="home" class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Hi, I'm <span class="highlight">Your Name</span></h1>
-                    <p class="hero-subtitle">Designer & Creative Developer</p>
-                    <p class="hero-description">
+                    <h1 class="hero-title text-h1 color-foreground">Hi, I'm <span class="highlight color-primary">Your Name</span></h1>
+                    <p class="hero-subtitle text-body color-foreground">Designer & Creative Developer</p>
+                    <p class="hero-description text-body color-foreground">
                         I create beautiful, functional designs that tell stories and solve problems. 
                         Passionate about user experience and visual communication.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-primary text-small">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary text-small">Get In Touch</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -62,30 +69,30 @@
         <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
-                <h2 class="section-title">About Me</h2>
+                <h2 class="section-title text-h1 color-foreground">About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>
+                        <p class="text-body color-foreground">
                             I'm a passionate designer with a love for creating meaningful experiences. 
                             With expertise in UI/UX design, branding, and front-end development, I help 
                             businesses and individuals bring their visions to life.
                         </p>
-                        <p>
+                        <p class="text-body color-foreground">
                             When I'm not designing, you can find me exploring new technologies, 
                             sketching ideas, or enjoying a good cup of coffee.
                         </p>
                     </div>
                     <div class="skills">
-                        <h3>Skills</h3>
+                        <h3 class="text-h3 color-foreground">Skills</h3>
                         <div class="skills-grid">
-                            <span class="skill-tag">UI/UX Design</span>
-                            <span class="skill-tag">Branding</span>
-                            <span class="skill-tag">Web Design</span>
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">Adobe Creative Suite</span>
-                            <span class="skill-tag">HTML/CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
+                            <span class="skill-tag text-small">UI/UX Design</span>
+                            <span class="skill-tag text-small">Branding</span>
+                            <span class="skill-tag text-small">Web Design</span>
+                            <span class="skill-tag text-small">Figma</span>
+                            <span class="skill-tag text-small">Adobe Creative Suite</span>
+                            <span class="skill-tag text-small">HTML/CSS</span>
+                            <span class="skill-tag text-small">JavaScript</span>
+                            <span class="skill-tag text-small">React</span>
                         </div>
                     </div>
                 </div>
@@ -95,55 +102,55 @@
         <!-- Projects Section -->
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title text-h1 color-foreground">Featured Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="image-placeholder">Project 1</div>
+                            <div class="image-placeholder text-cursive color-foreground">Project 1</div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">E-commerce Redesign</h3>
-                            <p class="project-description">
+                            <h3 class="project-title text-h3 color-foreground">E-commerce Redesign</h3>
+                            <p class="project-description text-body color-foreground">
                                 Complete redesign of an e-commerce platform focusing on user experience and conversion optimization.
                             </p>
                             <div class="project-tags">
-                                <span class="tag">UI/UX</span>
-                                <span class="tag">E-commerce</span>
-                                <span class="tag">Figma</span>
+                                <span class="tag text-small">UI/UX</span>
+                                <span class="tag text-small">E-commerce</span>
+                                <span class="tag text-small">Figma</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="image-placeholder">Project 2</div>
+                            <div class="image-placeholder text-cursive color-foreground">Project 2</div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Brand Identity</h3>
-                            <p class="project-description">
+                            <h3 class="project-title text-h3 color-foreground">Brand Identity</h3>
+                            <p class="project-description text-body color-foreground">
                                 Complete brand identity design including logo, color palette, and brand guidelines.
                             </p>
                             <div class="project-tags">
-                                <span class="tag">Branding</span>
-                                <span class="tag">Logo Design</span>
-                                <span class="tag">Adobe</span>
+                                <span class="tag text-small">Branding</span>
+                                <span class="tag text-small">Logo Design</span>
+                                <span class="tag text-small">Adobe</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="image-placeholder">Project 3</div>
+                            <div class="image-placeholder text-cursive color-foreground">Project 3</div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Mobile App Design</h3>
-                            <p class="project-description">
+                            <h3 class="project-title text-h3 color-foreground">Mobile App Design</h3>
+                            <p class="project-description text-body color-foreground">
                                 User interface design for a mobile application with focus on accessibility and usability.
                             </p>
                             <div class="project-tags">
-                                <span class="tag">Mobile</span>
-                                <span class="tag">UI Design</span>
-                                <span class="tag">Prototyping</span>
+                                <span class="tag text-small">Mobile</span>
+                                <span class="tag text-small">UI Design</span>
+                                <span class="tag text-small">Prototyping</span>
                             </div>
                         </div>
                     </div>
@@ -154,42 +161,42 @@
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title">Let's Work Together</h2>
+                <h2 class="section-title text-h1 color-foreground">Let's Work Together</h2>
                 <div class="contact-content">
                     <div class="contact-info">
-                        <p>Ready to bring your ideas to life? Let's discuss your next project.</p>
+                        <p class="text-body color-foreground">Ready to bring your ideas to life? Let's discuss your next project.</p>
                         <div class="contact-details">
-                            <div class="contact-item">
+                            <div class="contact-item text-nav color-foreground">
                                 <strong>Email:</strong> your.email@example.com
                             </div>
-                            <div class="contact-item">
+                            <div class="contact-item text-nav color-foreground">
                                 <strong>Phone:</strong> +1 (555) 123-4567
                             </div>
-                            <div class="contact-item">
+                            <div class="contact-item text-nav color-foreground">
                                 <strong>Location:</strong> Your City, Country
                             </div>
                         </div>
                         <div class="social-links">
-                            <a href="#" class="social-link">LinkedIn</a>
-                            <a href="#" class="social-link">Dribbble</a>
-                            <a href="#" class="social-link">Behance</a>
-                            <a href="#" class="social-link">GitHub</a>
+                            <a href="#" class="social-link text-nav color-primary">LinkedIn</a>
+                            <a href="#" class="social-link text-nav color-primary">Dribbble</a>
+                            <a href="#" class="social-link text-nav color-primary">Behance</a>
+                            <a href="#" class="social-link text-nav color-primary">GitHub</a>
                         </div>
                     </div>
                     <form class="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required class="text-nav">
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required class="text-nav">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required class="text-nav">
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="text-nav"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary text-small">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -198,7 +205,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p class="text-nav color-primary-foreground">&copy; 2024 Your Name. All rights reserved.</p>
         </div>
     </footer>
 
