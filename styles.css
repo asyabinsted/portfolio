@@ -18,36 +18,36 @@
     --font-mono: 'IBM Plex Mono', monospace;
     
     /* Typography Scale */
-    --text-h1-size: 26px;
-    --text-h1-weight: 500;
+    --text-h1-size: 22px;
+    --text-h1-weight: 400;
     --text-h1-ls: -0.02em;
-    --text-h1-lh: 31px;
+    --text-h1-lh: 26px;
     
-    --text-body-size: 16px;
+    --text-body-size: 14px;
     --text-body-weight: 400;
     --text-body-ls: -0.05em;
-    --text-body-lh: 21px;
+    --text-body-lh: 18px;
     
-    --text-small-size: 16px;
+    --text-small-size: 14px;
     --text-small-weight: 400;
     --text-small-ls: -0.05em;
-    --text-small-lh: 21px;
+    --text-small-lh: 18px;
     
-    --text-h3-size: 16px;
+    --text-h3-size: 14px;
     --text-h3-weight: 400;
     --text-h3-ls: -0.05em;
-    --text-h3-lh: 21px;
+    --text-h3-lh: 18px;
     
-    --text-nav-size: 16px;
+    --text-nav-size: 14px;
     --text-nav-weight: 400;
     --text-nav-ls: -0.05em;
-    --text-nav-lh: 21px;
+    --text-nav-lh: 18px;
     
-    --text-cursive-size: 16px;
+    --text-cursive-size: 14px;
     --text-cursive-weight: 400;
     --text-cursive-style: italic;
     --text-cursive-ls: -0.05em;
-    --text-cursive-lh: 21px;
+    --text-cursive-lh: 18px;
 }
 
 /* Theme Modes */
