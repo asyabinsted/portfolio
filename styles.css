@@ -273,15 +273,7 @@ body {
 }
 
 .header-empty-3 {
-    grid-column: 10;
-}
-
-.header-nav-item:nth-child(11) {
-    grid-column: 11;
-}
-
-.header-empty-4 {
-    grid-column: 12;
+    grid-column: 10 / 13;
 }
 
 .nav-link {
@@ -370,7 +362,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    line-height: 1.2;
 }
 
 .lately-link {
@@ -414,7 +407,7 @@ body {
 .music-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .music-info .text-h3,
