@@ -604,11 +604,20 @@ body {
 }
 
 [data-theme="color"] .theme-icon {
-    filter: none;
+    filter: none !important;
     color: hsl(var(--color-primary)) !important;
 }
 
 [data-theme="color"] .theme-icon * {
+    fill: hsl(var(--color-primary)) !important;
+    stroke: hsl(var(--color-primary)) !important;
+}
+
+[data-theme="color"] .theme-icon svg {
+    color: hsl(var(--color-primary)) !important;
+}
+
+[data-theme="color"] .theme-icon svg * {
     fill: hsl(var(--color-primary)) !important;
     stroke: hsl(var(--color-primary)) !important;
 }
