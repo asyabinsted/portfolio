@@ -273,7 +273,15 @@ body {
 }
 
 .header-empty-3 {
-    grid-column: 10 / 13;
+    grid-column: 10;
+}
+
+.header-nav-item:nth-child(11) {
+    grid-column: 11;
+}
+
+.header-empty-4 {
+    grid-column: 12;
 }
 
 .nav-link {
