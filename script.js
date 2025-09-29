@@ -85,6 +85,9 @@ function showPage(pageId) {
     if (activeLink) {
         activeLink.classList.add('active');
     }
+    
+    // Update URL hash
+    window.location.hash = pageId;
 }
 
 // Navigation click handlers
@@ -96,6 +99,16 @@ document.querySelectorAll('[data-page]').forEach(link => {
         console.log('Navigation clicked, pageId:', pageId);
         showPage(pageId);
     });
+});
+
+// Handle hash changes (when URL is manually changed)
+window.addEventListener('hashchange', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash && ['index', 'about', 'work'].includes(hash)) {
+        showPage(hash);
+    } else {
+        showPage('index');
+    }
 });
 
 // Smooth scrolling for other anchor links
@@ -264,8 +277,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateTime, 1000);
     console.log('Time update interval set');
     
-    // Initialize page navigation - show index page by default
-    showPage('index');
+    // Initialize page navigation - check URL hash or default to index
+    const hash = window.location.hash.substring(1); // Remove the # symbol
+    if (hash && ['index', 'about', 'work'].includes(hash)) {
+        showPage(hash);
+    } else {
+        showPage('index');
+    }
 });
 
 // Also try immediate execution as fallback
