@@ -23,15 +23,15 @@
     --text-h1-ls: -0.02em;
     --text-h1-lh: 31px;
     
-    --text-body-size: 20px;
-    --text-body-weight: 500;
-    --text-body-ls: -0.02em;
-    --text-body-lh: 24px;
+    --text-body-size: 16px;
+    --text-body-weight: 400;
+    --text-body-ls: -0.05em;
+    --text-body-lh: 21px;
     
     --text-small-size: 16px;
-    --text-small-weight: 500;
-    --text-small-ls: -0.02em;
-    --text-small-lh: 31px;
+    --text-small-weight: 400;
+    --text-small-ls: -0.05em;
+    --text-small-lh: 21px;
     
     --text-h3-size: 16px;
     --text-h3-weight: 400;
@@ -109,7 +109,7 @@ body {
 }
 
 .text-body {
-    font-family: var(--font-primary);
+    font-family: var(--font-mono);
     font-size: var(--text-body-size);
     font-weight: var(--text-body-weight);
     letter-spacing: var(--text-body-ls);
@@ -117,7 +117,7 @@ body {
 }
 
 .text-small {
-    font-family: var(--font-primary);
+    font-family: var(--font-mono);
     font-size: var(--text-small-size);
     font-weight: var(--text-small-weight);
     letter-spacing: var(--text-small-ls);
@@ -249,6 +249,7 @@ body {
 .header-nav-item {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .header-nav-item:nth-child(7) {
@@ -271,10 +272,8 @@ body {
     grid-column: 11;
 }
 
-.header-theme {
+.header-empty-4 {
     grid-column: 12;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .nav-link {
@@ -419,6 +418,12 @@ body {
     align-items: flex-start;
 }
 
+.main-text {
+    max-width: 100%;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
 .learn-more {
     text-decoration: none;
     transition: all 0.3s ease;
@@ -454,18 +459,20 @@ body {
 .footer-timezone:nth-child(1) {
     grid-column: 1 / 5;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 /* Columns 5-8: BER, DE + time */
 .footer-timezone:nth-child(2) {
     grid-column: 5 / 9;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 /* Columns 9-12: CNX, TH + time + theme switcher */
@@ -478,9 +485,10 @@ body {
 
 .footer-timezone:nth-child(3) {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 .footer-theme {
@@ -490,6 +498,20 @@ body {
 
 .sun-icon {
     font-size: 14px;
+}
+
+.theme-icon {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+}
+
+[data-theme="light"] .theme-icon {
+    filter: invert(0);
+}
+
+[data-theme="color"] .theme-icon {
+    filter: invert(0);
 }
 
 /* Responsive Design */
@@ -538,6 +560,7 @@ body {
     .header-empty-1,
     .header-empty-2,
     .header-empty-3,
+    .header-empty-4,
     .grid-empty-1 {
         display: none;
     }
