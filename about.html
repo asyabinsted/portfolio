@@ -10,23 +10,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Fixed Header -->
     <header class="header">
         <div class="container">
             <div class="header-grid">
+                <!-- Columns 1-2: Empty -->
                 <div class="header-empty-1"></div>
+                
+                <!-- Columns 3-5: Name & Title -->
                 <div class="header-name-section">
-                    <div class="header-name text-h1">Anastasiia Binsted</div>
-                    <div class="header-title text-h1">Product UX/UI Designer</div>
+                    <h1 class="header-name text-h1 color-foreground">Anastasiia Binsted</h1>
+                    <h1 class="header-title text-h1 color-foreground">Product UX/UI Designer</h1>
                 </div>
+                
+                <!-- Column 6: Empty -->
                 <div class="header-empty-2"></div>
-                <nav class="header-nav">
-                    <a href="index.html" class="header-nav-item header-nav-index nav-link">Index</a>
-                    <a href="work.html" class="header-nav-item header-nav-work nav-link">Work</a>
-                    <a href="about.html" class="header-nav-item header-nav-about nav-link active">About</a>
-                    <a href="cv.pdf" class="header-nav-item header-nav-cv nav-link" download>CV (pdf↓)</a>
-                </nav>
+                
+                <!-- Column 7: Index -->
+                <div class="header-nav-item header-nav-index">
+                    <a href="index.html" class="nav-link text-nav color-foreground">Index</a>
+                </div>
+                
+                <!-- Column 8: Work -->
+                <div class="header-nav-item header-nav-work">
+                    <a href="work.html" class="nav-link text-nav color-foreground">Work</a>
+                </div>
+                
+                <!-- Column 9: About -->
+                <div class="header-nav-item header-nav-about">
+                    <a href="about.html" class="nav-link text-nav color-foreground active">About</a>
+                </div>
+                
+                <!-- Column 10: Empty -->
                 <div class="header-empty-3"></div>
+                
+                <!-- Column 11: CV -->
+                <div class="header-nav-item header-nav-cv">
+                    <a href="cv.pdf" class="nav-link text-nav color-foreground" download>CV (pdf↓)</a>
+                </div>
+                
+                <!-- Column 12: Empty -->
+                <div class="header-empty-4"></div>
             </div>
         </div>
     </header>
@@ -78,23 +102,30 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Fixed Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- Columns 1-4: TLV, IL + time -->
                 <div class="footer-timezone">
-                    <span>TLV, IL IST <span id="time-tlv">Loading...</span></span>
+                    <span class="text-nav color-foreground">TLV, IL <span id="time-tlv">Loading...</span></span>
                 </div>
+                
+                <!-- Columns 5-8: BER, DE + time -->
                 <div class="footer-timezone">
-                    <span>BER, DE CET <span id="time-ber">Loading...</span></span>
+                    <span class="text-nav color-foreground">BER, DE <span id="time-ber">Loading...</span></span>
                 </div>
-                <div class="footer-timezone">
-                    <span>CNX, TH ICT <span id="time-cnx">Loading...</span></span>
-                </div>
+                
+                <!-- Columns 9-12: CNX, TH + time + theme switcher -->
                 <div class="footer-right">
-                    <button class="theme-toggle-btn" id="themeToggle">
-                        <img class="theme-icon" id="themeIcon" src="icons/sun.svg" alt="Theme toggle">
-                    </button>
+                    <div class="footer-timezone">
+                        <span class="text-nav color-foreground">CNX, TH <span id="time-cnx">Loading...</span></span>
+                    </div>
+                    <div class="footer-theme">
+                        <button class="theme-toggle-btn" id="theme-toggle">
+                            <img src="icons/sun.svg" alt="Toggle theme" class="theme-icon" id="theme-icon">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
