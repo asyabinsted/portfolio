@@ -426,6 +426,18 @@ body {
     line-height: 1.2;
 }
 
+.music-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.music-link:hover {
+    opacity: 0.8;
+}
+
 .music-info {
     display: flex;
     flex-direction: column;
