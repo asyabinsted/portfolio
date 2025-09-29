@@ -212,6 +212,18 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Time update interval set');
 });
 
+// Also try immediate execution as fallback
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        updateTime();
+        setInterval(updateTime, 1000);
+    });
+} else {
+    // DOM is already loaded
+    updateTime();
+    setInterval(updateTime, 1000);
+}
+
 
 // Add loading animation
 window.addEventListener('load', () => {
