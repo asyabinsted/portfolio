@@ -592,7 +592,8 @@ body {
     overflow: hidden;
     border-radius: 10px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 
 .case-image-img {
@@ -600,7 +601,7 @@ body {
     height: auto;
     display: block;
     transition: transform 0.3s ease;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: -1px;
 }
 
