@@ -655,6 +655,17 @@ body {
     text-decoration: underline;
 }
 
+.contact-link-no-hover {
+    color: hsl(var(--color-foreground));
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.contact-link-no-hover:hover {
+    text-decoration: none;
+}
+
 /* Custom Cursor Button */
 .custom-cursor {
     position: fixed;
