@@ -1164,6 +1164,17 @@ body {
     margin: 0;
 }
 
+/* Project Link Styling */
+.project-link {
+    color: hsl(var(--color-foreground));
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+    opacity: 0.7;
+}
+
 .cursor-text {
     font-family: var(--font-primary);
     font-size: var(--text-small-size);
