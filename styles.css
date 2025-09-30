@@ -934,7 +934,8 @@ body {
 .back-to-top-btn {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 48px;
     height: 48px;
     background-color: hsl(var(--color-primary));
@@ -952,7 +953,7 @@ body {
 
 .back-to-top-btn:hover {
     opacity: 0.9;
-    transform: translateY(-2px);
+    transform: translateX(-50%) translateY(-2px);
 }
 
 .back-to-top-btn.show {
@@ -967,7 +968,7 @@ body {
 
 /* Theme-specific back to top icon colors */
 [data-theme="light"] .back-to-top-icon {
-    filter: brightness(0) saturate(100%) invert(1);
+    filter: brightness(0) saturate(100%);
 }
 
 [data-theme="dark"] .back-to-top-icon {
@@ -975,7 +976,7 @@ body {
 }
 
 [data-theme="color"] .back-to-top-icon {
-    filter: brightness(0) saturate(100%) invert(1);
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
 }
 
 .cursor-text {
