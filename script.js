@@ -268,13 +268,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!passwordModal || !passwordInput || !passwordError || !passwordSubmit) return;
     
     // Show password modal
-    function showPasswordModal() {
+    function showPasswordModal(projectType = null) {
         passwordModal.style.display = 'flex';
         passwordInput.focus();
         passwordInput.value = '';
         passwordInput.setAttribute('type', 'password');
         passwordError.classList.remove('show');
         passwordInput.classList.remove('error');
+        
+        // Store project type for navigation after password
+        passwordModal.setAttribute('data-project-type', projectType || '');
         
         // Reset eye icons to closed state
         const closedEye = passwordToggle.querySelector('.eye-closed');
@@ -318,8 +321,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (enteredPassword === correctPassword) {
             hidePasswordModal();
-            // Navigate to Logic Solutions project page
-            window.location.href = 'project-logic-solutions.html';
+            
+            // Get project type from modal
+            const projectType = passwordModal.getAttribute('data-project-type');
+            
+            if (projectType === 'logic-solutions') {
+                // Navigate to Logic Solutions project page and scroll to specific image
+                window.location.href = 'project-logic-solutions.html#journey-image';
+            } else {
+                // Default navigation to Logic Solutions project page
+                window.location.href = 'project-logic-solutions.html';
+            }
         } else {
             passwordError.textContent = 'Wrong key, right designer.';
             passwordError.classList.add('show');

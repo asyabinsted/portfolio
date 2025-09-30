@@ -371,7 +371,7 @@
                                 <img src="images/logic-create4-18.png" alt="4. Selecting services" class="shipment-creation-image-img">
                                 <p class="shipment-creation-image-caption text-cursive color-foreground">4. Selecting services</p>
                             </div>
-                            <div class="shipment-creation-image">
+                            <div class="shipment-creation-image" id="journey-image">
                                 <img src="images/logic-journey-19.png" alt="Shipment journey: customs clearance story" class="shipment-creation-image-img">
                                 <p class="shipment-creation-image-caption text-cursive color-foreground">Shipment journey: customs clearance story</p>
                             </div>
@@ -546,5 +546,21 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Handle hash navigation to specific image
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hash === '#journey-image') {
+                setTimeout(function() {
+                    const journeyImage = document.getElementById('journey-image');
+                    if (journeyImage) {
+                        journeyImage.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }
+                }, 500); // Small delay to ensure page is fully loaded
+            }
+        });
+    </script>
 </body>
 </html>
