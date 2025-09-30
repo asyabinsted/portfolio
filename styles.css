@@ -1013,28 +1013,28 @@ body {
 
 /* Back Icon Color Filters */
 [data-theme="light"] .back-icon {
-    filter: brightness(0) saturate(100%) invert(1);
-}
-
-[data-theme="dark"] .back-icon {
     filter: brightness(0) saturate(100%);
 }
 
-[data-theme="color"] .back-icon {
+[data-theme="dark"] .back-icon {
     filter: brightness(0) saturate(100%) invert(1);
+}
+
+[data-theme="color"] .back-icon {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
 }
 
 /* Project Title Section */
 .header-title-section {
-    grid-column: 6 / 9;
+    grid-column: 3 / 6;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .project-title {
     margin: 0;
-    text-align: center;
+    text-align: left;
 }
 
 /* Project Overview Section */
@@ -1074,11 +1074,11 @@ body {
 
 .project-disclaimer p {
     margin: 0;
-    text-align: right;
+    text-align: left;
 }
 
 .project-intro {
-    grid-column: 1 / 7;
+    grid-column: 1 / 5;
     margin-bottom: 40px;
 }
 
@@ -1087,7 +1087,7 @@ body {
 }
 
 .project-summary {
-    grid-column: 7 / 13;
+    grid-column: 5 / 9;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1101,7 +1101,7 @@ body {
 .project-role-details {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .project-role-details p {
@@ -1109,7 +1109,7 @@ body {
 }
 
 .project-hero-image {
-    grid-column: 1 / 13;
+    grid-column: 9 / 13;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;

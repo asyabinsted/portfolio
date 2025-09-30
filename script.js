@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.showPasswordModal();
                 }
             } else if (projectUrl) {
-                // Navigate directly to other project pages
-                window.open(projectUrl, '_blank');
+                // Navigate directly to other project pages in same tab
+                window.location.href = projectUrl;
             }
         });
     });
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (enteredPassword === correctPassword) {
             hidePasswordModal();
             // Navigate to Logic Solutions project page
-            window.open('project-logic-solutions.html', '_blank');
+            window.location.href = 'project-logic-solutions.html';
         } else {
             passwordError.textContent = 'Wrong key, right designer.';
             passwordError.classList.add('show');
