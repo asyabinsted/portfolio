@@ -338,6 +338,36 @@ document.addEventListener('DOMContentLoaded', function() {
     window.showPasswordModal = showPasswordModal;
 });
 
+// Back to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (!backToTopBtn) return;
+    
+    // Show/hide button based on scroll position
+    function toggleBackToTopButton() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    }
+    
+    // Scroll to top when clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', toggleBackToTopButton);
+    
+    // Initial check
+    toggleBackToTopButton();
+});
+
 // Smooth scrolling for other anchor links
 document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

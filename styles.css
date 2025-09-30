@@ -795,20 +795,17 @@ body {
     filter: none;
 }
 
-/* Theme-specific icon colors using filters to match design system */
+/* Theme-specific icon colors using filters */
 [data-theme="light"] .close-icon {
-    /* Black #212121 - exact match */
-    filter: brightness(0) saturate(100%) invert(13%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.13);
+    filter: brightness(0) saturate(100%);
 }
 
 [data-theme="dark"] .close-icon {
-    /* White - inverted black */
     filter: brightness(0) saturate(100%) invert(1);
 }
 
 [data-theme="color"] .close-icon {
-    /* Blue #1A6BBB - exact match */
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(210deg) brightness(40%) contrast(100%);
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
 }
 
 .password-modal-body {
@@ -882,20 +879,17 @@ body {
     filter: none;
 }
 
-/* Theme-specific eye icon colors using filters to match design system */
+/* Theme-specific eye icon colors using filters */
 [data-theme="light"] .eye-icon {
-    /* Black #212121 - exact match */
-    filter: brightness(0) saturate(100%) invert(13%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.13);
+    filter: brightness(0) saturate(100%);
 }
 
 [data-theme="dark"] .eye-icon {
-    /* White - inverted black */
     filter: brightness(0) saturate(100%) invert(1);
 }
 
 [data-theme="color"] .eye-icon {
-    /* Blue #1A6BBB - exact match */
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(210deg) brightness(40%) contrast(100%);
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
 }
 
 .password-error {
@@ -934,6 +928,54 @@ body {
 
 .password-submit:hover {
     opacity: 0.9;
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.back-to-top-btn.show {
+    display: flex;
+}
+
+.back-to-top-icon {
+    width: 24px;
+    height: 24px;
+    filter: none;
+}
+
+/* Theme-specific back to top icon colors */
+[data-theme="light"] .back-to-top-icon {
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+[data-theme="dark"] .back-to-top-icon {
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+[data-theme="color"] .back-to-top-icon {
+    filter: brightness(0) saturate(100%) invert(1);
 }
 
 .cursor-text {
