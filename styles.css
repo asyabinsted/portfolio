@@ -214,19 +214,20 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Header with simple mix-blend-mode difference */
+/* Header with backdrop-filter inversion */
 .header {
     position: fixed;
-    color: white;
-    mix-blend-mode: difference;
+    background: transparent;
+    backdrop-filter: invert(1);
+    color: black;
 }
 
 .header .color-foreground {
-    color: white;
+    color: black;
 }
 
 .header .theme-icon {
-    filter: invert(1);
+    filter: none;
 }
 
 .header-grid {
@@ -559,19 +560,20 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Footer with simple mix-blend-mode difference */
+/* Footer with backdrop-filter inversion */
 .footer {
     position: fixed;
-    color: white;
-    mix-blend-mode: difference;
+    background: transparent;
+    backdrop-filter: invert(1);
+    color: black;
 }
 
 .footer .color-foreground {
-    color: white;
+    color: black;
 }
 
 .footer .theme-icon {
-    filter: invert(1);
+    filter: none;
 }
 
 .footer-grid {
