@@ -1613,6 +1613,13 @@ body {
     margin-bottom: 0;
 }
 
+/* Text Highlighting */
+.text-highlight {
+    background-color: hsl(var(--color-primary) / 0.1);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
 /* Text Row Layout */
 .shipment-creation-text-row {
     display: grid;
