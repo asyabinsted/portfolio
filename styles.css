@@ -1127,8 +1127,8 @@ body {
 .project-hero-image {
     grid-column: 9 / 13;
     width: 100%;
-    overflow: visible;
-    border-radius: 8px;
+    overflow: hidden;
+    border-radius: 6px;
     height: calc(100% - 2px);
 }
 
@@ -1136,7 +1136,8 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 /* Challenge & Objective Section */
