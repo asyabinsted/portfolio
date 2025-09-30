@@ -312,11 +312,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Remove error state when user focuses on input
-    passwordInput.addEventListener('focus', function() {
-        passwordInput.classList.remove('error');
-        passwordError.classList.remove('show');
-    });
+    // Don't remove error state on focus - keep it until password is correct
+    // passwordInput.addEventListener('focus', function() {
+    //     passwordInput.classList.remove('error');
+    //     passwordError.classList.remove('show');
+    // });
     
     // Close modal
     passwordModalClose.addEventListener('click', hidePasswordModal);
