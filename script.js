@@ -341,8 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Back to Top Button Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopBtn = document.getElementById('back-to-top');
+    const backToTopContainer = document.getElementById('back-to-top-container');
     
-    if (!backToTopBtn) return;
+    if (!backToTopBtn || !backToTopContainer) return;
     
     // Scroll to top when clicked
     backToTopBtn.addEventListener('click', function() {
@@ -351,6 +352,36 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
+    
+    // Function to show/hide back to top button based on current page
+    function toggleBackToTopButton() {
+        const aboutPage = document.getElementById('about');
+        const isAboutPageVisible = aboutPage && aboutPage.style.display !== 'none';
+        
+        if (isAboutPageVisible) {
+            backToTopContainer.classList.add('hide');
+        } else {
+            backToTopContainer.classList.remove('hide');
+        }
+    }
+    
+    // Initial check
+    toggleBackToTopButton();
+    
+    // Listen for page changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                toggleBackToTopButton();
+            }
+        });
+    });
+    
+    // Observe the about page for style changes
+    const aboutPage = document.getElementById('about');
+    if (aboutPage) {
+        observer.observe(aboutPage, { attributes: true, attributeFilter: ['style'] });
+    }
 });
 
 // Smooth scrolling for other anchor links

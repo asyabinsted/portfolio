@@ -938,6 +938,11 @@ body {
     padding: 40px 0;
 }
 
+/* Hide back to top button on about page */
+.back-to-top-container.hide {
+    display: none;
+}
+
 /* Back to Top Button */
 .back-to-top-btn {
     position: relative;
