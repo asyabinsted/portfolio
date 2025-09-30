@@ -1602,19 +1602,15 @@ body {
 
 .takeaways-list {
     margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    padding-left: 20px;
 }
 
-.takeaways-item {
-    margin: 0;
+.takeaways-list li {
+    margin-bottom: 8px;
 }
 
-.takeaways-item p {
-    margin: 0;
+.takeaways-list li:last-child {
+    margin-bottom: 0;
 }
 
 /* Text Row Layout */
