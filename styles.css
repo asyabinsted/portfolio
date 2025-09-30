@@ -214,50 +214,18 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Header with smart color inversion */
+/* Header with simple mix-blend-mode difference */
 .header {
-    background: transparent;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: hsl(var(--color-background));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-}
-
-.header.overlapped::before {
-    opacity: 0.95;
-}
-
-.header .color-foreground {
-    color: hsl(var(--color-foreground));
-    transition: color 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.header.overlapped .color-foreground {
-    color: hsl(var(--color-foreground));
+    position: fixed;
+    color: white;
     mix-blend-mode: difference;
 }
 
-.header .theme-icon {
-    filter: none;
-    transition: filter 0.3s ease;
-    position: relative;
-    z-index: 1;
+.header .color-foreground {
+    color: white;
 }
 
-.header.overlapped .theme-icon {
+.header .theme-icon {
     filter: invert(1);
 }
 
@@ -591,50 +559,18 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Footer with smart color inversion */
+/* Footer with simple mix-blend-mode difference */
 .footer {
-    background: transparent;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: hsl(var(--color-background));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-}
-
-.footer.overlapped::before {
-    opacity: 0.95;
-}
-
-.footer .color-foreground {
-    color: hsl(var(--color-foreground));
-    transition: color 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.footer.overlapped .color-foreground {
-    color: hsl(var(--color-foreground));
+    position: fixed;
+    color: white;
     mix-blend-mode: difference;
 }
 
-.footer .theme-icon {
-    filter: none;
-    transition: filter 0.3s ease;
-    position: relative;
-    z-index: 1;
+.footer .color-foreground {
+    color: white;
 }
 
-.footer.overlapped .theme-icon {
+.footer .theme-icon {
     filter: invert(1);
 }
 

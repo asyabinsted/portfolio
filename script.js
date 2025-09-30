@@ -125,52 +125,8 @@ document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
     });
 });
 
-// Header and footer color inversion on scroll
-function checkOverlaps() {
-    const header = document.querySelector('.header');
-    const footer = document.querySelector('.footer');
-    const mainContent = document.querySelector('.main-content');
-    
-    if (header && mainContent) {
-        const headerRect = header.getBoundingClientRect();
-        const mainRect = mainContent.getBoundingClientRect();
-        
-        // Check if main content overlaps with header (with some tolerance)
-        const isOverlapping = mainRect.top < (headerRect.bottom - 10);
-        
-        if (isOverlapping) {
-            header.classList.add('overlapped');
-        } else {
-            header.classList.remove('overlapped');
-        }
-    }
-    
-    if (footer && mainContent) {
-        const footerRect = footer.getBoundingClientRect();
-        const mainRect = mainContent.getBoundingClientRect();
-        
-        // Check if main content overlaps with footer (with some tolerance)
-        const isOverlapping = mainRect.bottom > (footerRect.top + 10);
-        
-        if (isOverlapping) {
-            footer.classList.add('overlapped');
-        } else {
-            footer.classList.remove('overlapped');
-        }
-    }
-}
-
-// Throttled scroll handler for better performance
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-    }
-    scrollTimeout = setTimeout(checkOverlaps, 10);
-});
-
-// Initial check
-checkOverlaps();
+// Header and footer color inversion is now handled by CSS mix-blend-mode: difference
+// This provides automatic color inversion based on background content
 
 // Contact form handling
 const contactForm = document.querySelector('.contact-form');
