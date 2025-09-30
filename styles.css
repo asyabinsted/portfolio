@@ -1118,18 +1118,35 @@ body {
     margin: 0;
 }
 
+/* Project Description (Columns 1-4) */
+.project-description {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.project-description p {
+    margin: 0;
+}
+
+/* Role Details (Columns 5-8) */
 .project-role-details {
+    grid-column: 5 / 9;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    margin-bottom: 40px;
 }
 
 .project-role-details p {
     margin: 0;
 }
 
+/* Project Hero Image (Columns 9-12) */
 .project-hero-image {
-    grid-column: 11 / 13;
+    grid-column: 9 / 13;
     width: 100%;
     overflow: hidden;
     border-radius: 6px;
