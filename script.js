@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordSubmit = document.getElementById('password-submit');
     const passwordToggle = document.getElementById('password-toggle');
     const passwordModalClose = document.getElementById('password-modal-close');
-    const correctPassword = 'hiremeorregretit';
+    const correctPassword = 'hiremeORregretIT';
     
     if (!passwordModal || !passwordInput || !passwordError || !passwordSubmit) return;
     
