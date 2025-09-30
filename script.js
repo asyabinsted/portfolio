@@ -99,9 +99,12 @@ document.querySelectorAll('[data-page]').forEach(link => {
         console.log('Navigation clicked, pageId:', pageId);
         
         if (pageId === 'index') {
-            // For Index, scroll to top and show index page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // For Index, show index page first, then scroll to top
             showPage('index');
+            // Use setTimeout to ensure the page is shown before scrolling
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 100);
         } else if (pageId === 'work') {
             // For Work, show index page first, then scroll to work section
             showPage('index');
