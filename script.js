@@ -58,15 +58,8 @@ if (hamburger && navMenu) {
 // Navigation function for back button from project pages
 function navigateToWork(event) {
     event.preventDefault();
-    // Navigate to index page first
-    window.location.href = 'index.html';
-    // After page loads, scroll to work section using same logic as Work menu
-    setTimeout(() => {
-        const workSection = document.getElementById('work');
-        if (workSection) {
-            workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 100);
+    // Use hash navigation that the existing system handles
+    window.location.href = 'index.html#work';
 }
 
 // Single-page navigation
