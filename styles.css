@@ -134,7 +134,7 @@ body {
 }
 
 .text-small {
-    font-family: var(--font-mono);
+    font-family: var(--font-primary);
     font-size: var(--text-small-size);
     font-weight: var(--text-small-weight);
     letter-spacing: var(--text-small-ls);
