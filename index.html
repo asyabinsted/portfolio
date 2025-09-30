@@ -337,11 +337,13 @@
             </div>
             <div class="password-modal-body">
                 <div class="password-input-container">
-                    <input type="password" id="password-input" class="password-input" placeholder="If you know you know">
-                    <button class="password-toggle" id="password-toggle">
-                        <img src="icons/EyeOff.svg" alt="Show password" class="eye-icon eye-closed">
-                        <img src="icons/Eye.svg" alt="Hide password" class="eye-icon eye-open" style="display: none;">
-                    </button>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password-input" class="password-input" placeholder="If you know you know">
+                        <button class="password-toggle" id="password-toggle">
+                            <img src="icons/EyeOff.svg" alt="Show password" class="eye-icon eye-closed">
+                            <img src="icons/Eye.svg" alt="Hide password" class="eye-icon eye-open" style="display: none;">
+                        </button>
+                    </div>
                     <div class="password-error" id="password-error"></div>
                 </div>
                 <button class="password-submit" id="password-submit">View project</button>
