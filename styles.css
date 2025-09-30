@@ -1349,6 +1349,99 @@ body {
     font-style: italic;
 }
 
+/* Shipment Creation Flow Section */
+.shipment-creation-flow {
+    margin-bottom: 80px;
+}
+
+.shipment-creation-heading {
+    grid-column: 3 / 7;
+    margin-bottom: 20px;
+}
+
+.shipment-creation-heading h1 {
+    margin: 0;
+}
+
+.shipment-creation-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Shipment Creation Text Blocks */
+.shipment-creation-blocks {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.shipment-creation-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shipment-creation-block:nth-child(1) {
+    grid-column: 1 / 5;
+}
+
+.shipment-creation-block:nth-child(2) {
+    grid-column: 5 / 9;
+}
+
+.shipment-creation-block:nth-child(3) {
+    grid-column: 9 / 13;
+}
+
+.shipment-creation-block-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.shipment-creation-block p {
+    margin: 0;
+}
+
+/* Shipment Creation Images */
+.shipment-creation-image {
+    width: 100%;
+}
+
+.shipment-creation-image-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.shipment-creation-image-caption {
+    text-align: center;
+    margin: 0;
+    padding-top: 12px;
+    font-style: italic;
+}
+
+/* Image Rows for Side-by-Side Images */
+.shipment-creation-images-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Text Paragraphs */
+.shipment-creation-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shipment-creation-text p {
+    margin: 0;
+}
+
 .cursor-text {
     font-family: var(--font-primary);
     font-size: var(--text-small-size);

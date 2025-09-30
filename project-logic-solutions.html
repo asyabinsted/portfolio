@@ -260,6 +260,116 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Shipment Creation Flow Section -->
+            <section class="shipment-creation-flow">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="shipment-creation-heading">
+                        <h1 class="text-h1 color-foreground">Shipment Creation Flow</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="shipment-creation-content">
+                        <!-- Text Blocks (3 columns) -->
+                        <div class="shipment-creation-blocks">
+                            <div class="shipment-creation-block">
+                                <h3 class="shipment-creation-block-title text-nav color-foreground">PROBLEM</h3>
+                                <p class="text-nav color-foreground">Creating a shipment was fragmented and repetitive. Sales, operations, and other agents entered the same information in different systems, which increased errors and slowed work. Each user had their own way of handling the process, making training and onboarding long and inconsistent.</p>
+                            </div>
+                            <div class="shipment-creation-block">
+                                <h3 class="shipment-creation-block-title text-nav color-foreground">DESIGN</h3>
+                                <p class="text-nav color-foreground">I created a single flow where any authorized user could start a shipment — from sales, customer request, or operations — all leading to the same shared record. To reduce errors and save time, the flow:<br><br>
+                                Starts with only a few required parameters (operation type, transport mode, service type) to generate a shipment reference.<br><br>
+                                Guides users step by step through a "journey," replacing manual workflows with clear pages grouped by logic (basic info, owners, stakeholders, shipment details, locations, services).<br><br>
+                                Allows reusing previous shipments as templates instead of starting from scratch.<br><br>
+                                Supports automation: repeated fields are auto-filled, detailed packing lists can be uploaded and parsed, and calculations (like container volume) are done automatically.<br><br>
+                                Provides an AI assistant that retrieves data from emails and documents, highlights conflicts, and suggests missing information — while still leaving users in control to review and confirm.</p>
+                            </div>
+                            <div class="shipment-creation-block">
+                                <h3 class="shipment-creation-block-title text-nav color-foreground">OUTCOME</h3>
+                                <p class="text-nav color-foreground">This flow reduced duplicate work and made shipment creation more consistent. Users could start from the same source of truth instead of re-entering data in different systems. Information stayed connected across departments, which shortened onboarding and reduced mistakes. ↓</p>
+                            </div>
+                        </div>
+                        
+                        <!-- First Image -->
+                        <div class="shipment-creation-image">
+                            <img src="images/logic-create-elements-13.jpg" alt="Create new shipment: dialog and AI-assisted chat components" class="shipment-creation-image-img">
+                            <p class="shipment-creation-image-caption text-cursive color-foreground">Create new shipment: dialog and AI-assisted chat components</p>
+                        </div>
+                        
+                        <!-- Text Paragraphs -->
+                        <div class="shipment-creation-text">
+                            <p class="text-page color-foreground"><strong>Creating Shipment:</strong><br>
+                            Users can begin the shipment creation from multiple entry points.<br>
+                            Any authorized user can initiate, keeping all work in a single record.</p>
+                            
+                            <p class="text-page color-foreground"><strong>AI Assistance:</strong><br>
+                            Highlights missing or conflicting info and suggests corrections.<br>
+                            Users remain in control while the system reduces mistakes.</p>
+                        </div>
+                        
+                        <!-- Second Image -->
+                        <div class="shipment-creation-image">
+                            <img src="images/logic-create1-14.jpg" alt="1. Setting main shipment parameters" class="shipment-creation-image-img">
+                            <p class="shipment-creation-image-caption text-cursive color-foreground">1. Setting main shipment parameters</p>
+                        </div>
+                        
+                        <!-- Text Paragraph -->
+                        <div class="shipment-creation-text">
+                            <p class="text-page color-foreground"><strong>Details & Automation:</strong><br>
+                            Combines manual input with automated suggestions to save time.<br>
+                            Reduces repetitive work and supports complex data structures.</p>
+                        </div>
+                        
+                        <!-- Third and Fourth Images -->
+                        <div class="shipment-creation-images-row">
+                            <div class="shipment-creation-image">
+                                <img src="images/logic-create2-15.jpg" alt="2. Entering cargo details" class="shipment-creation-image-img">
+                                <p class="shipment-creation-image-caption text-cursive color-foreground">2. Entering cargo details</p>
+                            </div>
+                            <div class="shipment-creation-image">
+                                <img src="images/logic-create2-cards-16.jpg" alt="Cargo details form cards" class="shipment-creation-image-img">
+                                <p class="shipment-creation-image-caption text-cursive color-foreground">Cargo details form cards</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Fifth Image -->
+                        <div class="shipment-creation-image">
+                            <img src="images/logic-create3-17.jpg" alt="3. Defining routes" class="shipment-creation-image-img">
+                            <p class="shipment-creation-image-caption text-cursive color-foreground">3. Defining routes</p>
+                        </div>
+                        
+                        <!-- Text Paragraph -->
+                        <div class="shipment-creation-text">
+                            <p class="text-page color-foreground"><strong>Locations & Services:</strong><br>
+                            Flexible selection supports different routes or shipment options.<br>
+                            Ensures later steps reflect these choices consistently.</p>
+                        </div>
+                        
+                        <!-- Sixth and Seventh Images -->
+                        <div class="shipment-creation-images-row">
+                            <div class="shipment-creation-image">
+                                <img src="images/logic-create4-18.jpg" alt="4. Selecting services" class="shipment-creation-image-img">
+                                <p class="shipment-creation-image-caption text-cursive color-foreground">4. Selecting services</p>
+                            </div>
+                            <div class="shipment-creation-image">
+                                <img src="images/logic-journey-19.jpg" alt="Shipment journey: customs clearance story" class="shipment-creation-image-img">
+                                <p class="shipment-creation-image-caption text-cursive color-foreground">Shipment journey: customs clearance story</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Final Text Paragraphs -->
+                        <div class="shipment-creation-text">
+                            <p class="text-page color-foreground"><strong>Journey Stepper:</strong><br>
+                            Guides users through steps instead of relying on manual workflows.<br>
+                            Breaks the process into manageable pages to reduce errors and confusion.</p>
+                            
+                            <p class="text-page color-foreground">I also designed key shipment flows: including customs clearance (the most complex process in any shipment, involving multiple stakeholders and numerous rules and regulations), quotation, invoicing, and shipment closing or cancellation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
