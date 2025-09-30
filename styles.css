@@ -529,6 +529,94 @@ body {
     width: 100%;
 }
 
+/* Portfolio Cases */
+.portfolio-cases {
+    margin-top: 60px;
+}
+
+.portfolio-case {
+    margin-bottom: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.portfolio-case:hover {
+    transform: translateY(-2px);
+}
+
+.case-content {
+    margin-bottom: 30px;
+}
+
+.case-title {
+    margin-bottom: 20px;
+}
+
+.case-details {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.case-category,
+.case-services {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.case-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.case-image-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-case:hover .case-image-img {
+    transform: scale(1.02);
+}
+
+.case-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-case:hover .case-overlay {
+    opacity: 1;
+}
+
+.view-project-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.view-project-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
 /* Additional styles can be added here for future pages */
 
 /* Fixed Footer */
