@@ -1164,6 +1164,26 @@ body {
     margin: 0;
 }
 
+/* Challenge Image Styling */
+.challenge-image {
+    grid-column: 1 / 13;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.challenge-image-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.challenge-image-caption {
+    text-align: center;
+    margin: 8px 0 0 0;
+    font-style: italic;
+}
+
 /* Project Link Styling */
 .project-link {
     color: hsl(var(--color-foreground));
