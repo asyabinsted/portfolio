@@ -80,7 +80,7 @@
 /* Error Color Token */
 :root {
     --color-red: 6, 45%, 58%; /* #CF685E in HSL */
-    --color-green: 160, 95%, 20%; /* #049164 in HSL */
+    --color-green: 160, 95%, 25%; /* Brighter green */
 }
 
 [data-theme="light"] {
