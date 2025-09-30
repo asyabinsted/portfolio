@@ -1128,7 +1128,7 @@ body {
     grid-column: 9 / 13;
     width: 100%;
     overflow: visible;
-    border-radius: 6px;
+    border-radius: 8px;
     height: calc(100% - 2px);
 }
 
