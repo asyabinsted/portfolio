@@ -805,6 +805,8 @@ body {
 .password-input-container {
     position: relative;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .password-input {
@@ -873,9 +875,11 @@ body {
     font-weight: var(--text-nav-weight);
     letter-spacing: var(--text-nav-ls);
     line-height: var(--text-nav-lh);
+    margin-top: 4px;
     margin-bottom: 0;
     min-height: 16px;
     display: none;
+    padding-left: 4px;
 }
 
 .password-error.show {
