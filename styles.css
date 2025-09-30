@@ -1196,6 +1196,56 @@ body {
     opacity: 0.7;
 }
 
+/* Design Process Section */
+.design-process {
+    margin-bottom: 80px;
+}
+
+.design-heading {
+    grid-column: 3 / 7;
+    margin-bottom: 20px;
+}
+
+.design-heading h1 {
+    margin: 0;
+}
+
+.design-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.design-content p {
+    margin: 0;
+}
+
+/* Design Images Styling */
+.design-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.design-image {
+    width: 100%;
+}
+
+.design-image-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.design-image-caption {
+    text-align: center;
+    margin: 8px 0 0 0;
+    font-style: italic;
+}
+
 .cursor-text {
     font-family: var(--font-primary);
     font-size: var(--text-small-size);
