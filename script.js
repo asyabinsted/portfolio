@@ -321,7 +321,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal
     passwordModalClose.addEventListener('click', hidePasswordModal);
     passwordModal.addEventListener('click', function(e) {
-        if (e.target === passwordModal) {
+        // Close when clicking on the overlay (not the modal content)
+        if (e.target === passwordModal || e.target.classList.contains('password-modal-overlay')) {
             hidePasswordModal();
         }
     });

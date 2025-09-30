@@ -793,9 +793,19 @@ body {
     width: 20px;
     height: 20px;
     filter: none;
-    color: hsl(var(--color-primary));
-    fill: currentColor;
-    stroke: currentColor;
+}
+
+/* Theme-specific icon colors using filters */
+[data-theme="light"] .close-icon {
+    filter: brightness(0) saturate(100%);
+}
+
+[data-theme="dark"] .close-icon {
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+[data-theme="color"] .close-icon {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .password-modal-body {
@@ -867,9 +877,19 @@ body {
     width: 20px;
     height: 20px;
     filter: none;
-    color: hsl(var(--color-primary));
-    fill: currentColor;
-    stroke: currentColor;
+}
+
+/* Theme-specific eye icon colors using filters */
+[data-theme="light"] .eye-icon {
+    filter: brightness(0) saturate(100%);
+}
+
+[data-theme="dark"] .eye-icon {
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+[data-theme="color"] .eye-icon {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .password-error {
