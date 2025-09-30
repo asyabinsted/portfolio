@@ -250,8 +250,15 @@ document.addEventListener('DOMContentLoaded', function() {
         passwordModal.style.display = 'flex';
         passwordInput.focus();
         passwordInput.value = '';
+        passwordInput.setAttribute('type', 'password');
         passwordError.classList.remove('show');
         passwordInput.classList.remove('error');
+        
+        // Reset eye icons to closed state
+        const closedEye = passwordToggle.querySelector('.eye-closed');
+        const openEye = passwordToggle.querySelector('.eye-open');
+        closedEye.style.display = 'block';
+        openEye.style.display = 'none';
     }
     
     // Hide password modal
@@ -264,8 +271,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Toggle password visibility
     passwordToggle.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        const type = isPassword ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
+        
+        // Toggle eye icons
+        const closedEye = passwordToggle.querySelector('.eye-closed');
+        const openEye = passwordToggle.querySelector('.eye-open');
+        
+        if (isPassword) {
+            // Show password - show open eye, hide closed eye
+            closedEye.style.display = 'none';
+            openEye.style.display = 'block';
+        } else {
+            // Hide password - show closed eye, hide open eye
+            closedEye.style.display = 'block';
+            openEye.style.display = 'none';
+        }
     });
     
     // Submit password
