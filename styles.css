@@ -731,20 +731,14 @@ body {
 
 [data-theme="light"] .theme-icon {
     filter: none;
-    color: hsl(var(--color-primary));
-    fill: currentColor;
 }
 
 [data-theme="dark"] .theme-icon {
     filter: none;
-    color: hsl(var(--color-primary));
-    fill: currentColor;
 }
 
 [data-theme="color"] .theme-icon {
-    filter: none !important;
-    color: hsl(var(--color-primary)) !important;
-    fill: currentColor !important;
+    filter: none;
 }
 
 .theme-icon svg {
@@ -757,30 +751,33 @@ body {
     stroke: currentColor;
 }
 
-/* Force color inheritance for all theme icons */
-[data-theme="light"] .theme-icon svg,
-[data-theme="light"] .theme-icon svg path {
+/* Force color inheritance for all theme icons with maximum specificity */
+[data-theme="light"] .theme-toggle-btn .theme-icon,
+[data-theme="light"] .theme-toggle-btn .theme-icon svg,
+[data-theme="light"] .theme-toggle-btn .theme-icon svg path {
     fill: hsl(var(--color-primary)) !important;
     stroke: hsl(var(--color-primary)) !important;
     color: hsl(var(--color-primary)) !important;
 }
 
-[data-theme="dark"] .theme-icon svg,
-[data-theme="dark"] .theme-icon svg path {
+[data-theme="dark"] .theme-toggle-btn .theme-icon,
+[data-theme="dark"] .theme-toggle-btn .theme-icon svg,
+[data-theme="dark"] .theme-toggle-btn .theme-icon svg path {
     fill: hsl(var(--color-primary)) !important;
     stroke: hsl(var(--color-primary)) !important;
     color: hsl(var(--color-primary)) !important;
 }
 
-[data-theme="color"] .theme-icon svg,
-[data-theme="color"] .theme-icon svg path {
+[data-theme="color"] .theme-toggle-btn .theme-icon,
+[data-theme="color"] .theme-toggle-btn .theme-icon svg,
+[data-theme="color"] .theme-toggle-btn .theme-icon svg path {
     fill: hsl(var(--color-primary)) !important;
     stroke: hsl(var(--color-primary)) !important;
     color: hsl(var(--color-primary)) !important;
 }
 
 /* Additional specificity for SVG elements */
-.theme-icon svg path {
+.theme-toggle-btn .theme-icon svg path {
     fill: currentColor !important;
     stroke: currentColor !important;
 }

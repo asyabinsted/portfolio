@@ -31,9 +31,9 @@ if (themeToggle) {
 
 function updateThemeIcon(theme) {
     const iconMap = {
-        'light': 'icons/Sun.svg',
-        'dark': 'icons/Moon.svg',
-        'color': 'icons/Cloud.svg'
+        'light': 'icons/SunMedium.svg',
+        'dark': 'icons/Moon-white.svg',
+        'color': 'icons/Cloud-blue.svg'
     };
     themeIcon.src = iconMap[theme];
 }
