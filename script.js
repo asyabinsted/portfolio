@@ -31,9 +31,9 @@ if (themeToggle) {
 
 function updateThemeIcon(theme) {
     const iconMap = {
-        'light': 'icons/sun.svg',
-        'dark': 'icons/moon.svg',
-        'color': 'icons/circle.svg'
+        'light': 'icons/SunMedium.svg',
+        'dark': 'icons/Moon.svg',
+        'color': 'icons/Cloud.svg'
     };
     themeIcon.src = iconMap[theme];
 }
@@ -186,10 +186,17 @@ document.addEventListener('DOMContentLoaded', function() {
     portfolioCases.forEach(caseElement => {
         caseElement.addEventListener('mouseenter', function() {
             customCursor.style.display = 'flex';
+            customCursor.classList.add('show');
         });
         
         caseElement.addEventListener('mouseleave', function() {
-            customCursor.style.display = 'none';
+            customCursor.classList.remove('show');
+            // Hide after transition completes
+            setTimeout(() => {
+                if (!customCursor.classList.contains('show')) {
+                    customCursor.style.display = 'none';
+                }
+            }, 200);
         });
         
         caseElement.addEventListener('mousemove', function(e) {
@@ -209,7 +216,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hide cursor when mouse leaves the viewport
     document.addEventListener('mouseleave', function() {
-        customCursor.style.display = 'none';
+        customCursor.classList.remove('show');
+        setTimeout(() => {
+            if (!customCursor.classList.contains('show')) {
+                customCursor.style.display = 'none';
+            }
+        }, 200);
     });
 });
 

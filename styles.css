@@ -625,6 +625,18 @@ body {
     pointer-events: none;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s ease;
+    /* Cross-browser compatibility */
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* Ensure visibility across browsers */
+    visibility: hidden;
+    opacity: 0;
+}
+
+.custom-cursor.show {
+    visibility: visible;
+    opacity: 1;
 }
 
 .cursor-text {
@@ -713,29 +725,36 @@ body {
     height: 16px;
     filter: none;
     transition: all 0.3s ease;
-    color: inherit;
+    color: hsl(var(--color-primary));
+    fill: currentColor;
 }
 
 [data-theme="light"] .theme-icon {
     filter: none;
+    color: hsl(var(--color-primary));
+    fill: currentColor;
 }
 
 [data-theme="dark"] .theme-icon {
-    filter: invert(1);
+    filter: none;
+    color: hsl(var(--color-primary));
+    fill: currentColor;
 }
 
 [data-theme="color"] .theme-icon {
     filter: none !important;
     color: hsl(var(--color-primary)) !important;
+    fill: currentColor !important;
 }
 
-[data-theme="color"] .theme-icon svg {
-    color: hsl(var(--color-primary)) !important;
+.theme-icon svg {
+    color: inherit;
+    fill: currentColor;
 }
 
-[data-theme="color"] .theme-icon svg * {
-    fill: hsl(var(--color-primary)) !important;
-    stroke: hsl(var(--color-primary)) !important;
+.theme-icon svg * {
+    fill: currentColor;
+    stroke: currentColor;
 }
 
 .theme-toggle-btn:focus {
