@@ -28,10 +28,10 @@
     --text-body-ls: -0.05em;
     --text-body-lh: 18px;
     
-    --text-small-size: 14px;
+    --text-small-size: 16px;
     --text-small-weight: 400;
-    --text-small-ls: -0.05em;
-    --text-small-lh: 18px;
+    --text-small-ls: -0.02em;
+    --text-small-lh: 31px;
     
     --text-h3-size: 14px;
     --text-h3-weight: 400;
