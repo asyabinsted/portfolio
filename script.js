@@ -185,8 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Global mouse move handler
     document.addEventListener('mousemove', function(e) {
-        customCursor.style.left = e.clientX + 'px';
-        customCursor.style.top = e.clientY + 'px';
+        customCursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
     });
     
     // Portfolio cases - show "View project" button
