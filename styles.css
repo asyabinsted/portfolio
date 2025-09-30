@@ -214,17 +214,34 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Header color inversion using mix-blend-mode exclusion */
+/* Header with dynamic color inversion */
 .header {
-    mix-blend-mode: exclusion;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
 .header .color-foreground {
-    color: white;
+    color: hsl(var(--color-foreground));
+    transition: color 0.3s ease;
 }
 
 .header .theme-icon {
-    filter: invert(1);
+    filter: none;
+    transition: filter 0.3s ease;
+}
+
+/* Header when overlapped - invert colors */
+.header.overlapped {
+    background: hsl(var(--color-foreground) / 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.header.overlapped .color-foreground {
+    color: hsl(var(--color-background)) !important;
+}
+
+.header.overlapped .theme-icon {
+    filter: invert(1) !important;
 }
 
 .header-grid {
@@ -557,17 +574,34 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Footer color inversion using mix-blend-mode exclusion */
+/* Footer with dynamic color inversion */
 .footer {
-    mix-blend-mode: exclusion;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
 .footer .color-foreground {
-    color: white;
+    color: hsl(var(--color-foreground));
+    transition: color 0.3s ease;
 }
 
 .footer .theme-icon {
-    filter: invert(1);
+    filter: none;
+    transition: filter 0.3s ease;
+}
+
+/* Footer when overlapped - invert colors */
+.footer.overlapped {
+    background: hsl(var(--color-foreground) / 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.footer.overlapped .color-foreground {
+    color: hsl(var(--color-background)) !important;
+}
+
+.footer.overlapped .theme-icon {
+    filter: invert(1) !important;
 }
 
 .footer-grid {
