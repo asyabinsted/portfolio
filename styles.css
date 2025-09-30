@@ -589,17 +589,18 @@ body {
     grid-column: 1 / 13;
     position: relative;
     width: 100%;
-    height: 300px;
     overflow: hidden;
     border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .case-image-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: transform 0.3s ease;
+    object-fit: cover;
 }
 
 .portfolio-case:hover .case-image-img {
