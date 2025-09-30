@@ -55,6 +55,22 @@ if (hamburger && navMenu) {
     }));
 }
 
+// Navigation function for back button from project pages
+function navigateToWork(event) {
+    event.preventDefault();
+    // Navigate to index page and scroll to work section
+    window.location.href = 'index.html#work';
+    // Force navigation after a short delay to ensure page loads
+    setTimeout(() => {
+        if (window.location.hash === '#work') {
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }, 100);
+}
+
 // Single-page navigation
 function showPage(pageId) {
     console.log('showPage called with:', pageId);
