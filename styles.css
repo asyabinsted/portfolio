@@ -968,15 +968,15 @@ body {
 
 /* Theme-specific back to top icon colors */
 [data-theme="light"] .back-to-top-icon {
-    filter: brightness(0) saturate(100%);
-}
-
-[data-theme="dark"] .back-to-top-icon {
     filter: brightness(0) saturate(100%) invert(1);
 }
 
+[data-theme="dark"] .back-to-top-icon {
+    filter: brightness(0) saturate(100%);
+}
+
 [data-theme="color"] .back-to-top-icon {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
+    filter: brightness(0) saturate(100%) invert(1);
 }
 
 .cursor-text {
