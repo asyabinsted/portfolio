@@ -1104,7 +1104,7 @@ body {
 .project-role-details {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 2px;
 }
 
 .project-role-details p {
