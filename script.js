@@ -58,17 +58,15 @@ if (hamburger && navMenu) {
 // Navigation function for back button from project pages
 function navigateToWork(event) {
     event.preventDefault();
-    // Navigate to index page and scroll to work section
-    window.location.href = 'index.html#work';
-    // Force navigation after a short delay to ensure page loads
+    // Navigate to index page first
+    window.location.href = 'index.html';
+    // After page loads, scroll to work section
     setTimeout(() => {
-        if (window.location.hash === '#work') {
-            const workSection = document.getElementById('work');
-            if (workSection) {
-                workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+        const workSection = document.getElementById('work');
+        if (workSection) {
+            workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, 100);
+    }, 200);
 }
 
 // Single-page navigation
