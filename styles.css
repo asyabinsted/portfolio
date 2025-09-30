@@ -758,64 +758,87 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 24px 0 24px;
-    margin-bottom: 24px;
+    padding: 16px 16px 0 16px;
+    margin-bottom: 16px;
 }
 
 .password-modal-title {
     font-family: var(--font-primary);
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
+    font-size: var(--text-h1-size);
+    font-weight: var(--text-h1-weight);
+    letter-spacing: var(--text-h1-ls);
+    line-height: var(--text-h1-lh);
+    color: hsl(var(--color-foreground));
     margin: 0;
 }
 
 .password-modal-close {
     background: none;
     border: none;
-    font-size: 24px;
-    color: #666;
     cursor: pointer;
-    padding: 0;
+    padding: 4px;
     width: 24px;
     height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .password-modal-close:hover {
-    color: #333;
+    opacity: 0.8;
+}
+
+.close-icon {
+    width: 20px;
+    height: 20px;
+    filter: none;
+    color: hsl(var(--color-primary));
+    fill: currentColor;
+    stroke: currentColor;
 }
 
 .password-modal-body {
-    padding: 0 24px 24px 24px;
+    padding: 0 16px 16px 16px;
 }
 
 .password-input-container {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 }
 
 .password-input {
     width: 100%;
     padding: 12px 48px 12px 16px;
-    border: 2px solid #e5e5e5;
+    border: 2px solid hsl(var(--color-primary) / 0.2);
     border-radius: 8px;
-    font-family: var(--font-primary);
-    font-size: 16px;
+    font-family: var(--font-mono);
+    font-size: var(--text-nav-size);
+    font-weight: var(--text-nav-weight);
+    letter-spacing: var(--text-nav-ls);
+    line-height: var(--text-nav-lh);
+    color: hsl(var(--color-foreground));
+    background: white;
     outline: none;
     transition: border-color 0.2s ease;
     box-sizing: border-box;
 }
 
+.password-input::placeholder {
+    color: hsl(var(--color-foreground) / 0.5);
+    font-family: var(--font-mono);
+    font-size: var(--text-nav-size);
+    font-weight: var(--text-nav-weight);
+    letter-spacing: var(--text-nav-ls);
+    line-height: var(--text-nav-lh);
+}
+
 .password-input:focus {
-    border-color: hsl(var(--color-primary));
+    border-color: hsl(var(--color-primary) / 0.5);
 }
 
 .password-input.error {
-    border-color: hsl(var(--color-error));
+    border-color: hsl(var(--color-error) / 0.5);
 }
 
 .password-toggle {
@@ -825,23 +848,33 @@ body {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: hsl(var(--color-primary));
     cursor: pointer;
     padding: 4px;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .password-toggle:hover {
-    color: hsl(var(--color-primary));
     opacity: 0.8;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+    filter: none;
+    color: hsl(var(--color-primary));
+    fill: currentColor;
+    stroke: currentColor;
 }
 
 .password-error {
     color: hsl(var(--color-error));
-    font-family: var(--font-primary);
-    font-size: 14px;
-    margin-bottom: 16px;
-    min-height: 20px;
+    font-family: var(--font-mono);
+    font-size: var(--text-nav-size);
+    font-weight: var(--text-nav-weight);
+    letter-spacing: var(--text-nav-ls);
+    line-height: var(--text-nav-lh);
+    margin-bottom: 12px;
+    min-height: 16px;
     display: none;
 }
 
@@ -852,19 +885,21 @@ body {
 .password-submit {
     width: 100%;
     padding: 12px 24px;
-    background-color: #333;
-    color: white;
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
     border: none;
     border-radius: 8px;
     font-family: var(--font-primary);
-    font-size: 16px;
-    font-weight: 500;
+    font-size: var(--text-small-size);
+    font-weight: var(--text-small-weight);
+    letter-spacing: var(--text-small-ls);
+    line-height: var(--text-small-lh);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .password-submit:hover {
-    background-color: #555;
+    opacity: 0.9;
 }
 
 .cursor-text {
