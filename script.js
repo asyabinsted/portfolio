@@ -99,7 +99,22 @@ document.querySelectorAll('[data-page]').forEach(link => {
         e.preventDefault();
         const pageId = this.getAttribute('data-page');
         console.log('Navigation clicked, pageId:', pageId);
-        showPage(pageId);
+        
+        if (pageId === 'index') {
+            // For Index, scroll to top and show index page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showPage('index');
+        } else if (pageId === 'work') {
+            // For Work, scroll to work section and show index page
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+                showPage('index');
+            }
+        } else {
+            // For other pages, use normal page switching
+            showPage(pageId);
+        }
     });
 });
 
