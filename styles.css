@@ -1469,6 +1469,57 @@ body {
     margin-bottom: 0;
 }
 
+/* Consistency & Design System Section */
+.consistency-design-system {
+    margin-bottom: 80px;
+}
+
+.consistency-heading {
+    grid-column: 3 / 7;
+    margin-bottom: 20px;
+}
+
+.consistency-heading h1 {
+    margin: 0;
+}
+
+.consistency-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.consistency-content p {
+    margin: 0;
+}
+
+/* Consistency Images */
+.consistency-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.consistency-image {
+    width: 100%;
+}
+
+.consistency-image-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.consistency-image-caption {
+    text-align: center;
+    margin: 0;
+    padding-top: 12px;
+    font-style: italic;
+}
+
 /* Text Row Layout */
 .shipment-creation-text-row {
     display: grid;
