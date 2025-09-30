@@ -1405,6 +1405,19 @@ body {
     margin: 0;
 }
 
+.shipment-creation-block ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.shipment-creation-block li {
+    margin-bottom: 8px;
+}
+
+.shipment-creation-block li:last-child {
+    margin-bottom: 0;
+}
+
 /* Shipment Creation Images */
 .shipment-creation-image {
     width: 100%;
