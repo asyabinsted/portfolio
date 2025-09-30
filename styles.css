@@ -1184,6 +1184,7 @@ body {
     margin: 0;
     padding-top: 12px;
     font-style: italic;
+    opacity: 0.5;
 }
 
 /* Project Link Styling */
@@ -1246,6 +1247,7 @@ body {
     margin: 0;
     padding-top: 12px;
     font-style: italic;
+    opacity: 0.5;
 }
 
 /* Key Screens Section */
@@ -1347,6 +1349,7 @@ body {
     margin: 0;
     padding-top: 12px;
     font-style: italic;
+    opacity: 0.5;
 }
 
 /* Shipment Creation Flow Section */
@@ -1435,6 +1438,7 @@ body {
     margin: 0;
     padding-top: 12px;
     font-style: italic;
+    opacity: 0.5;
 }
 
 /* Image Rows for Side-by-Side Images */
@@ -1518,6 +1522,7 @@ body {
     margin: 0;
     padding-top: 12px;
     font-style: italic;
+    opacity: 0.5;
 }
 
 /* Text Row Layout */
