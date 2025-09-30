@@ -608,6 +608,34 @@ body {
     transform: scale(1.02);
 }
 
+/* Custom Cursor Button */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 40px;
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
+    border-radius: 999px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+}
+
+.cursor-text {
+    font-family: var(--font-primary);
+    font-size: var(--text-small-size);
+    font-weight: var(--text-small-weight);
+    letter-spacing: var(--text-small-ls);
+    line-height: var(--text-small-lh);
+    white-space: nowrap;
+}
+
 
 /* Additional styles can be added here for future pages */
 

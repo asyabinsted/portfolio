@@ -175,6 +175,44 @@ function updateActiveNavigation() {
 // Add scroll listener
 window.addEventListener('scroll', updateActiveNavigation);
 
+// Custom Cursor Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const customCursor = document.getElementById('custom-cursor');
+    const portfolioCases = document.querySelectorAll('.portfolio-case');
+    
+    if (!customCursor) return;
+    
+    // Show/hide cursor on project hover
+    portfolioCases.forEach(caseElement => {
+        caseElement.addEventListener('mouseenter', function() {
+            customCursor.style.display = 'flex';
+        });
+        
+        caseElement.addEventListener('mouseleave', function() {
+            customCursor.style.display = 'none';
+        });
+        
+        caseElement.addEventListener('mousemove', function(e) {
+            // Update cursor position to follow mouse
+            customCursor.style.left = e.clientX + 'px';
+            customCursor.style.top = e.clientY + 'px';
+        });
+        
+        caseElement.addEventListener('click', function(e) {
+            // Navigate to project page
+            const projectUrl = this.getAttribute('data-project-url');
+            if (projectUrl) {
+                window.open(projectUrl, '_blank');
+            }
+        });
+    });
+    
+    // Hide cursor when mouse leaves the viewport
+    document.addEventListener('mouseleave', function() {
+        customCursor.style.display = 'none';
+    });
+});
+
 // Smooth scrolling for other anchor links
 document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
