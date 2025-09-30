@@ -91,14 +91,15 @@ function showPage(pageId) {
 }
 
 // Navigation click handlers
-document.querySelectorAll('[data-page]').forEach(link => {
-    console.log('Adding click handler to:', link);
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const pageId = this.getAttribute('data-page');
-        console.log('Navigation clicked, pageId:', pageId);
+        document.querySelectorAll('[data-page]').forEach(link => {
+            console.log('Adding click handler to:', link);
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                const href = this.getAttribute('href');
+                console.log('Navigation clicked, pageId:', pageId, 'href:', href);
         
-        if (pageId === 'index') {
+        if (pageId === 'index' || href === 'index.html') {
             // For Index, show index page first, then scroll to top
             showPage('index');
             // Use setTimeout to ensure the page is shown before scrolling
