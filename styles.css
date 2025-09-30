@@ -541,35 +541,50 @@ body {
 }
 
 .portfolio-case:hover {
-    transform: translateY(-2px);
+    cursor: pointer;
 }
 
-.case-content {
+/* Case Title Section (same columns as header name/title) */
+.case-title-section {
+    grid-column: 3 / 6;
     margin-bottom: 30px;
 }
 
 .case-title {
-    margin-bottom: 20px;
+    margin: 0;
 }
 
-.case-details {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+/* Case Details Grid */
+.case-details-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.case-category,
-.case-services {
+.case-category {
+    grid-column: 1 / 5;
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.case-services {
+    grid-column: 5 / 9;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.case-empty {
+    grid-column: 9 / 13;
 }
 
 .case-image {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .case-image-img {
@@ -583,38 +598,49 @@ body {
     transform: scale(1.02);
 }
 
-.case-overlay {
+/* Cursor overlay for View project */
+.portfolio-case::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border-radius: 10px;
+    z-index: 10;
+    pointer-events: none;
 }
 
-.portfolio-case:hover .case-overlay {
-    opacity: 1;
-}
-
-.view-project-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.portfolio-case::before {
+    content: 'View project';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
     padding: 12px 24px;
     border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 11;
+    pointer-events: none;
 }
 
-.view-project-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+.portfolio-case:hover::after,
+.portfolio-case:hover::before {
+    opacity: 1;
 }
 
 /* Additional styles can be added here for future pages */
