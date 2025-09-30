@@ -33,7 +33,7 @@
     --text-button-ls: -0.02em;
     --text-button-lh: 31px;
     
-    --text-page-size: 18px;
+    --text-page-size: 16px;
     --text-page-weight: 500;
     --text-page-ls: -0.02em;
     --text-page-lh: 20px;
@@ -1117,7 +1117,7 @@ body {
 .project-role-details {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 8px;
 }
 
 .project-role-details p {
