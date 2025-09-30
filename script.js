@@ -126,49 +126,51 @@ document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
 });
 
 // Header and footer color inversion on scroll
-window.addEventListener('scroll', () => {
+function checkOverlaps() {
     const header = document.querySelector('.header');
     const footer = document.querySelector('.footer');
     const mainContent = document.querySelector('.main-content');
     
-    if (header) {
+    if (header && mainContent) {
         const headerRect = header.getBoundingClientRect();
-        const headerBottom = headerRect.bottom;
+        const mainRect = mainContent.getBoundingClientRect();
         
-        // Check if main content overlaps with header
-        if (mainContent) {
-            const mainRect = mainContent.getBoundingClientRect();
-            const mainTop = mainRect.top;
-            
-            if (mainTop < headerBottom) {
-                // Content is overlapping header - invert colors
-                header.classList.add('overlapped');
-            } else {
-                // No overlap - normal colors
-                header.classList.remove('overlapped');
-            }
+        // Check if main content overlaps with header (with some tolerance)
+        const isOverlapping = mainRect.top < (headerRect.bottom - 10);
+        
+        if (isOverlapping) {
+            header.classList.add('overlapped');
+        } else {
+            header.classList.remove('overlapped');
         }
     }
     
-    if (footer) {
+    if (footer && mainContent) {
         const footerRect = footer.getBoundingClientRect();
-        const footerTop = footerRect.top;
+        const mainRect = mainContent.getBoundingClientRect();
         
-        // Check if main content overlaps with footer
-        if (mainContent) {
-            const mainRect = mainContent.getBoundingClientRect();
-            const mainBottom = mainRect.bottom;
-            
-            if (mainBottom > footerTop) {
-                // Content is overlapping footer - invert colors
-                footer.classList.add('overlapped');
-            } else {
-                // No overlap - normal colors
-                footer.classList.remove('overlapped');
-            }
+        // Check if main content overlaps with footer (with some tolerance)
+        const isOverlapping = mainRect.bottom > (footerRect.top + 10);
+        
+        if (isOverlapping) {
+            footer.classList.add('overlapped');
+        } else {
+            footer.classList.remove('overlapped');
         }
     }
+}
+
+// Throttled scroll handler for better performance
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+    }
+    scrollTimeout = setTimeout(checkOverlaps, 10);
 });
+
+// Initial check
+checkOverlaps();
 
 // Contact form handling
 const contactForm = document.querySelector('.contact-form');

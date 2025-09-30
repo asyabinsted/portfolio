@@ -214,34 +214,51 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Header with dynamic color inversion */
+/* Header with smart color inversion */
 .header {
     background: transparent;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--color-background));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.header.overlapped::before {
+    opacity: 0.95;
 }
 
 .header .color-foreground {
     color: hsl(var(--color-foreground));
     transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.header.overlapped .color-foreground {
+    color: hsl(var(--color-foreground));
+    mix-blend-mode: difference;
 }
 
 .header .theme-icon {
     filter: none;
     transition: filter 0.3s ease;
-}
-
-/* Header when overlapped - invert colors */
-.header.overlapped {
-    background: hsl(var(--color-foreground) / 0.95);
-    backdrop-filter: blur(8px);
-}
-
-.header.overlapped .color-foreground {
-    color: hsl(var(--color-background)) !important;
+    position: relative;
+    z-index: 1;
 }
 
 .header.overlapped .theme-icon {
-    filter: invert(1) !important;
+    filter: invert(1);
 }
 
 .header-grid {
@@ -574,34 +591,51 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Footer with dynamic color inversion */
+/* Footer with smart color inversion */
 .footer {
     background: transparent;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(var(--color-background));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.footer.overlapped::before {
+    opacity: 0.95;
 }
 
 .footer .color-foreground {
     color: hsl(var(--color-foreground));
     transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.footer.overlapped .color-foreground {
+    color: hsl(var(--color-foreground));
+    mix-blend-mode: difference;
 }
 
 .footer .theme-icon {
     filter: none;
     transition: filter 0.3s ease;
-}
-
-/* Footer when overlapped - invert colors */
-.footer.overlapped {
-    background: hsl(var(--color-foreground) / 0.95);
-    backdrop-filter: blur(8px);
-}
-
-.footer.overlapped .color-foreground {
-    color: hsl(var(--color-background)) !important;
+    position: relative;
+    z-index: 1;
 }
 
 .footer.overlapped .theme-icon {
-    filter: invert(1) !important;
+    filter: invert(1);
 }
 
 .footer-grid {
