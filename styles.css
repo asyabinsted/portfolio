@@ -80,18 +80,22 @@
 /* Error Color Token */
 :root {
     --color-red: 6, 45%, 58%; /* #CF685E in HSL */
+    --color-green: 160, 95%, 20%; /* #049164 in HSL */
 }
 
 [data-theme="light"] {
     --color-error: var(--color-red);
+    --color-success: var(--color-green);
 }
 
 [data-theme="dark"] {
     --color-error: var(--color-red);
+    --color-success: var(--color-green);
 }
 
 [data-theme="color"] {
     --color-error: var(--color-red);
+    --color-success: var(--color-green);
 }
 
 /* Default theme */
@@ -1523,6 +1527,63 @@ body {
     padding-top: 12px;
     font-style: italic;
     opacity: 0.5;
+}
+
+/* Value & Impact Section */
+.value-impact {
+    margin-bottom: 80px;
+}
+
+.value-impact-heading {
+    grid-column: 3 / 7;
+    margin-bottom: 20px;
+}
+
+.value-impact-heading h1 {
+    margin: 0;
+}
+
+.value-impact-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.value-impact-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.value-impact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.value-impact-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.value-impact-block p {
+    margin: 0;
+}
+
+.value-impact-metric {
+    font-family: var(--font-mono);
+    font-size: var(--text-nav-size);
+    font-weight: 600;
+    margin: 0;
+}
+
+.success-metric {
+    color: hsl(var(--color-success));
+}
+
+.error-metric {
+    color: hsl(var(--color-error));
 }
 
 /* Text Row Layout */
