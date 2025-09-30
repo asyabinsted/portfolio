@@ -211,10 +211,15 @@ body {
     background: transparent;
     z-index: 1000;
     padding: 10px 0;
-    mix-blend-mode: difference;
 }
 
-.header * {
+/* Header text and icon color inversion */
+.header h1,
+.header h3,
+.header a,
+.header span,
+.header .theme-icon {
+    mix-blend-mode: difference;
     color: white;
 }
 
@@ -545,10 +550,13 @@ body {
     background: transparent;
     padding: 10px 0;
     z-index: 1000;
-    mix-blend-mode: difference;
 }
 
-.footer * {
+/* Footer text and icon color inversion */
+.footer span,
+.footer a,
+.footer .theme-icon {
+    mix-blend-mode: difference;
     color: white;
 }
 
