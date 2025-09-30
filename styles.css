@@ -555,6 +555,11 @@ body {
 
 .case-title {
     margin: 0;
+    line-height: 1.2;
+}
+
+.case-title:first-child {
+    margin-bottom: 8px;
 }
 
 /* Case Details Grid */
