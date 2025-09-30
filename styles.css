@@ -1620,6 +1620,65 @@ body {
     border-radius: 2px;
 }
 
+/* Project Category Section */
+.project-category {
+    margin-bottom: 40px;
+}
+
+.project-category-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-category-content h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.project-category-content p {
+    margin: 0;
+}
+
+/* Project Services Section */
+.project-services {
+    margin-bottom: 40px;
+}
+
+.project-services-content {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-services-content h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.project-services-content p {
+    margin: 0;
+}
+
+/* Project Disclaimer Section */
+.project-disclaimer {
+    margin-bottom: 60px;
+}
+
+.project-disclaimer-content {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: center;
+}
+
+.project-disclaimer-content p {
+    margin: 0;
+    text-align: center;
+    opacity: 0.7;
+}
+
 /* Text Row Layout */
 .shipment-creation-text-row {
     display: grid;

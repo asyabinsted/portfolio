@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globus AI - Asya Binsted</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-grid">
+                <!-- Back Button (Columns 1-3) -->
+                <div class="header-back">
+                    <a href="index.html#work" class="back-link" onclick="navigateToWork(event)">
+                        <img src="icons/ArrowLeft.svg" alt="Back to work" class="back-icon">
+                        <span class="text-nav color-foreground">Back to work</span>
+                    </a>
+                </div>
+                
+                <!-- Project Title (Columns 4-9) -->
+                <div class="header-title">
+                    <h1 class="text-h1 color-foreground">Globus AI</h1>
+                </div>
+                
+                <!-- Theme Switcher (Columns 10-12) -->
+                <div class="header-theme">
+                    <div class="theme-switcher">
+                        <button class="theme-btn" data-theme="light" title="Light mode">
+                            <img src="icons/Sun.svg" alt="Light mode" class="theme-icon">
+                        </button>
+                        <button class="theme-btn" data-theme="dark" title="Dark mode">
+                            <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon">
+                        </button>
+                        <button class="theme-btn" data-theme="color" title="Color mode">
+                            <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Project Hero Section -->
+            <section class="project-hero">
+                <div class="grid-12">
+                    <!-- Project Info (Columns 1-8) -->
+                    <div class="project-info">
+                        <h1 class="text-h1 color-foreground">Globus AI</h1>
+                        <p class="text-page color-foreground">AI-powered platform for global logistics optimization, providing intelligent route planning, real-time tracking, and predictive analytics to streamline supply chain operations.</p>
+                        
+                        <div class="project-role-details">
+                            <p class="text-nav color-foreground">My role: Product UX / UI Designer</p>
+                            <p class="text-nav color-foreground">Project duration: Jan'24-Jun'24</p>
+                            <p class="text-nav color-foreground">Team: 1 Product owner, 1 Project manager, 2 FE developers, 3 BE developers</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Hero Image (Columns 9-12) -->
+                    <div class="project-hero-image">
+                        <img src="images/globus-ai-cover.jpg" alt="Globus AI platform overview" class="project-hero-img">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Section -->
+            <section class="project-category">
+                <div class="grid-12">
+                    <div class="project-category-content">
+                        <h2 class="text-h3 color-foreground">CATEGORY</h2>
+                        <p class="text-page color-foreground">AI-Powered Logistics Platform</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="project-services">
+                <div class="grid-12">
+                    <div class="project-services-content">
+                        <h2 class="text-h3 color-foreground">SERVICES</h2>
+                        <p class="text-page color-foreground">User Experience Design, User Interface Design, Information Architecture, Prototyping, User Research</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disclaimer Section -->
+            <section class="project-disclaimer">
+                <div class="grid-12">
+                    <div class="project-disclaimer-content">
+                        <p class="text-cursive color-foreground">All details are anonymized and used solely for portfolio display.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columns 1-4: TLV, IL + time -->
+                <div class="footer-timezone">
+                    <span class="text-nav color-foreground">TLV, IL <span id="time-tlv">Loading...</span></span>
+                </div>
+                
+                <!-- Columns 5-8: BER, DE + time -->
+                <div class="footer-timezone">
+                    <span class="text-nav color-foreground">BER, DE <span id="time-ber">Loading...</span></span>
+                </div>
+                
+                <!-- Columns 9-12: Contact -->
+                <div class="footer-contact">
+                    <a href="mailto:hello@asyabinsted.com" class="contact-link text-nav color-foreground">hello@asyabinsted.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor Button -->
+    <div id="custom-cursor" class="custom-cursor">
+        <span class="cursor-text">View project</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
