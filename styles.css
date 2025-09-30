@@ -1181,7 +1181,8 @@ body {
 
 .challenge-image-caption {
     text-align: center;
-    margin: 8px 0 0 0;
+    margin: 0;
+    padding-top: 12px;
     font-style: italic;
 }
 
@@ -1242,7 +1243,8 @@ body {
 
 .design-image-caption {
     text-align: center;
-    margin: 24px 0 0 0;
+    margin: 0;
+    padding-top: 12px;
     font-style: italic;
 }
 
