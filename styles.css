@@ -601,6 +601,7 @@ body {
     display: block;
     transition: transform 0.3s ease;
     object-fit: cover;
+    margin-bottom: -1px;
 }
 
 .portfolio-case:hover .case-image-img {
