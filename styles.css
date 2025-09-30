@@ -1145,8 +1145,7 @@ body {
 }
 
 .challenge-heading {
-    grid-column: 1 / 13;
-    text-align: center;
+    grid-column: 3 / 7;
     margin-bottom: 40px;
 }
 
@@ -1156,8 +1155,6 @@ body {
 
 .challenge-content {
     grid-column: 1 / 13;
-    max-width: 60%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
