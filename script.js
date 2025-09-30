@@ -64,9 +64,17 @@ function navigateToWork(event) {
     setTimeout(() => {
         const workSection = document.getElementById('work');
         if (workSection) {
-            workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Scroll to work section with some offset to account for fixed header
+            const headerHeight = 80; // Approximate header height
+            const elementPosition = workSection.offsetTop;
+            const offsetPosition = elementPosition - headerHeight;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
-    }, 200);
+    }, 300);
 }
 
 // Single-page navigation
