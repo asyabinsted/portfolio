@@ -716,6 +716,11 @@ body {
     letter-spacing: var(--text-small-ls);
     line-height: var(--text-small-lh);
     white-space: nowrap;
+    display: none;
+}
+
+.custom-cursor.show .cursor-text {
+    display: block;
 }
 
 

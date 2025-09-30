@@ -208,12 +208,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Interactive elements - make cursor bigger
+    // Interactive elements - make cursor bigger (but not portfolio cases)
     interactiveElements.forEach(element => {
+        // Skip portfolio cases as they have their own handler
+        if (element.closest('.portfolio-case')) return;
+        
         element.addEventListener('mouseenter', function() {
-            if (!customCursor.classList.contains('show')) {
-                customCursor.classList.add('big');
-            }
+            customCursor.classList.add('big');
         });
         
         element.addEventListener('mouseleave', function() {
