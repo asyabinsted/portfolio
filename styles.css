@@ -1165,13 +1165,15 @@ body {
     grid-column: 1 / 13;
     width: 100%;
     margin-top: 12px;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .challenge-image-img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 .challenge-image-caption {
