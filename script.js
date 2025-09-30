@@ -179,30 +179,24 @@ window.addEventListener('scroll', updateActiveNavigation);
 document.addEventListener('DOMContentLoaded', function() {
     const customCursor = document.getElementById('custom-cursor');
     const portfolioCases = document.querySelectorAll('.portfolio-case');
+    const interactiveElements = document.querySelectorAll('a, button, .nav-link, .learn-more, .contact-link, .contact-link-no-hover');
     
     if (!customCursor) return;
     
-    // Show/hide cursor on project hover
+    // Global mouse move handler
+    document.addEventListener('mousemove', function(e) {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+    });
+    
+    // Portfolio cases - show "View project" button
     portfolioCases.forEach(caseElement => {
         caseElement.addEventListener('mouseenter', function() {
-            customCursor.style.display = 'flex';
             customCursor.classList.add('show');
         });
         
         caseElement.addEventListener('mouseleave', function() {
             customCursor.classList.remove('show');
-            // Hide after transition completes
-            setTimeout(() => {
-                if (!customCursor.classList.contains('show')) {
-                    customCursor.style.display = 'none';
-                }
-            }, 200);
-        });
-        
-        caseElement.addEventListener('mousemove', function(e) {
-            // Update cursor position to follow mouse
-            customCursor.style.left = e.clientX + 'px';
-            customCursor.style.top = e.clientY + 'px';
         });
         
         caseElement.addEventListener('click', function(e) {
@@ -214,14 +208,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Interactive elements - make cursor bigger
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            if (!customCursor.classList.contains('show')) {
+                customCursor.classList.add('big');
+            }
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            customCursor.classList.remove('big');
+        });
+    });
+    
     // Hide cursor when mouse leaves the viewport
     document.addEventListener('mouseleave', function() {
-        customCursor.classList.remove('show');
-        setTimeout(() => {
-            if (!customCursor.classList.contains('show')) {
-                customCursor.style.display = 'none';
-            }
-        }, 200);
+        customCursor.classList.remove('show', 'big');
     });
 });
 
