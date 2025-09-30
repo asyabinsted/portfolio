@@ -933,7 +933,7 @@ body {
 /* Back to Top Button */
 .back-to-top-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 48px;
