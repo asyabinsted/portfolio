@@ -818,7 +818,7 @@ body {
     letter-spacing: var(--text-nav-ls);
     line-height: var(--text-nav-lh);
     color: hsl(var(--color-foreground));
-    background: white;
+    background: hsl(var(--color-background));
     outline: none;
     transition: border-color 0.2s ease;
     box-sizing: border-box;
