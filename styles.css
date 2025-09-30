@@ -214,9 +214,9 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Header color inversion using mix-blend-mode */
+/* Header color inversion using mix-blend-mode exclusion */
 .header {
-    mix-blend-mode: difference;
+    mix-blend-mode: exclusion;
 }
 
 .header .color-foreground {
@@ -557,9 +557,9 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Footer color inversion using mix-blend-mode */
+/* Footer color inversion using mix-blend-mode exclusion */
 .footer {
-    mix-blend-mode: difference;
+    mix-blend-mode: exclusion;
 }
 
 .footer .color-foreground {
