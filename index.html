@@ -325,6 +325,30 @@
         <span class="cursor-text">View project</span>
     </div>
 
+    <!-- Password Modal -->
+    <div id="password-modal" class="password-modal">
+        <div class="password-modal-overlay"></div>
+        <div class="password-modal-content">
+            <div class="password-modal-header">
+                <h3 class="password-modal-title">Password</h3>
+                <button class="password-modal-close" id="password-modal-close">&times;</button>
+            </div>
+            <div class="password-modal-body">
+                <div class="password-input-container">
+                    <input type="password" id="password-input" class="password-input" placeholder="Enter password">
+                    <button class="password-toggle" id="password-toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="password-error" id="password-error"></div>
+                <button class="password-submit" id="password-submit">View project</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Fixed Footer -->
     <footer class="footer">
         <div class="container">

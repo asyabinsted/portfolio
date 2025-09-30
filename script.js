@@ -199,9 +199,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         caseElement.addEventListener('click', function(e) {
-            // Navigate to project page
+            // Check if this is Logic Solutions project
             const projectUrl = this.getAttribute('data-project-url');
-            if (projectUrl) {
+            if (projectUrl === 'project-logic-solutions.html') {
+                // Show password modal for Logic Solutions
+                if (window.showPasswordModal) {
+                    window.showPasswordModal();
+                }
+            } else if (projectUrl) {
+                // Navigate directly to other project pages
                 window.open(projectUrl, '_blank');
             }
         });
@@ -225,6 +231,82 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseleave', function() {
         customCursor.classList.remove('show', 'big');
     });
+});
+
+// Password Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordModal = document.getElementById('password-modal');
+    const passwordInput = document.getElementById('password-input');
+    const passwordError = document.getElementById('password-error');
+    const passwordSubmit = document.getElementById('password-submit');
+    const passwordToggle = document.getElementById('password-toggle');
+    const passwordModalClose = document.getElementById('password-modal-close');
+    const correctPassword = 'hiremeorregretit';
+    
+    if (!passwordModal || !passwordInput || !passwordError || !passwordSubmit) return;
+    
+    // Show password modal
+    function showPasswordModal() {
+        passwordModal.style.display = 'flex';
+        passwordInput.focus();
+        passwordInput.value = '';
+        passwordError.classList.remove('show');
+        passwordInput.classList.remove('error');
+    }
+    
+    // Hide password modal
+    function hidePasswordModal() {
+        passwordModal.style.display = 'none';
+        passwordInput.value = '';
+        passwordError.classList.remove('show');
+        passwordInput.classList.remove('error');
+    }
+    
+    // Toggle password visibility
+    passwordToggle.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+    });
+    
+    // Submit password
+    passwordSubmit.addEventListener('click', function() {
+        const enteredPassword = passwordInput.value;
+        
+        if (enteredPassword === correctPassword) {
+            hidePasswordModal();
+            // Navigate to Logic Solutions project page
+            window.open('project-logic-solutions.html', '_blank');
+        } else {
+            passwordError.textContent = 'Wrong key, right designer.';
+            passwordError.classList.add('show');
+            passwordInput.classList.add('error');
+        }
+    });
+    
+    // Handle Enter key
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            passwordSubmit.click();
+        }
+    });
+    
+    // Close modal
+    passwordModalClose.addEventListener('click', hidePasswordModal);
+    passwordModal.addEventListener('click', function(e) {
+        if (e.target === passwordModal) {
+            hidePasswordModal();
+        }
+    });
+    
+    // Handle Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && passwordModal.style.display === 'flex') {
+            hidePasswordModal();
+        }
+    });
+    
+    // Make showPasswordModal globally available
+    window.showPasswordModal = showPasswordModal;
 });
 
 // Smooth scrolling for other anchor links
