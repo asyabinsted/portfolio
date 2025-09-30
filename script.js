@@ -75,15 +75,17 @@ function showPage(pageId) {
         console.error('Page not found:', pageId);
     }
     
-    // Update active navigation
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    const activeLink = document.querySelector(`[data-page="${pageId}"]`);
-    console.log('Active link found:', activeLink);
-    if (activeLink) {
-        activeLink.classList.add('active');
+    // Update active navigation (only for page switching, not scroll-based)
+    if (pageId !== 'index') {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+        console.log('Active link found:', activeLink);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
     }
     
     // Update URL hash
@@ -110,6 +112,45 @@ window.addEventListener('hashchange', function() {
         showPage('index');
     }
 });
+
+// Handle scroll-based navigation highlighting
+function updateActiveNavigation() {
+    const workSection = document.getElementById('work');
+    const aboutSection = document.getElementById('about');
+    const indexSection = document.getElementById('index');
+    
+    if (!workSection || !aboutSection || !indexSection) return;
+    
+    const scrollPosition = window.scrollY + 100; // Offset for better detection
+    
+    // Get section positions
+    const workTop = workSection.offsetTop;
+    const aboutTop = aboutSection.offsetTop;
+    const indexTop = indexSection.offsetTop;
+    
+    // Remove active class from all nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Determine which section is in view
+    if (scrollPosition >= workTop) {
+        // Work section is in view
+        const workLink = document.querySelector('[data-page="work"]');
+        if (workLink) workLink.classList.add('active');
+    } else if (scrollPosition >= aboutTop) {
+        // About section is in view
+        const aboutLink = document.querySelector('[data-page="about"]');
+        if (aboutLink) aboutLink.classList.add('active');
+    } else {
+        // Index section is in view
+        const indexLink = document.querySelector('[data-page="index"]');
+        if (indexLink) indexLink.classList.add('active');
+    }
+}
+
+// Add scroll listener
+window.addEventListener('scroll', updateActiveNavigation);
 
 // Smooth scrolling for other anchor links
 document.querySelectorAll('a[href^="#"]:not([data-page])').forEach(anchor => {
