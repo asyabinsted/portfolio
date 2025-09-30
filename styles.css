@@ -795,17 +795,20 @@ body {
     filter: none;
 }
 
-/* Theme-specific icon colors using filters */
+/* Theme-specific icon colors using filters to match design system */
 [data-theme="light"] .close-icon {
-    filter: brightness(0) saturate(100%);
+    /* Black #212121 - exact match */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.13);
 }
 
 [data-theme="dark"] .close-icon {
+    /* White - inverted black */
     filter: brightness(0) saturate(100%) invert(1);
 }
 
 [data-theme="color"] .close-icon {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
+    /* Blue #1A6BBB - exact match */
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(210deg) brightness(40%) contrast(100%);
 }
 
 .password-modal-body {
@@ -879,17 +882,20 @@ body {
     filter: none;
 }
 
-/* Theme-specific eye icon colors using filters */
+/* Theme-specific eye icon colors using filters to match design system */
 [data-theme="light"] .eye-icon {
-    filter: brightness(0) saturate(100%);
+    /* Black #212121 - exact match */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.13);
 }
 
 [data-theme="dark"] .eye-icon {
+    /* White - inverted black */
     filter: brightness(0) saturate(100%) invert(1);
 }
 
 [data-theme="color"] .eye-icon {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(200deg) brightness(104%) contrast(97%);
+    /* Blue #1A6BBB - exact match */
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(210deg) brightness(40%) contrast(100%);
 }
 
 .password-error {
