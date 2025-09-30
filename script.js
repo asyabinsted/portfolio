@@ -86,8 +86,15 @@ function showPage(pageId) {
         activeLink.classList.add('active');
     }
     
-    // Update URL hash
-    window.location.hash = pageId;
+    // Update URL hash (except for index page)
+    if (pageId !== 'index') {
+        window.location.hash = pageId;
+    } else {
+        // For index page, remove any existing hash
+        if (window.location.hash) {
+            window.history.replaceState(null, null, window.location.pathname);
+        }
+    }
 }
 
 // Navigation click handlers
@@ -556,7 +563,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hash && ['index', 'about', 'work'].includes(hash)) {
         showPage(hash);
     } else {
+        // No hash or invalid hash - show index page and clean URL
         showPage('index');
+        // Clean up URL if there's an unwanted hash
+        if (window.location.hash) {
+            window.history.replaceState(null, null, window.location.pathname);
+        }
     }
 });
 
