@@ -14,87 +14,67 @@
     <header class="header">
         <div class="container">
             <div class="header-grid">
-                <!-- Back Button (Columns 1-3) -->
+                <!-- Back Button (Columns 1-2) -->
                 <div class="header-back">
-                    <a href="index.html#work" class="back-link" onclick="navigateToWork(event)">
-                        <img src="icons/ArrowLeft.svg" alt="Back to work" class="back-icon">
-                        <span class="text-nav color-foreground">Back to work</span>
+                    <a href="index.html#work" class="back-button" onclick="navigateToWork(event)">
+                        <img src="icons/ArrowLeft.svg" alt="Back to Work" class="back-icon">
                     </a>
                 </div>
                 
-                <!-- Project Title (Columns 4-9) -->
-                <div class="header-title">
-                    <h1 class="text-h1 color-foreground">Globus AI</h1>
+                <!-- Project Title (Columns 3-6) -->
+                <div class="header-title-section">
+                    <h1 class="project-title text-h1 color-foreground">Globus AI:<br>HR Software for Staffing Agencies</h1>
                 </div>
                 
-                <!-- Theme Switcher (Columns 10-12) -->
-                <div class="header-theme">
-                    <div class="theme-switcher">
-                        <button class="theme-btn" data-theme="light" title="Light mode">
-                            <img src="icons/Sun.svg" alt="Light mode" class="theme-icon">
-                        </button>
-                        <button class="theme-btn" data-theme="dark" title="Dark mode">
-                            <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon">
-                        </button>
-                        <button class="theme-btn" data-theme="color" title="Color mode">
-                            <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon">
-                        </button>
-                    </div>
-                </div>
+                <!-- Empty columns 7-12 -->
+                <div class="header-empty-2"></div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main-content">
         <div class="container">
-            <!-- Project Hero Section -->
-            <section class="project-hero">
+            <!-- Project Overview Section -->
+            <section class="project-overview">
                 <div class="grid-12">
-                    <!-- Project Info (Columns 1-8) -->
-                    <div class="project-info">
-                        <h1 class="text-h1 color-foreground">Globus AI</h1>
-                        <p class="text-page color-foreground">AI-powered platform for global logistics optimization, providing intelligent route planning, real-time tracking, and predictive analytics to streamline supply chain operations.</p>
+                    <!-- Top Row: Category, Services, Disclaimer -->
+                    <div class="project-details-row">
+                        <!-- Category (Columns 1-4) -->
+                        <div class="project-category">
+                            <span class="text-cursive color-foreground">Category:</span>
+                            <span class="text-cursive color-foreground">HR Software, AI-Powered Platforms, B2B Solutions</span>
+                        </div>
                         
-                        <div class="project-role-details">
-                            <p class="text-nav color-foreground">My role: Product UX / UI Designer</p>
-                            <p class="text-nav color-foreground">Project duration: Jan'24-Jun'24</p>
-                            <p class="text-nav color-foreground">Team: 1 Product owner, 1 Project manager, 2 FE developers, 3 BE developers</p>
+                        <!-- Services (Columns 5-8) -->
+                        <div class="project-services">
+                            <span class="text-cursive color-foreground">Services:</span>
+                            <span class="text-cursive color-foreground">UX Research, UX/UI Design, Interaction Design, Prototyping, Design System, Usability Testing, Product Strategy</span>
+                        </div>
+                        
+                        <!-- Disclaimer (Columns 9-12) -->
+                        <div class="project-disclaimer">
+                            <span class="text-cursive color-foreground">All details are anonymized and used solely for portfolio display.</span>
                         </div>
                     </div>
                     
-                    <!-- Project Hero Image (Columns 9-12) -->
-                    <div class="project-hero-image">
-                        <img src="images/globus-ai-cover.jpg" alt="Globus AI platform overview" class="project-hero-img">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Category Section -->
-            <section class="project-category">
-                <div class="grid-12">
-                    <div class="project-category-content">
-                        <h2 class="text-h3 color-foreground">CATEGORY</h2>
-                        <p class="text-page color-foreground">AI-Powered Logistics Platform</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Services Section -->
-            <section class="project-services">
-                <div class="grid-12">
-                    <div class="project-services-content">
-                        <h2 class="text-h3 color-foreground">SERVICES</h2>
-                        <p class="text-page color-foreground">User Experience Design, User Interface Design, Information Architecture, Prototyping, User Research</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Disclaimer Section -->
-            <section class="project-disclaimer">
-                <div class="grid-12">
-                    <div class="project-disclaimer-content">
-                        <p class="text-cursive color-foreground">All details are anonymized and used solely for portfolio display.</p>
+                    <!-- Project Summary and Hero Image Row -->
+                    <div class="project-summary-row">
+                        <!-- Project Summary (Columns 1-8) -->
+                        <div class="project-summary">
+                            <p class="text-page color-foreground">AI-powered HR platform that streamlines staffing agency operations through intelligent candidate matching, automated workflows, and predictive analytics to optimize recruitment processes.</p>
+                            
+                            <div class="project-role-details">
+                                <p class="text-nav color-foreground">My role: Product UX / UI Designer</p>
+                                <p class="text-nav color-foreground">Project duration: Jan'24-Jun'24</p>
+                                <p class="text-nav color-foreground">Team: 1 Product owner, 1 Project manager, 2 FE developers, 3 BE developers</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Hero Image (Columns 9-12) -->
+                        <div class="project-hero-image">
+                            <img src="images/globus-ai-cover.jpg" alt="Globus AI platform overview" class="project-hero-img">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -115,9 +95,16 @@
                     <span class="text-nav color-foreground">BER, DE <span id="time-ber">Loading...</span></span>
                 </div>
                 
-                <!-- Columns 9-12: Contact -->
-                <div class="footer-contact">
-                    <a href="mailto:hello@asyabinsted.com" class="contact-link text-nav color-foreground">hello@asyabinsted.com</a>
+                <!-- Columns 9-12: CNX, TH + time + theme switcher -->
+                <div class="footer-right">
+                    <div class="footer-timezone">
+                        <span class="text-nav color-foreground">CNX, TH <span id="time-cnx">Loading...</span></span>
+                    </div>
+                    <div class="footer-theme">
+                        <button class="theme-toggle-btn" id="theme-toggle">
+                            <img src="icons/SunMedium.svg" alt="Toggle theme" class="theme-icon" id="theme-icon">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
