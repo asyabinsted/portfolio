@@ -75,17 +75,15 @@ function showPage(pageId) {
         console.error('Page not found:', pageId);
     }
     
-    // Update active navigation (only for page switching, not scroll-based)
-    if (pageId !== 'index') {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        const activeLink = document.querySelector(`[data-page="${pageId}"]`);
-        console.log('Active link found:', activeLink);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+    // Update active navigation for all pages
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+    console.log('Active link found:', activeLink);
+    if (activeLink) {
+        activeLink.classList.add('active');
     }
     
     // Update URL hash
@@ -130,17 +128,21 @@ window.addEventListener('hashchange', function() {
 
 // Handle scroll-based navigation highlighting
 function updateActiveNavigation() {
+    // Only apply scroll-based navigation when we're on the index page
+    const currentPage = document.querySelector('section[id]:not([style*="display: none"])');
+    if (!currentPage || currentPage.id !== 'index') {
+        return;
+    }
+    
     const workSection = document.getElementById('work');
-    const aboutSection = document.getElementById('about');
     const indexSection = document.getElementById('index');
     
-    if (!workSection || !aboutSection || !indexSection) return;
+    if (!workSection || !indexSection) return;
     
     const scrollPosition = window.scrollY + 100; // Offset for better detection
     
     // Get section positions
     const workTop = workSection.offsetTop;
-    const aboutTop = aboutSection.offsetTop;
     const indexTop = indexSection.offsetTop;
     
     // Remove active class from all nav links
@@ -153,10 +155,6 @@ function updateActiveNavigation() {
         // Work section is in view
         const workLink = document.querySelector('[data-page="work"]');
         if (workLink) workLink.classList.add('active');
-    } else if (scrollPosition >= aboutTop) {
-        // About section is in view
-        const aboutLink = document.querySelector('[data-page="about"]');
-        if (aboutLink) aboutLink.classList.add('active');
     } else {
         // Index section is in view
         const indexLink = document.querySelector('[data-page="index"]');
