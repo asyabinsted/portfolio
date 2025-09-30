@@ -112,6 +112,10 @@ document.querySelectorAll('[data-page]').forEach(link => {
                     workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 100);
+        } else if (pageId === 'about') {
+            // For About, show about page and scroll to top
+            showPage('about');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
             // For other pages, use normal page switching
             showPage(pageId);
