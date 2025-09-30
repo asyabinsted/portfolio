@@ -103,17 +103,15 @@ document.querySelectorAll('[data-page]').forEach(link => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             showPage('index');
         } else if (pageId === 'work') {
-            // For Work, scroll to work section first, then show index page
-            const workSection = document.getElementById('work');
-            if (workSection) {
-                // Scroll to work section first
-                workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Then show the index page
-                showPage('index');
-            } else {
-                // Fallback: show index page first if work section not found
-                showPage('index');
-            }
+            // For Work, show index page first, then scroll to work section
+            showPage('index');
+            // Use setTimeout to ensure the page is shown before scrolling
+            setTimeout(() => {
+                const workSection = document.getElementById('work');
+                if (workSection) {
+                    workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
         } else {
             // For other pages, use normal page switching
             showPage(pageId);

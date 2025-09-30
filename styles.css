@@ -532,6 +532,7 @@ body {
 /* Portfolio Cases */
 .portfolio-cases {
     margin-top: 140px;
+    padding-top: 80px;
 }
 
 .portfolio-case {
