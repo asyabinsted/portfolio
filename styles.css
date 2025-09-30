@@ -1586,6 +1586,37 @@ body {
     color: hsl(var(--color-error));
 }
 
+/* Takeaways Section */
+.takeaways {
+    margin-bottom: 60px;
+}
+
+.takeaways-heading {
+    grid-column: 3 / 7;
+    margin-bottom: 20px;
+}
+
+.takeaways-content {
+    grid-column: 1 / 13;
+}
+
+.takeaways-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.takeaways-item {
+    margin: 0;
+}
+
+.takeaways-item p {
+    margin: 0;
+}
+
 /* Text Row Layout */
 .shipment-creation-text-row {
     display: grid;
