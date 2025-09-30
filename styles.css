@@ -1176,7 +1176,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .challenge-image-caption {
@@ -1238,7 +1238,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .design-image-caption {
@@ -1339,7 +1339,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .screen-image-caption {
@@ -1427,7 +1427,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .shipment-creation-image-caption {
@@ -1510,7 +1510,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .consistency-image-caption {
