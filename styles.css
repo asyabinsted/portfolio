@@ -746,7 +746,7 @@ body {
 
 .password-modal-content {
     position: relative;
-    background: white;
+    background: hsl(var(--color-background));
     border-radius: 6px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     width: 400px;
