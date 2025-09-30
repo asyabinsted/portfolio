@@ -60,21 +60,13 @@ function navigateToWork(event) {
     event.preventDefault();
     // Navigate to index page first
     window.location.href = 'index.html';
-    // After page loads, scroll to work section
+    // After page loads, scroll to work section using same logic as Work menu
     setTimeout(() => {
         const workSection = document.getElementById('work');
         if (workSection) {
-            // Scroll to work section with some offset to account for fixed header
-            const headerHeight = 80; // Approximate header height
-            const elementPosition = workSection.offsetTop;
-            const offsetPosition = elementPosition - headerHeight;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+            workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, 300);
+    }, 100);
 }
 
 // Single-page navigation
