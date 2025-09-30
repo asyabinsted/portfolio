@@ -344,15 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!backToTopBtn) return;
     
-    // Show/hide button based on scroll position
-    function toggleBackToTopButton() {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    }
-    
     // Scroll to top when clicked
     backToTopBtn.addEventListener('click', function() {
         window.scrollTo({
@@ -360,12 +351,6 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
-    
-    // Listen for scroll events
-    window.addEventListener('scroll', toggleBackToTopButton);
-    
-    // Initial check
-    toggleBackToTopButton();
 });
 
 // Smooth scrolling for other anchor links

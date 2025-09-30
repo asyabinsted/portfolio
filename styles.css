@@ -932,7 +932,7 @@ body {
 
 /* Back to Top Button */
 .back-to-top-btn {
-    position: fixed;
+    position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
@@ -943,7 +943,7 @@ body {
     border: none;
     border-radius: 999px;
     cursor: pointer;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -956,9 +956,6 @@ body {
     transform: translateX(-50%) translateY(-2px);
 }
 
-.back-to-top-btn.show {
-    display: flex;
-}
 
 .back-to-top-icon {
     width: 24px;
