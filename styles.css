@@ -344,6 +344,13 @@ body {
     min-height: calc(100vh - 160px);
 }
 
+/* Top anchor positioning */
+#top {
+    position: relative;
+    top: -100px;
+    height: 0;
+}
+
 /* Index Page */
 .index-page {
     padding: 40px 0;
