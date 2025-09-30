@@ -544,9 +544,9 @@ body {
     cursor: pointer;
 }
 
-/* Case Title Section (same columns as header name/title) */
+/* Case Title Section (columns 3-6) */
 .case-title-section {
-    grid-column: 3 / 6;
+    grid-column: 3 / 7;
     margin-bottom: 30px;
 }
 
