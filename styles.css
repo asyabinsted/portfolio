@@ -1569,11 +1569,6 @@ body {
 
 .value-impact-block p {
     margin: 0;
-    font-family: var(--font-primary);
-    font-size: var(--text-nav-size);
-    font-weight: var(--text-nav-weight);
-    letter-spacing: var(--text-nav-ls);
-    line-height: var(--text-nav-lh);
 }
 
 .value-impact-metric {
