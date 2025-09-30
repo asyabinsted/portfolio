@@ -598,50 +598,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Cursor overlay for View project */
-.portfolio-case::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: hsl(var(--color-primary));
-    color: hsl(var(--color-primary-foreground));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 10px;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.portfolio-case::before {
-    content: 'View project';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: hsl(var(--color-primary));
-    color: hsl(var(--color-primary-foreground));
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-family: var(--font-mono);
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: -0.05em;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 11;
-    pointer-events: none;
-}
-
-.portfolio-case:hover::after,
-.portfolio-case:hover::before {
-    opacity: 1;
-}
 
 /* Additional styles can be added here for future pages */
 
