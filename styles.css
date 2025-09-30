@@ -214,6 +214,10 @@ body {
     mix-blend-mode: difference;
 }
 
+.header * {
+    color: white;
+}
+
 .header-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -542,6 +546,10 @@ body {
     padding: 10px 0;
     z-index: 1000;
     mix-blend-mode: difference;
+}
+
+.footer * {
+    color: white;
 }
 
 .footer-grid {
