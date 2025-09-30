@@ -28,10 +28,15 @@
     --text-body-ls: -0.05em;
     --text-body-lh: 18px;
     
-    --text-small-size: 16px;
-    --text-small-weight: 400;
-    --text-small-ls: -0.02em;
-    --text-small-lh: 31px;
+    --text-button-size: 16px;
+    --text-button-weight: 400;
+    --text-button-ls: -0.02em;
+    --text-button-lh: 31px;
+    
+    --text-page-size: 16px;
+    --text-page-weight: 400;
+    --text-page-ls: -0.02em;
+    --text-page-lh: 24px;
     
     --text-h3-size: 14px;
     --text-h3-weight: 400;
@@ -135,10 +140,18 @@ body {
 
 .text-small {
     font-family: var(--font-primary);
-    font-size: var(--text-small-size);
-    font-weight: var(--text-small-weight);
-    letter-spacing: var(--text-small-ls);
-    line-height: var(--text-small-lh);
+    font-size: var(--text-button-size);
+    font-weight: var(--text-button-weight);
+    letter-spacing: var(--text-button-ls);
+    line-height: var(--text-button-lh);
+}
+
+.text-page {
+    font-family: var(--font-primary);
+    font-size: var(--text-page-size);
+    font-weight: var(--text-page-weight);
+    letter-spacing: var(--text-page-ls);
+    line-height: var(--text-page-lh);
 }
 
 .text-h3 {
