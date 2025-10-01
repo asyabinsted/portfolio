@@ -1567,6 +1567,11 @@ body {
     margin: 0;
 }
 
+.compact-text p {
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
 .value-impact-metric {
     font-family: var(--font-mono);
     font-size: var(--text-nav-size);
