@@ -1987,6 +1987,80 @@ body {
 }
 
 
+/* Mobile Burger Menu */
+.mobile-burger {
+    display: none;
+}
+
+.burger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.burger-line {
+    width: 24px;
+    height: 2px;
+    background-color: hsl(var(--color-foreground));
+    transition: all 0.3s ease;
+}
+
+.burger-btn.active .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-btn.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.active .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: hsl(var(--color-background));
+    border-bottom: 1px solid hsl(var(--color-foreground) / 0.1);
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+}
+
+.mobile-nav-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mobile-nav-link {
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid hsl(var(--color-foreground) / 0.1);
+}
+
+.mobile-nav-link:last-child {
+    border-bottom: none;
+}
+
+/* Prevent horizontal scrolling */
+body {
+    overflow-x: hidden;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .header-grid,
@@ -2036,6 +2110,22 @@ body {
     .header-empty-4,
     .grid-empty-1 {
         display: none;
+    }
+    
+    /* Show burger menu on mobile */
+    .mobile-burger {
+        display: block;
+        grid-column: 7;
+    }
+    
+    /* Hide regular navigation on mobile */
+    .header-nav-item {
+        display: none;
+    }
+    
+    /* Show mobile navigation */
+    .mobile-nav {
+        display: block;
     }
     
     .header-name-section {
@@ -2281,5 +2371,19 @@ body {
     /* Mobile-friendly spacing */
     .main-content {
         padding: 0 10px;
+    }
+    
+    /* Mobile Avatar Positioning */
+    .avatar-section {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        z-index: 100;
+        grid-column: 1;
+    }
+    
+    .avatar-container {
+        width: 60px;
+        height: 78px;
     }
 }

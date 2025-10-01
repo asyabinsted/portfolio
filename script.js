@@ -629,3 +629,33 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Mobile Burger Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    if (burgerBtn && mobileNav) {
+        burgerBtn.addEventListener('click', function() {
+            burgerBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking on a link
+        const mobileNavLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!burgerBtn.contains(event.target) && !mobileNav.contains(event.target)) {
+                burgerBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+    }
+});
