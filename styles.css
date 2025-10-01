@@ -2082,6 +2082,131 @@ body {
         flex-direction: column;
         gap: 12px;
     }
+    
+    /* Project Page Mobile Layout */
+    .project-overview {
+        grid-column: 1;
+    }
+    
+    .project-intro {
+        grid-column: 1;
+    }
+    
+    .project-summary {
+        grid-column: 1;
+    }
+    
+    .project-role-details {
+        grid-column: 1;
+    }
+    
+    .challenge-heading {
+        grid-column: 1;
+    }
+    
+    .challenge-content {
+        grid-column: 1;
+    }
+    
+    .challenge-image {
+        grid-column: 1;
+    }
+    
+    .design-content {
+        grid-column: 1;
+    }
+    
+    .design-images {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .design-image {
+        grid-column: 1;
+    }
+    
+    .screen-images {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .screen-image {
+        grid-column: 1;
+    }
+    
+    .value-impact-container {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .value-impact-row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .value-impact-block {
+        grid-column: 1;
+    }
+    
+    /* High-Fidelity Prototypes Mobile Layout */
+    .grid-12[style*="grid-column"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .grid-12[style*="grid-column"] > div[style*="grid-column"] {
+        grid-column: 1 !important;
+        width: 100% !important;
+    }
+    
+    /* Override inline grid styles for mobile */
+    div[style*="grid-column: 1 / 7"],
+    div[style*="grid-column: 2 / 8"],
+    div[style*="grid-column: 7 / 13"],
+    div[style*="grid-column: 8 / 13"] {
+        grid-column: 1 !important;
+        width: 100% !important;
+    }
+    
+    /* User Personas Mobile Layout */
+    .challenge-content div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .challenge-content div[style*="display: flex"] > div {
+        width: 100% !important;
+    }
+    
+    /* CJM Mobile Layout */
+    .challenge-content div[style*="display: flex"][style*="flex-direction: column"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    /* Table Mobile Layout */
+    table {
+        font-size: 0.8rem;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    table thead,
+    table tbody,
+    table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2114,5 +2239,47 @@ body {
     
     .about-main-text {
         max-width: 100%;
+    }
+    
+    /* Additional mobile optimizations for very small screens */
+    .text-h1 {
+        font-size: 1.5rem;
+    }
+    
+    .text-h3 {
+        font-size: 1.2rem;
+    }
+    
+    .text-page {
+        font-size: 0.9rem;
+    }
+    
+    .text-nav {
+        font-size: 0.8rem;
+    }
+    
+    .challenge-image-img,
+    .design-image-img,
+    .screen-image-img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Ensure all content stacks vertically on very small screens */
+    .grid-12 {
+        gap: 16px;
+    }
+    
+    .challenge {
+        margin-bottom: 20px;
+    }
+    
+    .challenge-heading {
+        margin-bottom: 8px;
+    }
+    
+    /* Mobile-friendly spacing */
+    .main-content {
+        padding: 0 10px;
     }
 }
