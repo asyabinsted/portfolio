@@ -7,14 +7,45 @@ const body = document.body;
 const themes = ['light', 'dark', 'color'];
 let currentThemeIndex = 0;
 
-// Load saved theme or default to light
-const savedTheme = localStorage.getItem('theme') || 'light';
-currentThemeIndex = themes.indexOf(savedTheme);
+// Detect system theme preference
+function getSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+    }
+    return 'light'; // fallback
+}
+
+// Load saved theme or use system preference
+const savedTheme = localStorage.getItem('theme');
+const systemTheme = getSystemTheme();
+const initialTheme = savedTheme || systemTheme;
+
+currentThemeIndex = themes.indexOf(initialTheme);
 if (currentThemeIndex === -1) currentThemeIndex = 0;
 
 body.setAttribute('data-theme', themes[currentThemeIndex]);
 if (themeIcon) {
     updateThemeIcon(themes[currentThemeIndex]);
+}
+
+// Listen for system theme changes (only if no manual preference is saved)
+if (!savedTheme && window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only update if no manual theme preference is saved
+        if (!localStorage.getItem('theme')) {
+            const newSystemTheme = e.matches ? 'dark' : 'light';
+            const newThemeIndex = themes.indexOf(newSystemTheme);
+            if (newThemeIndex !== -1) {
+                currentThemeIndex = newThemeIndex;
+                body.setAttribute('data-theme', newSystemTheme);
+                if (themeIcon) {
+                    updateThemeIcon(newSystemTheme);
+                }
+            }
+        }
+    });
 }
 
 if (themeToggle) {
