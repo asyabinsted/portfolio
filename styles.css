@@ -1106,11 +1106,6 @@ body {
     margin: 0;
 }
 
-.project-description {
-    grid-column: 1 / 5;
-    margin-bottom: 40px;
-}
-
 .project-summary {
     grid-column: 5 / 9;
     display: flex;
