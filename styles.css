@@ -1137,7 +1137,7 @@ body {
 
 /* Challenge & Objective Section */
 .challenge {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 .challenge-objective {
@@ -1146,7 +1146,7 @@ body {
 
 .challenge-heading {
     grid-column: 3 / 7;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .challenge-heading h1 {
