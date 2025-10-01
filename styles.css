@@ -1136,6 +1136,10 @@ body {
 }
 
 /* Challenge & Objective Section */
+.challenge {
+    margin-bottom: 40px;
+}
+
 .challenge-objective {
     margin-bottom: 80px;
 }
