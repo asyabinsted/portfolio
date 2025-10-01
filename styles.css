@@ -1142,7 +1142,7 @@ body {
 
 .challenge-heading {
     grid-column: 3 / 7;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
 .challenge-heading h1 {
