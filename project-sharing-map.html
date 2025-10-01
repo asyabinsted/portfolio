@@ -19,21 +19,12 @@
                 </div>
                 
                 <!-- Project Title (Columns 3-6) -->
-                <div class="header-title">
-                    <h1 class="text-h1 color-foreground">Sharing Map: Mobile App for Community Sharing</h1>
+                <div class="header-title-section">
+                    <h1 class="project-title text-h1 color-foreground">Sharing Map:<br>Mobile App for Community Sharing</h1>
                 </div>
                 
-                <!-- Empty space (Columns 7-10) -->
-                <div class="header-empty"></div>
-                
-                <!-- Theme Toggle (Columns 11-12) -->
-                <div class="header-theme">
-                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-                        <img src="icons/Sun.svg" alt="Light mode" class="theme-icon sun-icon">
-                        <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon moon-icon">
-                        <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon cloud-icon">
-                    </button>
-                </div>
+                <!-- Empty columns 7-12 -->
+                <div class="header-empty-2"></div>
             </div>
         </div>
     </header>
@@ -218,27 +209,24 @@
             <div class="footer-grid">
                 <!-- Columns 1-4: TLV, IL + time -->
                 <div class="footer-timezone">
-                    <div class="timezone-item">
-                        <span class="timezone-label text-cursive color-foreground">TLV, IL</span>
-                        <span class="timezone-time text-nav color-foreground" id="time-tlv">--:--</span>
-                    </div>
+                    <span class="text-nav color-foreground">TLV, IL <span id="time-tlv">Loading...</span></span>
                 </div>
                 
-                <!-- Columns 5-8: NYC, US + time -->
+                <!-- Columns 5-8: BER, DE + time -->
                 <div class="footer-timezone">
-                    <div class="timezone-item">
-                        <span class="timezone-label text-cursive color-foreground">NYC, US</span>
-                        <span class="timezone-time text-nav color-foreground" id="time-nyc">--:--</span>
-                    </div>
+                    <span class="text-nav color-foreground">BER, DE <span id="time-ber">Loading...</span></span>
                 </div>
                 
-                <!-- Columns 9-12: Theme toggle -->
-                <div class="footer-theme">
-                    <button id="footerThemeToggle" class="theme-toggle" aria-label="Toggle theme">
-                        <img src="icons/Sun.svg" alt="Light mode" class="theme-icon sun-icon">
-                        <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon moon-icon">
-                        <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon cloud-icon">
-                    </button>
+                <!-- Columns 9-12: CNX, TH + time + theme switcher -->
+                <div class="footer-right">
+                    <div class="footer-timezone">
+                        <span class="text-nav color-foreground">CNX, TH <span id="time-cnx">Loading...</span></span>
+                    </div>
+                    <div class="footer-theme">
+                        <button class="theme-toggle-btn" id="theme-toggle">
+                            <img src="icons/SunMedium.svg" alt="Toggle theme" class="theme-icon" id="theme-icon">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
