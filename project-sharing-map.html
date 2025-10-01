@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharing Map - Mobile App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-grid">
+                <!-- Back Button (Columns 1-2) -->
+                <div class="header-back">
+                    <a href="index.html" class="back-button" onclick="navigateToWork(event)">
+                        <img src="icons/ArrowLeft.svg" alt="Back to Work" class="back-icon">
+                    </a>
+                </div>
+                
+                <!-- Project Title (Columns 3-6) -->
+                <div class="header-title">
+                    <h1 class="text-h1 color-foreground">Sharing Map: Mobile App for Community Sharing</h1>
+                </div>
+                
+                <!-- Theme Toggle (Columns 11-12) -->
+                <div class="header-theme">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <img src="icons/Sun.svg" alt="Light mode" class="theme-icon sun-icon">
+                        <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon moon-icon">
+                        <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon cloud-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Project Overview Section -->
+            <section class="project-overview">
+                <div class="grid-12">
+                    <!-- Category (Columns 1-4) -->
+                    <div class="project-category">
+                        <span class="text-cursive color-foreground">Category:</span>
+                        <span class="text-cursive color-foreground">Mobile App, Community Platform, Social Impact</span>
+                    </div>
+                    
+                    <!-- Services (Columns 5-8) -->
+                    <div class="project-services">
+                        <span class="text-cursive color-foreground">Services:</span>
+                        <span class="text-cursive color-foreground">UX Research, UX/UI Design, Mobile Design, Prototyping, Usability Testing</span>
+                    </div>
+                    
+                    <!-- Disclaimer (Columns 9-12) -->
+                    <div class="project-disclaimer">
+                        <span class="text-cursive color-foreground">All details are anonymized and used solely for portfolio display.</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Project Introduction Section -->
+            <section class="project-intro">
+                <div class="grid-12">
+                    <!-- Project Description (Columns 1-4) -->
+                    <div class="project-description">
+                        <p class="text-page color-foreground">A mobile application that connects neighbors to share resources, reduce waste, and build stronger communities through local sharing networks.</p>
+                    </div>
+                    
+                    <!-- Project Summary (Columns 5-8) -->
+                    <div class="project-summary">
+                        <p class="text-page color-foreground">This case study showcases a community-focused mobile app designed to promote sustainable living and neighborhood connections. The app enables users to share items, borrow tools, and participate in local sharing events.</p>
+                    </div>
+                    
+                    <!-- Hero Image (Columns 9-12) -->
+                    <div class="project-hero-image">
+                        <img src="images/sharing-map/sharing-map-cover.jpg" alt="Sharing Map mobile app interface" class="hero-image">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Challenge Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Challenge</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">Modern communities face challenges with resource waste, social isolation, and lack of local connections. Many people own items they rarely use while others need access to those same resources. Traditional sharing methods are often inconvenient, unsafe, or non-existent in many neighborhoods.</p>
+                        
+                        <!-- Challenge Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/challenge-image.png" alt="Community sharing challenges and opportunities" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Research Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Research</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">I conducted user interviews and surveys to understand community sharing behaviors, trust factors, and technology adoption patterns. The research revealed key insights about safety concerns, convenience preferences, and the importance of local community building.</p>
+                        
+                        <!-- Research Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/research-image.png" alt="User research findings and community insights" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Design Process Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Design Process</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">I developed a user-centered design approach focusing on trust, safety, and ease of use. The design process included wireframing, prototyping, and iterative testing to create an intuitive sharing experience.</p>
+                        
+                        <!-- Design Process Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/design-process.png" alt="Design process showing wireframes and user testing" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Key Features Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Key Features</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">The app includes features for item sharing, community events, user verification, and local discovery. Each feature was designed to build trust and encourage community participation.</p>
+                        
+                        <!-- Key Features Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/key-features.png" alt="Key app features including sharing, events, and community features" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Prototype Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Prototype</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">I created interactive prototypes to test the user experience and gather feedback. The prototypes demonstrated the complete user journey from onboarding to successful sharing interactions.</p>
+                        
+                        <!-- Prototype Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/prototype.png" alt="Interactive prototype showing app screens and user flows" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Results Section -->
+            <section class="challenge">
+                <div class="grid-12">
+                    <!-- Heading (Columns 3-6) -->
+                    <div class="challenge-heading">
+                        <h1 class="text-h1 color-foreground">Results</h1>
+                    </div>
+                    
+                    <!-- Content (All 12 columns) -->
+                    <div class="challenge-content">
+                        <p class="text-page color-foreground">The design successfully addressed community sharing challenges by creating a trusted, user-friendly platform. User testing showed high engagement rates and positive feedback on the sharing experience.</p>
+                        
+                        <!-- Results Image (All 12 columns) -->
+                        <div class="challenge-image">
+                            <img src="images/sharing-map/results.png" alt="Project results showing user engagement and community impact" class="challenge-image-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <div class="back-to-top-container" id="back-to-top-container">
+            <button id="back-to-top" class="back-to-top-btn">
+                <img src="icons/ArrowUp.svg" alt="Back to top" class="back-to-top-icon">
+            </button>
+        </div>
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columns 1-4: TLV, IL + time -->
+                <div class="footer-timezone">
+                    <div class="timezone-item">
+                        <span class="timezone-label text-cursive color-foreground">TLV, IL</span>
+                        <span class="timezone-time text-nav color-foreground" id="time-tlv">--:--</span>
+                    </div>
+                </div>
+                
+                <!-- Columns 5-8: NYC, US + time -->
+                <div class="footer-timezone">
+                    <div class="timezone-item">
+                        <span class="timezone-label text-cursive color-foreground">NYC, US</span>
+                        <span class="timezone-time text-nav color-foreground" id="time-nyc">--:--</span>
+                    </div>
+                </div>
+                
+                <!-- Columns 9-12: Theme toggle -->
+                <div class="footer-theme">
+                    <button id="footerThemeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <img src="icons/Sun.svg" alt="Light mode" class="theme-icon sun-icon">
+                        <img src="icons/Moon.svg" alt="Dark mode" class="theme-icon moon-icon">
+                        <img src="icons/Cloud.svg" alt="Color mode" class="theme-icon cloud-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
