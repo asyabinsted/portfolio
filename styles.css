@@ -2387,3 +2387,77 @@ body {
         height: 78px;
     }
 }
+
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--color-background));
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.preloader-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: preloaderFadeIn 0.3s ease forwards;
+}
+
+.preloader-text {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.05em;
+    color: hsl(var(--color-foreground));
+    max-width: 400px;
+    margin: 0;
+    opacity: 0;
+    animation: preloaderFadeIn 0.3s ease 0.2s forwards;
+}
+
+@keyframes preloaderFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Preloader animation for SVG cycling */
+.preloader-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.preloader-icon img.active {
+    opacity: 1;
+}
