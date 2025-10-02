@@ -3,15 +3,6 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
 
-// Preloader
-const preloader = document.getElementById('preloader');
-const preloaderImage = document.getElementById('preloader-image');
-let preloaderInterval;
-let currentImageIndex = 0;
-let preloaderStartTime;
-let pageLoaded = false;
-let minDisplayTime = 2000; // 2 seconds minimum
-
 // Theme cycle: light -> dark -> color -> light
 const themes = ['light', 'dark', 'color'];
 let currentThemeIndex = 0;
@@ -66,10 +57,6 @@ if (themeToggle) {
         if (themeIcon) {
             updateThemeIcon(newTheme);
         }
-        // Update preloader if it's visible
-        if (preloader && preloader.style.display !== 'none') {
-            updatePreloaderImage();
-        }
     });
 }
 
@@ -80,73 +67,6 @@ function updateThemeIcon(theme) {
         'color': 'icons/Cloud-blue.svg'
     };
     themeIcon.src = iconMap[theme];
-}
-
-// Preloader Functions
-function getCurrentTheme() {
-    return body.getAttribute('data-theme') || 'light';
-}
-
-function getPreloaderImagePath(theme, index) {
-    const themePrefix = theme === 'dark' ? 'preloader-dark' : 'preloader-light';
-    return `images/preloader/${themePrefix}-${index}.svg`;
-}
-
-function updatePreloaderImage() {
-    const currentTheme = getCurrentTheme();
-    const imagePath = getPreloaderImagePath(currentTheme, currentImageIndex + 1);
-    preloaderImage.src = imagePath;
-}
-
-function startPreloaderAnimation() {
-    if (!preloader || !preloaderImage) return;
-    
-    // Record start time
-    preloaderStartTime = Date.now();
-    pageLoaded = false;
-    
-    // Clear any existing interval
-    if (preloaderInterval) {
-        clearInterval(preloaderInterval);
-    }
-    
-    // Start the animation
-    currentImageIndex = 0;
-    updatePreloaderImage();
-    
-    preloaderInterval = setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % 7;
-        updatePreloaderImage();
-    }, 150);
-}
-
-function stopPreloaderAnimation() {
-    if (preloaderInterval) {
-        clearInterval(preloaderInterval);
-        preloaderInterval = null;
-    }
-}
-
-function hidePreloader() {
-    if (preloader) {
-        preloader.classList.add('hidden');
-        setTimeout(() => {
-            preloader.style.display = 'none';
-            stopPreloaderAnimation();
-        }, 500); // Match CSS transition duration
-    }
-}
-
-function checkPreloaderHide() {
-    if (!preloader || preloader.style.display === 'none') return;
-    
-    const currentTime = Date.now();
-    const elapsedTime = currentTime - preloaderStartTime;
-    
-    // Check if both conditions are met: minimum time elapsed AND page loaded
-    if (pageLoaded && elapsedTime >= minDisplayTime) {
-        hidePreloader();
-    }
 }
 
 // Mobile Navigation Toggle
@@ -722,24 +642,101 @@ if (document.readyState === 'loading') {
 }
 
 
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Add CSS for loading animation
-const style = document.createElement('style');
-style.textContent = `
-    body {
-        opacity: 0;
-        transition: opacity 0.5s ease;
+// Preloader functionality
+class Preloader {
+    constructor() {
+        this.preloader = document.getElementById('preloader');
+        this.preloaderImage = document.getElementById('preloader-image');
+        this.currentImageIndex = 0;
+        this.animationInterval = null;
+        this.minDisplayTime = 2000; // 2 seconds minimum
+        this.imageDisplayTime = 150; // 150ms per image
+        this.startTime = Date.now();
+        this.isPageLoaded = false;
+        this.isMinTimeReached = false;
+        
+        if (this.preloader && this.preloaderImage) {
+            this.init();
+        }
     }
     
-    body.loaded {
-        opacity: 1;
+    init() {
+        // Start the animation
+        this.startAnimation();
+        
+        // Listen for page load
+        window.addEventListener('load', () => {
+            this.isPageLoaded = true;
+            this.checkHidePreloader();
+        });
+        
+        // Listen for theme changes
+        this.observeThemeChanges();
+        
+        // Ensure minimum display time
+        setTimeout(() => {
+            this.isMinTimeReached = true;
+            this.checkHidePreloader();
+        }, this.minDisplayTime);
     }
-`;
-document.head.appendChild(style);
+    
+    startAnimation() {
+        this.updateImage();
+        this.animationInterval = setInterval(() => {
+            this.currentImageIndex = (this.currentImageIndex + 1) % 7;
+            this.updateImage();
+        }, this.imageDisplayTime);
+    }
+    
+    updateImage() {
+        const currentTheme = document.body.getAttribute('data-theme') || 'light';
+        const imageNumber = this.currentImageIndex + 1;
+        const imagePath = `images/preloader/preloader-${currentTheme}-${imageNumber}.svg`;
+        this.preloaderImage.src = imagePath;
+    }
+    
+    observeThemeChanges() {
+        // Create a MutationObserver to watch for theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    this.updateImage();
+                }
+            });
+        });
+        
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+    }
+    
+    checkHidePreloader() {
+        if (this.isPageLoaded && this.isMinTimeReached) {
+            this.hidePreloader();
+        }
+    }
+    
+    hidePreloader() {
+        if (this.animationInterval) {
+            clearInterval(this.animationInterval);
+        }
+        
+        this.preloader.classList.add('hidden');
+        
+        // Remove from DOM after transition
+        setTimeout(() => {
+            if (this.preloader && this.preloader.parentNode) {
+                this.preloader.parentNode.removeChild(this.preloader);
+            }
+        }, 500); // Match the CSS transition duration
+    }
+}
+
+// Initialize preloader when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    new Preloader();
+});
 
 // Mobile Burger Menu
 document.addEventListener('DOMContentLoaded', function() {
@@ -769,37 +766,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
-// Preloader Initialization
-document.addEventListener('DOMContentLoaded', function() {
-    // Start preloader animation immediately
-    startPreloaderAnimation();
-    
-    // Periodic check to hide preloader when both conditions are met
-    const checkInterval = setInterval(() => {
-        if (preloader && preloader.style.display !== 'none') {
-            checkPreloaderHide();
-            // Clear interval once preloader is hidden
-            if (preloader.style.display === 'none') {
-                clearInterval(checkInterval);
-            }
-        } else {
-            clearInterval(checkInterval);
-        }
-    }, 100); // Check every 100ms
-    
-    // Fallback timer to ensure preloader hides even if page load doesn't fire
-    setTimeout(() => {
-        if (preloader && preloader.style.display !== 'none') {
-            pageLoaded = true;
-            checkPreloaderHide();
-        }
-    }, minDisplayTime + 1000); // 1 second after minimum time as fallback
-});
-
-// Hide preloader when page is fully loaded
-window.addEventListener('load', function() {
-    pageLoaded = true;
-    checkPreloaderHide();
 });
