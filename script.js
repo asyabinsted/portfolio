@@ -8,6 +8,9 @@ const preloader = document.getElementById('preloader');
 const preloaderImage = document.getElementById('preloader-image');
 let preloaderInterval;
 let currentImageIndex = 0;
+let preloaderStartTime;
+let pageLoaded = false;
+let minDisplayTime = 2000; // 2 seconds minimum
 
 // Theme cycle: light -> dark -> color -> light
 const themes = ['light', 'dark', 'color'];
@@ -98,6 +101,10 @@ function updatePreloaderImage() {
 function startPreloaderAnimation() {
     if (!preloader || !preloaderImage) return;
     
+    // Record start time
+    preloaderStartTime = Date.now();
+    pageLoaded = false;
+    
     // Clear any existing interval
     if (preloaderInterval) {
         clearInterval(preloaderInterval);
@@ -127,6 +134,18 @@ function hidePreloader() {
             preloader.style.display = 'none';
             stopPreloaderAnimation();
         }, 500); // Match CSS transition duration
+    }
+}
+
+function checkPreloaderHide() {
+    if (!preloader || preloader.style.display === 'none') return;
+    
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - preloaderStartTime;
+    
+    // Check if both conditions are met: minimum time elapsed AND page loaded
+    if (pageLoaded && elapsedTime >= minDisplayTime) {
+        hidePreloader();
     }
 }
 
@@ -756,9 +775,31 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Start preloader animation immediately
     startPreloaderAnimation();
+    
+    // Periodic check to hide preloader when both conditions are met
+    const checkInterval = setInterval(() => {
+        if (preloader && preloader.style.display !== 'none') {
+            checkPreloaderHide();
+            // Clear interval once preloader is hidden
+            if (preloader.style.display === 'none') {
+                clearInterval(checkInterval);
+            }
+        } else {
+            clearInterval(checkInterval);
+        }
+    }, 100); // Check every 100ms
+    
+    // Fallback timer to ensure preloader hides even if page load doesn't fire
+    setTimeout(() => {
+        if (preloader && preloader.style.display !== 'none') {
+            pageLoaded = true;
+            checkPreloaderHide();
+        }
+    }, minDisplayTime + 1000); // 1 second after minimum time as fallback
 });
 
 // Hide preloader when page is fully loaded
 window.addEventListener('load', function() {
-    hidePreloader();
+    pageLoaded = true;
+    checkPreloaderHide();
 });
