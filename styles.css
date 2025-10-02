@@ -2301,8 +2301,8 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        margin: 0 20px;
-        max-width: calc(100vw - 40px);
+        margin: 0 15px;
+        max-width: calc(100vw - 30px);
     }
     
     .main-content {
@@ -2411,14 +2411,25 @@ body {
 
 .preloader-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .preloader-image {
-    width: 250px;
+    width: 120px;
     height: auto;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+.preloader-text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: hsl(var(--color-foreground));
+    text-align: center;
+    line-height: 1.4;
+    max-width: 300px;
 }
