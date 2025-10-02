@@ -125,11 +125,6 @@ body {
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Explicitly hide native cursor everywhere, including interactive elements */
-html, body, a, button, input, textarea, select, label, [role="button"], .nav-link, .back-button, .theme-toggle-btn, .burger-btn, .mobile-nav-link, .password-toggle, .password-submit, .back-to-top-btn {
-    cursor: none !important;
-}
-
 /* Typography Utility Classes */
 .text-h1 {
     font-family: var(--font-primary);
