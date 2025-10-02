@@ -380,7 +380,7 @@ body {
 
 /* Index Page */
 .index-page {
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 /* 12-Column Grid System */
@@ -565,8 +565,8 @@ body {
 
 /* Portfolio Cases */
 .portfolio-cases {
-    margin-top: 140px;
-    padding-top: 80px;
+    margin-top: 100px;
+    padding-top: 40px;
 }
 
 .portfolio-case {
@@ -2301,8 +2301,8 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        margin: 0 15px;
-        max-width: calc(100vw - 30px);
+        margin: 0 20px;
+        max-width: calc(100vw - 40px);
     }
     
     .main-content {
