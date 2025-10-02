@@ -3,6 +3,12 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
 
+// Preloader
+const preloader = document.getElementById('preloader');
+const preloaderImage = document.getElementById('preloader-image');
+let preloaderInterval;
+let currentImageIndex = 0;
+
 // Theme cycle: light -> dark -> color -> light
 const themes = ['light', 'dark', 'color'];
 let currentThemeIndex = 0;
@@ -57,6 +63,10 @@ if (themeToggle) {
         if (themeIcon) {
             updateThemeIcon(newTheme);
         }
+        // Update preloader if it's visible
+        if (preloader && preloader.style.display !== 'none') {
+            updatePreloaderImage();
+        }
     });
 }
 
@@ -67,6 +77,57 @@ function updateThemeIcon(theme) {
         'color': 'icons/Cloud-blue.svg'
     };
     themeIcon.src = iconMap[theme];
+}
+
+// Preloader Functions
+function getCurrentTheme() {
+    return body.getAttribute('data-theme') || 'light';
+}
+
+function getPreloaderImagePath(theme, index) {
+    const themePrefix = theme === 'dark' ? 'preloader-dark' : 'preloader-light';
+    return `images/preloader/${themePrefix}-${index}.svg`;
+}
+
+function updatePreloaderImage() {
+    const currentTheme = getCurrentTheme();
+    const imagePath = getPreloaderImagePath(currentTheme, currentImageIndex + 1);
+    preloaderImage.src = imagePath;
+}
+
+function startPreloaderAnimation() {
+    if (!preloader || !preloaderImage) return;
+    
+    // Clear any existing interval
+    if (preloaderInterval) {
+        clearInterval(preloaderInterval);
+    }
+    
+    // Start the animation
+    currentImageIndex = 0;
+    updatePreloaderImage();
+    
+    preloaderInterval = setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % 7;
+        updatePreloaderImage();
+    }, 150);
+}
+
+function stopPreloaderAnimation() {
+    if (preloaderInterval) {
+        clearInterval(preloaderInterval);
+        preloaderInterval = null;
+    }
+}
+
+function hidePreloader() {
+    if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            stopPreloaderAnimation();
+        }, 500); // Match CSS transition duration
+    }
 }
 
 // Mobile Navigation Toggle
@@ -689,4 +750,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+// Preloader Initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Start preloader animation immediately
+    startPreloaderAnimation();
+});
+
+// Hide preloader when page is fully loaded
+window.addEventListener('load', function() {
+    hidePreloader();
 });
