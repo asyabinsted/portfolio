@@ -738,8 +738,8 @@ html, body, a, button, input, textarea, select, label, [role="button"], .nav-lin
     height: 24px;
 }
 
-/* Hide default cursor globally with maximum coverage */
-html, body, *, *::before, *::after {
+/* Hide default cursor globally */
+* {
     cursor: none !important;
 }
 
