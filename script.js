@@ -642,101 +642,24 @@ if (document.readyState === 'loading') {
 }
 
 
-// Preloader functionality
-class Preloader {
-    constructor() {
-        this.preloader = document.getElementById('preloader');
-        this.preloaderImage = document.getElementById('preloader-image');
-        this.currentImageIndex = 0;
-        this.animationInterval = null;
-        this.minDisplayTime = 2000; // 2 seconds minimum
-        this.imageDisplayTime = 150; // 150ms per image
-        this.startTime = Date.now();
-        this.isPageLoaded = false;
-        this.isMinTimeReached = false;
-        
-        if (this.preloader && this.preloaderImage) {
-            this.init();
-        }
-    }
-    
-    init() {
-        // Start the animation
-        this.startAnimation();
-        
-        // Listen for page load
-        window.addEventListener('load', () => {
-            this.isPageLoaded = true;
-            this.checkHidePreloader();
-        });
-        
-        // Listen for theme changes
-        this.observeThemeChanges();
-        
-        // Ensure minimum display time
-        setTimeout(() => {
-            this.isMinTimeReached = true;
-            this.checkHidePreloader();
-        }, this.minDisplayTime);
-    }
-    
-    startAnimation() {
-        this.updateImage();
-        this.animationInterval = setInterval(() => {
-            this.currentImageIndex = (this.currentImageIndex + 1) % 7;
-            this.updateImage();
-        }, this.imageDisplayTime);
-    }
-    
-    updateImage() {
-        const currentTheme = document.body.getAttribute('data-theme') || 'light';
-        const imageNumber = this.currentImageIndex + 1;
-        const imagePath = `images/preloader/preloader-${currentTheme}-${imageNumber}.svg`;
-        this.preloaderImage.src = imagePath;
-    }
-    
-    observeThemeChanges() {
-        // Create a MutationObserver to watch for theme changes
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-                    this.updateImage();
-                }
-            });
-        });
-        
-        observer.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['data-theme']
-        });
-    }
-    
-    checkHidePreloader() {
-        if (this.isPageLoaded && this.isMinTimeReached) {
-            this.hidePreloader();
-        }
-    }
-    
-    hidePreloader() {
-        if (this.animationInterval) {
-            clearInterval(this.animationInterval);
-        }
-        
-        this.preloader.classList.add('hidden');
-        
-        // Remove from DOM after transition
-        setTimeout(() => {
-            if (this.preloader && this.preloader.parentNode) {
-                this.preloader.parentNode.removeChild(this.preloader);
-            }
-        }, 500); // Match the CSS transition duration
-    }
-}
-
-// Initialize preloader when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    new Preloader();
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
 });
+
+// Add CSS for loading animation
+const style = document.createElement('style');
+style.textContent = `
+    body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    body.loaded {
+        opacity: 1;
+    }
+`;
+document.head.appendChild(style);
 
 // Mobile Burger Menu
 document.addEventListener('DOMContentLoaded', function() {
