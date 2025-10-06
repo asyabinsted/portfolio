@@ -1,0 +1,16 @@
+User-agent: *
+Disallow: /project-logic-solutions.html
+Disallow: /images/logic-solutions/
+Disallow: /*.htaccess
+Disallow: /security-audit/
+
+# Allow indexing of public content
+Allow: /
+Allow: /index.html
+Allow: /project-globus.html
+Allow: /project-sharing-map.html
+Allow: /images/globus-ai/
+Allow: /images/sharing-map/
+Allow: /favicon.ico
+Allow: /styles.css
+Allow: /script.js
