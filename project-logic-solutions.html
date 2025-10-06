@@ -573,8 +573,134 @@
 
     <script src="script.js"></script>
     <script>
-        // Handle hash navigation to specific image
+        // Initialize theme, cursor, time, and back-to-top functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            const initialTheme = savedTheme || systemTheme;
+            
+            // Apply theme
+            document.body.setAttribute('data-theme', initialTheme);
+            
+            // Update theme icon
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeIcon) {
+                const iconMap = {
+                    'light': 'icons/SunMedium.svg',
+                    'dark': 'icons/Moon-white.svg',
+                    'color': 'icons/Cloud-blue.svg'
+                };
+                themeIcon.src = iconMap[initialTheme] || iconMap['light'];
+            }
+            
+            // Initialize theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themes = ['light', 'dark', 'color'];
+            let currentThemeIndex = themes.indexOf(initialTheme);
+            if (currentThemeIndex === -1) currentThemeIndex = 0;
+            
+            if (themeToggle && themeIcon) {
+                themeToggle.addEventListener('click', () => {
+                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                    const newTheme = themes[currentThemeIndex];
+                    document.body.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    const iconMap = {
+                        'light': 'icons/SunMedium.svg',
+                        'dark': 'icons/Moon-white.svg',
+                        'color': 'icons/Cloud-blue.svg'
+                    };
+                    themeIcon.src = iconMap[newTheme];
+                });
+            }
+            
+            // Initialize time updates
+            function updateTime() {
+                const now = new Date();
+                
+                // Tel Aviv (IST)
+                const tlvTimeString = now.toLocaleTimeString('en-GB', { 
+                    timeZone: 'Asia/Jerusalem',
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                const tlvElement = document.getElementById('time-tlv');
+                if (tlvElement) {
+                    tlvElement.textContent = `IST ${tlvTimeString}`;
+                }
+                
+                // Berlin (CET)
+                const berTimeString = now.toLocaleTimeString('en-GB', { 
+                    timeZone: 'Europe/Berlin',
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                const berElement = document.getElementById('time-ber');
+                if (berElement) {
+                    berElement.textContent = `CET ${berTimeString}`;
+                }
+                
+                // Chiang Mai (ICT)
+                const cnxTimeString = now.toLocaleTimeString('en-GB', { 
+                    timeZone: 'Asia/Bangkok',
+                    hour12: false,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                const cnxElement = document.getElementById('time-cnx');
+                if (cnxElement) {
+                    cnxElement.textContent = `ICT ${cnxTimeString}`;
+                }
+            }
+            
+            // Update time immediately and then every second
+            updateTime();
+            setInterval(updateTime, 1000);
+            
+            // Initialize custom cursor
+            const customCursor = document.getElementById('custom-cursor');
+            if (customCursor) {
+                document.addEventListener('mousemove', function(e) {
+                    customCursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+                });
+                
+                document.addEventListener('mouseleave', function() {
+                    customCursor.classList.remove('show', 'big');
+                });
+            }
+            
+            // Initialize back-to-top button
+            const backToTopBtn = document.getElementById('back-to-top');
+            const backToTopContainer = document.getElementById('back-to-top-container');
+            
+            if (backToTopBtn && backToTopContainer) {
+                function toggleBackToTopButton() {
+                    if (window.scrollY > 300) {
+                        backToTopContainer.style.display = 'block';
+                    } else {
+                        backToTopContainer.style.display = 'none';
+                    }
+                }
+                
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                toggleBackToTopButton();
+                window.addEventListener('scroll', toggleBackToTopButton);
+            }
+            
+            // Handle hash navigation to specific image
             if (window.location.hash === '#journey-image') {
                 setTimeout(function() {
                     const journeyImage = document.getElementById('journey-image');
@@ -584,7 +710,7 @@
                             block: 'center' 
                         });
                     }
-                }, 500); // Small delay to ensure page is fully loaded
+                }, 500);
             }
         });
     </script>
