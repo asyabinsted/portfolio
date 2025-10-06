@@ -665,13 +665,13 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', function() {
     const burgerBtn = document.getElementById('burger-btn');
     const mobileNav = document.getElementById('mobile-nav');
-
+    
     if (burgerBtn && mobileNav) {
         burgerBtn.addEventListener('click', function() {
             burgerBtn.classList.toggle('active');
             mobileNav.classList.toggle('active');
         });
-
+        
         // Close mobile nav when clicking on a link
         const mobileNavLinks = mobileNav.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
@@ -680,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileNav.classList.remove('active');
             });
         });
-
+        
         // Close mobile nav when clicking outside
         document.addEventListener('click', function(event) {
             if (!burgerBtn.contains(event.target) && !mobileNav.contains(event.target)) {
@@ -689,161 +689,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
-// Preloader System (localhost only)
-class PreloaderManager {
-    constructor() {
-        // Only show preloader on localhost for testing
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            return;
-        }
-
-        this.preloader = document.getElementById('preloader');
-        this.preloaderIcon = document.getElementById('preloader-icon');
-        this.currentTheme = body.getAttribute('data-theme');
-        this.animationInterval = null;
-        this.currentImageIndex = 0;
-        this.minDisplayTime = 2000; // 2 seconds minimum
-        this.startTime = Date.now();
-        this.isPageLoaded = false;
-        this.imagesLoaded = false;
-
-        if (this.preloader && this.preloaderIcon) {
-            this.init();
-        }
-    }
-
-    init() {
-        this.loadImages();
-        this.startAnimation();
-        this.setupThemeListener();
-        this.setupPageLoadListener();
-    }
-
-    loadImages() {
-        const themeImages = this.getThemeImages();
-        const fragment = document.createDocumentFragment();
-
-        themeImages.forEach((src, index) => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `Preloader frame ${index + 1}`;
-            img.style.position = 'absolute';
-            img.style.top = '0';
-            img.style.left = '0';
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.1s ease';
-            
-            if (index === 0) {
-                img.classList.add('active');
-            }
-
-            fragment.appendChild(img);
-        });
-
-        this.preloaderIcon.appendChild(fragment);
-        this.imagesLoaded = true;
-    }
-
-    getThemeImages() {
-        const theme = this.currentTheme;
-        const images = [];
-        
-        for (let i = 1; i <= 7; i++) {
-            images.push(`images/preloader/preloader-${theme}-${i}.svg`);
-        }
-        
-        return images;
-    }
-
-    startAnimation() {
-        if (!this.imagesLoaded) {
-            setTimeout(() => this.startAnimation(), 100);
-            return;
-        }
-
-        const images = this.preloaderIcon.querySelectorAll('img');
-        
-        this.animationInterval = setInterval(() => {
-            // Hide current image
-            images[this.currentImageIndex].classList.remove('active');
-            
-            // Move to next image
-            this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
-            
-            // Show next image
-            images[this.currentImageIndex].classList.add('active');
-        }, 300); // 300ms per frame
-    }
-
-    setupThemeListener() {
-        // Listen for theme changes and update images
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-                    const newTheme = body.getAttribute('data-theme');
-                    if (newTheme !== this.currentTheme) {
-                        this.currentTheme = newTheme;
-                        this.updateImages();
-                    }
-                }
-            });
-        });
-
-        observer.observe(body, { attributes: true, attributeFilter: ['data-theme'] });
-    }
-
-    updateImages() {
-        const images = this.preloaderIcon.querySelectorAll('img');
-        const newThemeImages = this.getThemeImages();
-        
-        images.forEach((img, index) => {
-            img.src = newThemeImages[index];
-        });
-    }
-
-    setupPageLoadListener() {
-        // Check if page is already loaded
-        if (document.readyState === 'complete') {
-            this.isPageLoaded = true;
-            this.checkHidePreloader();
-        } else {
-            window.addEventListener('load', () => {
-                this.isPageLoaded = true;
-                this.checkHidePreloader();
-            });
-        }
-    }
-
-    checkHidePreloader() {
-        const elapsedTime = Date.now() - this.startTime;
-        const remainingTime = Math.max(0, this.minDisplayTime - elapsedTime);
-
-        setTimeout(() => {
-            this.hidePreloader();
-        }, remainingTime);
-    }
-
-    hidePreloader() {
-        if (this.animationInterval) {
-            clearInterval(this.animationInterval);
-        }
-
-        this.preloader.classList.add('hidden');
-        
-        // Remove preloader from DOM after transition
-        setTimeout(() => {
-            if (this.preloader && this.preloader.parentNode) {
-                this.preloader.parentNode.removeChild(this.preloader);
-            }
-        }, 500);
-    }
-}
-
-// Initialize preloader when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    new PreloaderManager();
 });
