@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asya Binsted - Logic Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileImage" content="favicon.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <!-- Security Meta Tags -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://asyabinsted.github.io/portfolio/project-logic-solutions-protected.html">
+    <meta property="og:title" content="Asya Binsted - Logic Solutions (Protected)">
+    <meta property="og:description" content="Protected content - authentication required">
+    <meta property="og:image" content="https://asyabinsted.github.io/portfolio/images/thumbnail.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://asyabinsted.github.io/portfolio/project-logic-solutions-protected.html">
+    <meta property="twitter:title" content="Asya Binsted - Logic Solutions (Protected)">
+    <meta property="twitter:description" content="Protected content - authentication required">
+    <meta property="twitter:image" content="https://asyabinsted.github.io/portfolio/images/thumbnail.png">
+    
+    <style>
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .auth-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .auth-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .auth-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .auth-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .auth-error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .protected-content {
+            display: none;
+        }
+        
+        .protected-content.authenticated {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Overlay -->
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-content">
+            <h1 class="auth-title">Authentication Required</h1>
+            <p>This content is password protected. Please enter the password to continue.</p>
+            <input type="password" id="password-input" class="auth-input" placeholder="Enter password">
+            <button id="auth-button" class="auth-button">Authenticate</button>
+            <div id="auth-error" class="auth-error">Invalid password. Please try again.</div>
+        </div>
+    </div>
+
+    <!-- Protected Content -->
+    <div id="protected-content" class="protected-content">
+        <!-- Fixed Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-grid">
+                    <!-- Back Button (Columns 1-2) -->
+                    <div class="header-back">
+                        <a href="index.html" class="back-button" onclick="navigateToWork(event)">
+                            <img src="icons/ArrowLeft.svg" alt="Back to Work" class="back-icon">
+                        </a>
+                    </div>
+                    
+                    <!-- Project Title (Columns 3-6) -->
+                    <div class="header-title-section">
+                        <h1 class="project-title text-h1 color-foreground">Logic Solutions:<br>Transport Management System</h1>
+                    </div>
+                    
+                    <!-- Mobile Burger Menu -->
+                    <div class="mobile-burger">
+                        <button class="burger-btn" id="burger-btn">
+                            <span class="burger-line"></span>
+                            <span class="burger-line"></span>
+                            <span class="burger-line"></span>
+                        </button>
+                    </div>
+                    
+                    <!-- Empty columns 7-12 -->
+                    <div class="header-empty-2"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Menu -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-content">
+                <a href="index.html" class="mobile-nav-link text-nav color-foreground" data-page="index">Index</a>
+                <a href="index.html#work" class="mobile-nav-link text-nav color-foreground" data-page="work">Work</a>
+                <a href="index.html#about" class="mobile-nav-link text-nav color-foreground" data-page="about">About</a>
+                <a href="cv.pdf" class="mobile-nav-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">CV (pdf↓)</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Project Overview Section -->
+                <section class="project-overview">
+                    <div class="grid-12">
+                        <!-- Top Row: Category, Services, Disclaimer -->
+                        <div class="project-details-row">
+                            <!-- Category (Columns 1-4) -->
+                            <div class="project-category">
+                                <span class="text-cursive color-foreground">Category:</span>
+                                <span class="text-cursive color-foreground">Logistics, Enterprise Software, B2B Platforms</span>
+                            </div>
+                            
+                            <!-- Services (Columns 5-8) -->
+                            <div class="project-services">
+                                <span class="text-cursive color-foreground">Services:</span>
+                                <span class="text-cursive color-foreground">UX Research, UX/UI Design, Interaction Design, Prototyping, Design System, Usability Testing, Product Strategy</span>
+                            </div>
+                            
+                            <!-- Disclaimer (Columns 9-12) -->
+                            <div class="project-disclaimer">
+                                <p class="text-cursive color-foreground">All details are anonymized and used solely for portfolio display.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Main Introduction Text (Columns 1-4) -->
+                        <div class="project-intro">
+                            <h1 class="text-h1 color-foreground">I designed the end-to-end shipment management platform, covering shipment operations, tracking, and collaboration with all parties involved.</h1>
+                        </div>
+                        
+                        <!-- Project Summary (Columns 5-8) -->
+                        <div class="project-summary">
+                            <p class="text-page color-foreground">The new TMS centralizes logistics operations, gives a clear overview of shipments, reduces repeated data entry, streamlines collaboration between agents and customers, and shortens onboarding time for new users.</p>
+                            
+                            <p class="text-page color-foreground"><a href="https://de.linkedin.com/company/logic-solutions-gmbh" target="_blank" rel="noopener noreferrer" class="project-link">Logic Solutions</a> offers an <span class="text-highlight">end-to-end shipment management platform</span> to logistics companies that automates shipping processes, providing real-time analytics and workflow management to enhance the shipping experience.</p>
+                            
+                            <div class="project-role-details">
+                                <p class="text-nav color-foreground">My role: Product UX / UI Designer</p>
+                                <p class="text-nav color-foreground">Project duration: Mar'24-Sep'25</p>
+                                <p class="text-nav color-foreground">Team: 1 Product owner, 1 Project manager, 2 FE developers, 4 BE developers</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Hero Image (Columns 9-12) -->
+                        <div class="project-hero-image">
+                            <img src="images/logic-solutions/logic-solutions-cover.jpg" alt="Logic Solutions Transport Management System Dashboard" class="hero-image">
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Additional project content would go here -->
+                <section class="challenge-objective">
+                    <div class="grid-12">
+                        <div class="challenge-heading">
+                            <h1 class="text-h1 color-foreground">Challenge & Objective</h1>
+                        </div>
+                        <div class="challenge-content">
+                            <p class="text-page color-foreground">The platform in use at the time had started as an accounting tool and gradually grew to support multiple departments. Over time, it became powerful and feature-rich, but also complex and hard to use.</p>
+                            
+                            <p class="text-page color-foreground">While it worked reliably and offered many functions, it had major <span class="text-highlight">limitations</span>. It was built in the early 2000s on technology that made changes difficult and restricted design improvements. Navigation was confusing, workflows were manual, tasks had to be repeated, and information was scattered.</p>
+                            
+                            <p class="text-page color-foreground"><span class="text-highlight">My task</span> was to design a platform for all agents in the logistics process, with the goal of easing onboarding on a complex system. The aim was to help new users get started quickly, understand workflows easily, reduce repeated work, and make information simple to find and manage.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Fixed Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Columns 1-4: TLV, IL + time -->
+                    <div class="footer-timezone">
+                        <span class="text-nav color-foreground">TLV, IL <span id="time-tlv">Loading...</span></span>
+                    </div>
+                    
+                    <!-- Columns 5-8: BER, DE + time -->
+                    <div class="footer-timezone">
+                        <span class="text-nav color-foreground">BER, DE <span id="time-ber">Loading...</span></span>
+                    </div>
+                    
+                    <!-- Columns 9-12: CNX, TH + time + theme switcher -->
+                    <div class="footer-right">
+                        <div class="footer-timezone">
+                            <span class="text-nav color-foreground">CNX, TH <span id="time-cnx">Loading...</span></span>
+                        </div>
+                        <div class="footer-theme">
+                            <button class="theme-toggle-btn" id="theme-toggle">
+                                <img src="icons/SunMedium.svg" alt="Toggle theme" class="theme-icon" id="theme-icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Custom Cursor Button -->
+        <div id="custom-cursor" class="custom-cursor">
+            <span class="cursor-text">View project</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Client-side authentication for GitHub Pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const authOverlay = document.getElementById('auth-overlay');
+            const protectedContent = document.getElementById('protected-content');
+            const passwordInput = document.getElementById('password-input');
+            const authButton = document.getElementById('auth-button');
+            const authError = document.getElementById('auth-error');
+            
+            // Check if already authenticated in this session
+            const isAuthenticated = sessionStorage.getItem('portfolio_authenticated');
+            if (isAuthenticated === 'true') {
+                showProtectedContent();
+                return;
+            }
+            
+            // Authentication function
+            function authenticate() {
+                const password = passwordInput.value;
+                // Simple password check (in production, this should be server-side)
+                if (password === 'hiremeORregretIT') {
+                    sessionStorage.setItem('portfolio_authenticated', 'true');
+                    showProtectedContent();
+                } else {
+                    showError();
+                }
+            }
+            
+            function showProtectedContent() {
+                authOverlay.style.display = 'none';
+                protectedContent.classList.add('authenticated');
+            }
+            
+            function showError() {
+                authError.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+            
+            // Event listeners
+            authButton.addEventListener('click', authenticate);
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    authenticate();
+                }
+            });
+            
+            // Focus password input
+            passwordInput.focus();
+        });
+    </script>
+</body>
+</html>
