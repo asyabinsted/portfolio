@@ -2442,11 +2442,13 @@ body {
     white-space: nowrap;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .preloader-main-text {
-    display: inline;
+    display: inline-block;
     flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .preloader-dots {
@@ -2454,6 +2456,7 @@ body {
     width: 30px;
     text-align: left;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 @keyframes dotsPulse {
