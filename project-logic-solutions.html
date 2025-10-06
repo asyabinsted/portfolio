@@ -678,26 +678,14 @@
             
             // Initialize back-to-top button
             const backToTopBtn = document.getElementById('back-to-top');
-            const backToTopContainer = document.getElementById('back-to-top-container');
             
-            if (backToTopBtn && backToTopContainer) {
-                function toggleBackToTopButton() {
-                    if (window.scrollY > 300) {
-                        backToTopContainer.style.display = 'block';
-                    } else {
-                        backToTopContainer.style.display = 'none';
-                    }
-                }
-                
+            if (backToTopBtn) {
                 backToTopBtn.addEventListener('click', function() {
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
                     });
                 });
-                
-                toggleBackToTopButton();
-                window.addEventListener('scroll', toggleBackToTopButton);
             }
             
             // Handle hash navigation to specific image
