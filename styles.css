@@ -968,6 +968,7 @@ body {
     height: 48px;
     background-color: hsl(var(--color-primary));
     color: hsl(var(--color-primary-foreground));
+    margin: 0 auto; /* ensure centering even if parent layout differs */
     border: none;
     border-radius: 999px;
     cursor: pointer;
