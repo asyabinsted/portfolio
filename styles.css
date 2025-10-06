@@ -1012,6 +1012,17 @@ body {
     justify-content: flex-start;
 }
 
+/* Project Page Back to Top Button */
+.project-page .back-to-top-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 0;
+}
+}
+
 .back-button {
     display: flex;
     align-items: center;
