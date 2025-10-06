@@ -691,60 +691,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Preloader System (localhost only)
+// Preloader System
 class PreloaderManager {
     constructor() {
-        // Only show preloader on localhost for testing
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            return;
-        }
-
         this.preloader = document.getElementById('preloader');
-        this.preloaderIcon = document.getElementById('preloader-icon');
+        this.preloaderDots = document.getElementById('preloader-dots');
+        this.preloaderImage = document.getElementById('preloader-image');
         this.currentTheme = body.getAttribute('data-theme');
-        this.animationInterval = null;
-        this.currentImageIndex = 0;
         this.minDisplayTime = 2000; // 2 seconds minimum
         this.startTime = Date.now();
         this.isPageLoaded = false;
+        this.animationInterval = null;
+        this.imageInterval = null;
+        this.currentImageIndex = 0;
         this.imagesLoaded = false;
 
-        if (this.preloader && this.preloaderIcon) {
+        if (this.preloader && this.preloaderDots && this.preloaderImage) {
             this.init();
         }
     }
 
     init() {
         this.loadImages();
-        this.startAnimation();
+        this.startDotsAnimation();
+        this.startImageAnimation();
         this.setupThemeListener();
         this.setupPageLoadListener();
     }
 
     loadImages() {
         const themeImages = this.getThemeImages();
-        const fragment = document.createDocumentFragment();
-
-        themeImages.forEach((src, index) => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `Preloader frame ${index + 1}`;
-            img.style.position = 'absolute';
-            img.style.top = '0';
-            img.style.left = '0';
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.1s ease';
-            
-            if (index === 0) {
-                img.classList.add('active');
-            }
-
-            fragment.appendChild(img);
-        });
-
-        this.preloaderIcon.appendChild(fragment);
+        this.preloaderImage.src = themeImages[0];
+        this.preloaderImage.classList.add('active');
         this.imagesLoaded = true;
     }
 
@@ -759,24 +737,37 @@ class PreloaderManager {
         return images;
     }
 
-    startAnimation() {
+    startImageAnimation() {
         if (!this.imagesLoaded) {
-            setTimeout(() => this.startAnimation(), 100);
+            setTimeout(() => this.startImageAnimation(), 100);
             return;
         }
 
-        const images = this.preloaderIcon.querySelectorAll('img');
+        const themeImages = this.getThemeImages();
         
-        this.animationInterval = setInterval(() => {
+        this.imageInterval = setInterval(() => {
             // Hide current image
-            images[this.currentImageIndex].classList.remove('active');
+            this.preloaderImage.classList.remove('active');
             
             // Move to next image
-            this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
+            this.currentImageIndex = (this.currentImageIndex + 1) % themeImages.length;
             
-            // Show next image
-            images[this.currentImageIndex].classList.add('active');
-        }, 300); // 300ms per frame
+            // Update image source and show
+            setTimeout(() => {
+                this.preloaderImage.src = themeImages[this.currentImageIndex];
+                this.preloaderImage.classList.add('active');
+            }, 150); // Wait for fade out
+        }, 500); // 500ms between each image change to match text dots
+    }
+
+    startDotsAnimation() {
+        let dotCount = 0;
+        const maxDots = 3;
+        
+        this.animationInterval = setInterval(() => {
+            dotCount = (dotCount + 1) % (maxDots + 1);
+            this.preloaderDots.textContent = '.'.repeat(dotCount);
+        }, 500); // 500ms between each dot appearance
     }
 
     setupThemeListener() {
@@ -797,12 +788,9 @@ class PreloaderManager {
     }
 
     updateImages() {
-        const images = this.preloaderIcon.querySelectorAll('img');
-        const newThemeImages = this.getThemeImages();
-        
-        images.forEach((img, index) => {
-            img.src = newThemeImages[index];
-        });
+        const themeImages = this.getThemeImages();
+        this.currentImageIndex = 0;
+        this.preloaderImage.src = themeImages[0];
     }
 
     setupPageLoadListener() {
@@ -830,6 +818,10 @@ class PreloaderManager {
     hidePreloader() {
         if (this.animationInterval) {
             clearInterval(this.animationInterval);
+        }
+        
+        if (this.imageInterval) {
+            clearInterval(this.imageInterval);
         }
 
         this.preloader.classList.add('hidden');

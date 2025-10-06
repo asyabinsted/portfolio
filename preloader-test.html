@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preloader Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-icon" id="preloader-icon">
+                <img src="" alt="Loading..." class="preloader-image" id="preloader-image">
+            </div>
+            <div class="preloader-text">
+                <span class="preloader-main-text">Shh.. Quiet please, machines are learning</span>
+                <span class="preloader-dots" id="preloader-dots">.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Content (hidden initially) -->
+    <div id="test-content" style="padding: 50px; text-align: center; font-family: 'Inter', sans-serif; display: none;">
+        <h1>Preloader Test Page</h1>
+        <p>This page tests the preloader implementation.</p>
+        <p>The preloader should show for at least 2 seconds with animated dots.</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Show test content after preloader is hidden
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const testContent = document.getElementById('test-content');
+            
+            if (preloader && testContent) {
+                // Listen for when preloader is hidden
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            if (preloader.classList.contains('hidden')) {
+                                testContent.style.display = 'block';
+                            }
+                        }
+                    });
+                });
+                
+                observer.observe(preloader, { attributes: true, attributeFilter: ['class'] });
+            }
+        });
+    </script>
+</body>
+</html>
