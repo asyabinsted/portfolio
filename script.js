@@ -706,22 +706,8 @@ class PreloaderManager {
         this.currentImageIndex = 0;
         this.imagesLoaded = false;
 
-        // Debug logging
-        console.log('PreloaderManager initialized', {
-            preloader: !!this.preloader,
-            preloaderDots: !!this.preloaderDots,
-            preloaderImage: !!this.preloaderImage,
-            theme: this.currentTheme
-        });
-
         if (this.preloader && this.preloaderDots && this.preloaderImage) {
             this.init();
-        } else {
-            console.error('Preloader elements not found:', {
-                preloader: !!this.preloader,
-                preloaderDots: !!this.preloaderDots,
-                preloaderImage: !!this.preloaderImage
-            });
         }
     }
 
@@ -735,11 +721,9 @@ class PreloaderManager {
 
     loadImages() {
         const themeImages = this.getThemeImages();
-        console.log('Loading preloader images:', themeImages);
         this.preloaderImage.src = themeImages[0];
         this.preloaderImage.classList.add('active');
         this.imagesLoaded = true;
-        console.log('First image loaded and set to active');
     }
 
     getThemeImages() {
@@ -760,7 +744,6 @@ class PreloaderManager {
         }
 
         const themeImages = this.getThemeImages();
-        console.log('Starting image animation with', themeImages.length, 'images');
         
         this.imageInterval = setInterval(() => {
             // Hide current image
@@ -773,7 +756,6 @@ class PreloaderManager {
             setTimeout(() => {
                 this.preloaderImage.src = themeImages[this.currentImageIndex];
                 this.preloaderImage.classList.add('active');
-                console.log('Switched to image', this.currentImageIndex + 1, ':', themeImages[this.currentImageIndex]);
             }, 150); // Wait for fade out
         }, 500); // 500ms between each image change to match text dots
     }
@@ -781,12 +763,10 @@ class PreloaderManager {
     startDotsAnimation() {
         let dotCount = 0;
         const maxDots = 3;
-        console.log('Starting dots animation');
         
         this.animationInterval = setInterval(() => {
             dotCount = (dotCount + 1) % (maxDots + 1);
             this.preloaderDots.textContent = '.'.repeat(dotCount);
-            console.log('Dots updated to:', '.'.repeat(dotCount));
         }, 500); // 500ms between each dot appearance
     }
 
@@ -824,6 +804,14 @@ class PreloaderManager {
                 this.checkHidePreloader();
             });
         }
+        
+        // Fallback timeout to ensure preloader doesn't get stuck
+        setTimeout(() => {
+            if (!this.isPageLoaded) {
+                this.isPageLoaded = true;
+                this.checkHidePreloader();
+            }
+        }, 5000); // 5 seconds maximum
     }
 
     checkHidePreloader() {
