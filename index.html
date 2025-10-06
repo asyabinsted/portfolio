@@ -14,6 +14,20 @@
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="msapplication-TileImage" content="favicon.png">
     <meta name="msapplication-TileColor" content="#000000">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://asyabinsted.github.io/portfolio/">
+    <meta property="og:title" content="Asya Binsted - Product UX/UI Designer">
+    <meta property="og:description" content="I design products, AI experiences, and tools that combine usability, technology, and strategy to simplify complex processes.">
+    <meta property="og:image" content="https://asyabinsted.github.io/portfolio/images/thumbnail.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://asyabinsted.github.io/portfolio/">
+    <meta property="twitter:title" content="Asya Binsted - Product UX/UI Designer">
+    <meta property="twitter:description" content="I design products, AI experiences, and tools that combine usability, technology, and strategy to simplify complex processes.">
+    <meta property="twitter:image" content="https://asyabinsted.github.io/portfolio/images/thumbnail.png">
 </head>
 <body>
     <!-- Fixed Header -->
@@ -154,7 +168,7 @@
                 <!-- Portfolio Cases -->
                 <div class="portfolio-cases" id="work">
                     <!-- Case 1: Logic Solutions -->
-                    <div class="portfolio-case" data-project-url="project-logic-solutions.html">
+                    <div class="portfolio-case" data-project-url="project-logic-solutions.html" onclick="showPasswordModal('logic-solutions'); return false;">
                         <!-- Project Title (same columns as header name/title) -->
                         <div class="case-title-section">
                             <h2 class="case-title text-h1 color-foreground">Logic Solutions:<br>Transport Management System</h2>
@@ -352,16 +366,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Preloader (localhost testing only - NOT deployed to live site) -->
-    <div id="preloader" class="preloader">
-        <div class="preloader-content">
-            <div class="preloader-icon" id="preloader-icon">
-                <!-- SVG images will be dynamically inserted here -->
-            </div>
-            <p class="preloader-text">Ever since I was a little girl I knew I wanted to be on the computer a lot!</p>
-        </div>
-    </div>
 
     <!-- Custom Cursor Button -->
     <div id="custom-cursor" class="custom-cursor">
