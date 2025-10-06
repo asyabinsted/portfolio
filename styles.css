@@ -2446,13 +2446,14 @@ body {
 
 .preloader-main-text {
     display: inline;
+    flex-shrink: 0;
 }
 
 .preloader-dots {
     display: inline-block;
     width: 30px;
     text-align: left;
-    animation: dotsPulse 1.5s infinite;
+    flex-shrink: 0;
 }
 
 @keyframes dotsPulse {
