@@ -115,6 +115,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -123,6 +124,7 @@ body {
     color: hsl(var(--color-foreground));
     background-color: hsl(var(--color-background));
     transition: color 0.3s ease, background-color 0.3s ease;
+    overflow-x: hidden;
 }
 
 /* Typography Utility Classes */
@@ -245,6 +247,7 @@ body {
     background: transparent;
     z-index: 1000;
     padding: 10px 0;
+    border: none;
 }
 
 .header-grid {
@@ -381,6 +384,34 @@ body {
 /* Index Page */
 .index-page {
     padding: 40px 0;
+}
+
+/* Page Title */
+.page-title {
+    padding: 20px 0;
+    text-align: left;
+    margin-bottom: 20px;
+    display: none; /* Hide on desktop by default */
+}
+
+/* Desktop Layout */
+.desktop-grid {
+    display: block;
+}
+
+.mobile-content {
+    display: none;
+}
+
+.page-title-name {
+    margin: 0;
+    line-height: 1;
+}
+
+.page-title-role {
+    margin: 0;
+    line-height: 1;
+    margin-top: 4px;
 }
 
 /* 12-Column Grid System */
@@ -1060,6 +1091,11 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+}
+
+/* Hide mobile project title on desktop */
+.mobile-project-title {
+    display: none;
 }
 
 .project-title {
@@ -1783,6 +1819,7 @@ body {
     background: transparent;
     padding: 10px 0;
     z-index: 1000;
+    border: none;
 }
 
 .footer-grid {
@@ -2109,54 +2146,465 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header-grid,
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+    /* Mobile Header - Fixed position at top with glass effect */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: hsl(var(--color-background) / 0.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 10px 0;
+        min-height: 47px;
+        border: none;
     }
     
+    /* Mobile Header - Show 4 nav items in one row */
+    .header-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        min-height: 24px;
+    }
+    
+    .header .container {
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    /* Hide name section and burger menu on mobile */
+    .header-name-section,
+    .mobile-burger {
+        display: none;
+    }
+    
+    /* Hide empty columns */
     .header-empty-1,
     .header-empty-2,
     .header-empty-3,
-    .header-empty-4,
-    .grid-empty-1 {
+    .header-empty-4 {
         display: none;
     }
     
-    /* Show burger menu on mobile */
-    .mobile-burger {
-        display: block;
-        grid-column: 7;
-    }
-    
-    /* Hide regular navigation on mobile */
+    /* Show all 4 nav items in a row */
     .header-nav-item {
-        display: none;
-    }
-    
-    /* Show mobile navigation */
-    .mobile-nav {
-        display: block;
-    }
-    
-    .header-name-section {
-        grid-column: 1;
-        text-align: center;
-    }
-    
-    .header-nav-item {
-        grid-column: 1;
-        margin: 4px 0;
-    }
-    
-    .header-theme {
-        grid-column: 1;
+        display: flex;
         justify-content: center;
+        align-items: center;
+        flex: 1;
+        margin: 0;
+    }
+    
+    /* Keep mobile nav hidden since we're showing nav items in header */
+    .mobile-nav {
+        display: none;
+    }
+    
+    /* Mobile Footer - Fixed position at bottom with glass effect */
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: hsl(var(--color-background) / 0.5);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 10px 0;
+        min-height: 47px;
+        border: none;
+    }
+    
+    /* Mobile Footer - Show only TLV time and theme switcher */
+    .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+        min-height: 24px;
+    }
+    
+    .footer .container {
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    /* Show only first timezone (TLV) */
+    .footer-timezone:nth-child(1) {
+        display: flex;
+        flex: 1;
+    }
+    
+    /* Hide BER timezone */
+    .footer-timezone:nth-child(2) {
+        display: none;
+    }
+    
+    /* Footer right section with theme switcher */
+    .footer-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+    
+    /* Hide CNX timezone within footer-right */
+    .footer-right .footer-timezone {
+        display: none;
+    }
+    
+    /* Keep theme switcher visible */
+    .footer-theme {
+        display: flex;
     }
     
     .grid-12 {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+    
+    .grid-empty-1 {
+        display: none;
+    }
+    
+    /* Hide custom cursor on mobile */
+    .custom-cursor {
+        display: none !important;
+    }
+    
+    /* Show default cursor on mobile */
+    * {
+        cursor: auto !important;
+    }
+    
+    /* Hide scroll to top button on mobile */
+    .back-to-top-container {
+        display: none !important;
+    }
+    
+    /* Page title mobile styling */
+    .page-title {
+        display: block; /* Show on mobile */
+        padding: 16px 0;
+        margin-bottom: 16px;
+    }
+    
+    .page-title-name,
+    .page-title-role {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+    
+    .page-title-role {
+        margin-top: 2px;
+    }
+    
+    /* Remove outer spacing from index page on mobile */
+    .index-page {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Remove any extra padding from main content on mobile */
+    .main-content {
+        padding: 0;
+    }
+    
+    /* Reduce spacing for index section on mobile */
+    #index {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+    /* Ensure container has proper margins but no extra padding */
+    .container {
+        margin: 0 16px;
+        max-width: calc(100vw - 32px);
+        padding: 0;
+    }
+    
+    /* Mobile Content Layout */
+    .mobile-content {
+        display: block;
+    }
+    
+    .desktop-grid {
+        display: none;
+    }
+    
+    /* Mobile Avatar + Music Wrapper */
+    .mobile-avatar-music-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin: 20px 0 30px 0;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden; /* Prevent wrapper overflow */
+    }
+    
+    /* Mobile Avatar Section */
+    .mobile-avatar-section {
+        flex-shrink: 0;
+        width: 116px;
+    }
+    
+    .mobile-avatar-container {
+        width: 116px;
+        height: 172px;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    
+    .mobile-avatar-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Mobile Music Section */
+    .mobile-music-section {
+        flex: 1;
+        line-height: 1.2;
+        margin: 0;
+        min-width: 0; /* Allow flex item to shrink below content size */
+        overflow: hidden; /* Prevent content overflow */
+    }
+    
+    /* Mobile Main About */
+    .mobile-main-about {
+        margin: 40px 0;
+        padding: 20px 0;
+    }
+    
+    .mobile-main-about .main-text {
+        margin-bottom: 16px;
+    }
+    
+    /* Add gap between Learn more button and Based section */
+    .mobile-main-about .learn-more {
+        margin-bottom: 20px;
+    }
+    
+    /* Mobile Based Section */
+    .mobile-based-section {
+        margin: 20px 0 30px 0;
+    }
+    
+    /* Mobile Lately Section */
+    .mobile-lately-section {
+        margin: 20px 0;
+    }
+    
+    .mobile-lately-section .lately-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        line-height: 1.2;
+    }
+    
+    .mobile-lately-section .lately-link {
+        color: hsl(var(--color-foreground));
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    
+    .mobile-lately-section .lately-link:hover {
+        text-decoration: underline;
+    }
+    
+    /* Mobile Projects Layout */
+    .portfolio-cases {
+        margin-top: 50px;
+        padding-top: 30px;
+    }
+    
+    .portfolio-case {
+        margin-bottom: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    /* Project titles - full width within container margins */
+    .case-title-section {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    
+    .case-title {
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Project details - full width */
+    .case-details-grid {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 0;
+    }
+    
+    .case-category,
+    .case-services {
+        width: 100%;
+    }
+    
+    .case-empty {
+        display: none;
+    }
+    
+    /* Project images - full screen width, no border radius */
+    .case-image {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        border-radius: 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .case-image-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+        object-fit: cover;
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+    
+    .portfolio-case:hover .case-image-img {
+        transform: none; /* Disable hover effect on mobile */
+    }
+    
+    /* Mobile Contact Sections Layout */
+    .contact-section {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .contact-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 30px;
+    }
+    
+    .contact-column:nth-child(1),
+    .contact-column:nth-child(2),
+    .contact-column:nth-child(3) {
+        grid-column: unset;
+        width: 100%;
+    }
+    
+    .contact-title {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .contact-link,
+    .contact-link-no-hover {
+        width: 100%;
+    }
+    
+    /* Mobile Font Size Standardization - 14px */
+    
+    /* Header navigation items */
+    .header-nav-item,
+    .header-nav-item a {
+        font-size: 14px;
+    }
+    
+    /* Footer items */
+    .footer-timezone,
+    .footer-theme,
+    .footer-timezone span,
+    .footer-theme button {
+        font-size: 14px;
+    }
+    
+    /* Section headers and content - Playing in my head */
+    .mobile-music-section h3,
+    .mobile-music-section p {
+        font-size: 14px;
+    }
+    
+    .mobile-music-section h3 {
+        margin-bottom: 12px;
+    }
+    
+    /* Section headers and content - Based */
+    .mobile-based-section h3,
+    .mobile-based-section p {
+        font-size: 14px;
+    }
+    
+    .mobile-based-section h3 {
+        margin-bottom: 12px;
+    }
+    
+    /* Section headers and content - Lately */
+    .mobile-lately-section h3,
+    .mobile-lately-section .lately-link {
+        font-size: 14px;
+    }
+    
+    .mobile-lately-section h3 {
+        margin-bottom: 12px;
+    }
+    
+    /* Section headers and content - Check, Say hello, Follow me */
+    .contact-title,
+    .contact-link,
+    .contact-link-no-hover {
+        font-size: 14px;
+    }
+    
+    /* Ensure all contact section elements are 14px */
+    .contact-column h3,
+    .contact-column p,
+    .contact-column a {
+        font-size: 14px;
+    }
+    
+    /* Reduced gap between contact section titles and content */
+    .contact-column h3 {
+        margin-bottom: 8px;
+    }
+    
+    /* Preloader caption */
+    .preloader-caption {
+        font-size: 14px;
+    }
+    
+    /* Project details - Category and Services */
+    .case-category,
+    .case-services {
+        font-size: 14px;
     }
     
     .based-section,
@@ -2172,41 +2620,552 @@ body {
         height: 157px;
     }
     
-    .footer-timezone:nth-child(1),
-    .footer-timezone:nth-child(2),
-    .footer-right {
-        grid-column: 1;
-        margin: 8px 0;
+    /* Project Page Mobile Layout - Full Width & Vertical Stacking */
+    
+    /* Project Page Header - Mobile Only */
+    .back-button {
+        margin-left: 16px;
     }
     
-    .footer-right {
-        flex-direction: column;
-        gap: 12px;
+    /* Hide project title from header on mobile */
+    .header-title-section {
+        display: none;
     }
     
-    /* Project Page Mobile Layout */
+    /* Mobile project title in page content */
+    .mobile-project-title {
+        display: block !important;
+        font-size: 16px;
+        font-weight: 500;
+        margin: 80px 0 30px 0; /* Large top margin to clear fixed header */
+        text-align: left;
+        line-height: 1.2;
+    }
+    
+    /* Show line breaks in mobile project titles */
+    .mobile-project-title br {
+        display: block;
+    }
+    
+    /* Project Overview Section */
     .project-overview {
-        grid-column: 1;
+        grid-column: 1 / 13;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
+    .project-details-row {
+        grid-column: 1 / 13;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .project-category,
+    .project-services,
+    .project-disclaimer {
+        grid-column: unset;
+        width: 100%;
+        margin-bottom: 0;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-disclaimer {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .project-disclaimer p {
+        text-align: left;
+    }
+    
+    /* Project Intro and Summary */
     .project-intro {
-        grid-column: 1;
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .project-summary {
-        grid-column: 1;
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
+    /* Project Hero Image */
+    .project-hero-image {
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 40px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* Project Role Details */
     .project-role-details {
-        grid-column: 1;
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
-    .challenge-heading {
-        grid-column: 1;
+    /* Challenge and Process Sections */
+    .challenge-heading,
+    .design-process,
+    .project-category,
+    .project-services {
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
-    .challenge-content {
-        grid-column: 1;
+    .project-category-content,
+    .project-services-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-disclaimer-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-disclaimer-content p {
+        text-align: left;
+    }
+    
+    /* Project Images - Full Width */
+    .project-image {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        border-radius: 0;
+        margin-bottom: 30px;
+    }
+    
+    .project-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+    
+    /* Project Content Sections */
+    .project-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-content h2,
+    .project-content h3,
+    .project-content p {
+        margin-bottom: 16px;
+    }
+    
+    .project-content h2:last-child,
+    .project-content h3:last-child,
+    .project-content p:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Remove bottom margin from paragraphs containing project links */
+    .project-content p:has(.project-link) {
+        margin-bottom: 0;
+    }
+    
+    /* Project Links */
+    .project-link {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    
+    /* User Personas - Stack vertically on mobile for Sharing Map project only */
+    .project-sharing-map .challenge-content div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin: 40px 0 !important;
+    }
+    
+    .project-sharing-map .challenge-content div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;"] > div {
+        width: 100% !important;
+    }
+    
+    /* JTBD Table - Mobile improvements for Sharing Map project only */
+    .project-sharing-map .challenge-content div[style*="overflow-x: auto; margin: 20px 0;"] {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 20px 0 !important;
+    }
+    
+    .project-sharing-map .challenge-content table {
+        min-width: 800px !important;
+        width: auto !important;
+        table-layout: auto !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Hide empty gap div between USER PROFILE and FAVOURITES sections on mobile */
+    .project-sharing-map div[style*="height: 40px;"] {
+        display: none !important;
+    }
+    
+    /* Set 3px border radius for all images on Sharing Map project page for mobile */
+    .project-sharing-map img {
+        border-radius: 3px !important;
+    }
+    
+    .project-sharing-map div[style*="border-radius"] {
+        border-radius: 3px !important;
+    }
+    
+    .project-sharing-map div[style*="border-radius"] img {
+        border-radius: 3px !important;
+    }
+    
+    /* Challenge Image Containers and Images (Sharing Map only) */
+    .project-sharing-map .challenge-image {
+        border-radius: 3px !important;
+    }
+    .project-sharing-map .challenge-image-img {
+        border-radius: 3px !important;
+    }
+    
+    /* Project Hero Image and Container (Sharing Map only) */
+    .project-sharing-map .project-hero-image {
+        border-radius: 3px !important;
+    }
+    .project-sharing-map .hero-image {
+        border-radius: 3px !important;
+    }
+    
+    /* Image Border Radius (Globus AI only) */
+    .project-globus img {
+        border-radius: 3px !important;
+    }
+    .project-globus div[style*="border-radius"] {
+        border-radius: 3px !important;
+    }
+    .project-globus div[style*="border-radius"] img {
+        border-radius: 3px !important;
+    }
+    
+    /* Challenge Image Containers and Images (Globus AI only) */
+    .project-globus .challenge-image {
+        border-radius: 3px !important;
+    }
+    .project-globus .challenge-image-img {
+        border-radius: 3px !important;
+    }
+    
+    /* Project Hero Image and Container (Globus AI only) */
+    .project-globus .project-hero-image {
+        border-radius: 3px !important;
+    }
+    .project-globus .hero-image {
+        border-radius: 3px !important;
+    }
+    
+    /* Venn Diagram and Vicious Cycle Images - Stack vertically on mobile for Globus AI project only */
+    .project-globus .challenge-content div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin: 40px 0 !important;
+    }
+    
+    .project-globus .challenge-content div[style*="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;"] > div {
+        width: 100% !important;
+    }
+    
+    /* Challenge Details Row - Stack vertically on mobile for Globus AI project only */
+    .project-globus .challenge-details-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .project-globus .challenge-details-row > div {
+        width: 100% !important;
+    }
+    
+    /* Image Border Radius (Logic Solutions only) */
+    .project-logic img {
+        border-radius: 3px !important;
+    }
+    .project-logic div[style*="border-radius"] {
+        border-radius: 3px !important;
+    }
+    .project-logic div[style*="border-radius"] img {
+        border-radius: 3px !important;
+    }
+    
+    /* Challenge Image Containers and Images (Logic Solutions only) */
+    .project-logic .challenge-image {
+        border-radius: 3px !important;
+    }
+    .project-logic .challenge-image-img {
+        border-radius: 3px !important;
+    }
+    
+    /* Project Hero Image and Container (Logic Solutions only) */
+    .project-logic .project-hero-image {
+        border-radius: 3px !important;
+    }
+    .project-logic .hero-image {
+        border-radius: 3px !important;
+    }
+    
+    /* Logic Solutions Project Page - Full Width Content and Vertical Stacking */
+    .project-logic .project-overview {
+        grid-column: 1 / 13;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .project-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .project-image {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        border-radius: 0;
+        margin-bottom: 30px;
+    }
+    
+    .project-logic .project-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+    
+    .project-logic .challenge {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .challenge-heading {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* All section headings - start from column 1 on mobile for Logic Solutions project */
+    .project-logic .design-heading,
+    .project-logic .key-screens-heading,
+    .project-logic .shipment-creation-heading,
+    .project-logic .consistency-heading,
+    .project-logic .value-impact-heading,
+    .project-logic .takeaways-heading {
+        grid-column: 1 / 13 !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .project-logic .challenge-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .challenge-image {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .design-content {
+        grid-column: 1 / 13;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .design-images {
+        grid-column: 1 / 13;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .design-image {
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .project-logic .project-page .main-content {
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 0;
+    }
+    
+    .project-logic .project-page .container {
+        margin: 0 16px;
+        max-width: calc(100vw - 32px);
+        padding: 0;
+    }
+    
+    /* Problems, Design, Outcome paragraphs - Stack vertically on mobile for Logic Solutions project only */
+    .project-logic .screen-blocks {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .project-logic .screen-blocks > div {
+        width: 100% !important;
+    }
+    
+    /* Shipment Creation Blocks - Stack vertically on mobile for Logic Solutions project only */
+    .project-logic .shipment-creation-blocks {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .project-logic .shipment-creation-blocks > div {
+        width: 100% !important;
+    }
+    
+    /* Shipment Creation Text Row - Stack vertically on mobile for Logic Solutions project only */
+    .project-logic .shipment-creation-text-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .project-logic .shipment-creation-text-row > div {
+        width: 100% !important;
+    }
+    
+    /* Value Impact Content - Match spacing with value-impact-row for Logic Solutions project only */
+    .project-logic .value-impact-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .project-logic .value-impact-content > div {
+        width: 100% !important;
+    }
+    
+    /* JTBD table cell styling with reduced height on mobile for Sharing Map project */
+    .project-sharing-map .challenge-content table th,
+    .project-sharing-map .challenge-content table td {
+        min-width: 180px !important;
+        max-width: 250px !important;
+        width: auto !important;
+        padding: 12px 16px !important; /* Reduced from 16px 20px for smaller cell height */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        vertical-align: top !important;
+    }
+    
+    /* Remove any remaining grid layouts on mobile */
+    .project-page .grid-12 {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .project-page .grid-12 > * {
+        grid-column: unset;
+        width: 100%;
+    }
+    
+    /* Project Page Main Content - Full Width with 16px margins only */
+    .project-page .main-content {
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 0;
+    }
+    
+    .project-page .container {
+        margin: 0 16px;
+        max-width: calc(100vw - 32px);
+        padding: 0;
+    }
+    
+    /* Remove any extra padding/margins from project page elements */
+    .project-page .project-overview,
+    .project-page .project-intro,
+    .project-page .project-summary,
+    .project-page .project-role-details,
+    .project-page .challenge-heading,
+    .project-page .design-process,
+    .project-page .project-category,
+    .project-page .project-services {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* Ensure all project content uses full width within container */
+    .project-page .project-content,
+    .project-page .challenge-content,
+    .project-page .process-content {
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .challenge-image {
@@ -2312,13 +3271,15 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        margin: 0 15px;
-        max-width: calc(100vw - 30px);
+        margin: 0 16px;
+        max-width: calc(100vw - 32px);
+        padding: 0;
     }
     
     .main-content {
-        margin-top: 100px;
-        margin-bottom: 120px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 0;
     }
     
     .avatar-container {
@@ -2335,11 +3296,91 @@ body {
     .about-say-hello-section,
     .about-follow-section {
         grid-column: 1 / 13;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    /* Add spacing between sections */
+    .about-check-section {
         margin-bottom: 20px;
+    }
+    
+    .about-say-hello-section {
+        margin-bottom: 20px;
+    }
+    
+    .about-follow-section {
+        margin-bottom: 0;
+    }
+    
+    .about-check-section h3,
+    .about-say-hello-section h3,
+    .about-follow-section h3 {
+        margin: 0;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+    
+    .about-check-section p,
+    .about-say-hello-section p,
+    .about-follow-section p,
+    .about-check-section a,
+    .about-say-hello-section a,
+    .about-follow-section a {
+        font-size: 14px;
+    }
+    
+    .about-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .about-link,
+    .about-link-no-hover {
+        width: 100%;
     }
     
     .about-main-text {
         max-width: 100%;
+        margin-top: 40px;
+    }
+    
+    /* Add top and bottom spacing to About page content */
+    .about-page .main-content {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    
+    .about-main-text h1,
+    .about-main-text p {
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+    
+    .about-main-text h1:last-of-type {
+        margin-bottom: 20px;
+    }
+    
+    /* Keep the "Ever since I was a little girl..." text at 14px */
+    .about-main-text p:last-of-type {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: normal;
+        margin-bottom: 0;
+    }
+    
+    /* Add gap below Selected work button on mobile */
+    .about-selected-work {
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
     
     /* Additional mobile optimizations for very small screens */
@@ -2381,7 +3422,7 @@ body {
     
     /* Mobile-friendly spacing */
     .main-content {
-        padding: 0 10px;
+        padding: 0;
     }
     
     /* Mobile Avatar Positioning */

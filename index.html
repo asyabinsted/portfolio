@@ -113,19 +113,66 @@
         <section id="index" class="index-page">
             <div id="top"></div>
             <div class="container">
-                <!-- 12-Column Grid Layout -->
-                <div class="grid-12">
-                    <!-- BASED Section (Columns 1-2) -->
-                    <div class="grid-item based-section">
+                <!-- Page Title -->
+                <div class="page-title">
+                    <h1 class="page-title-name text-h1 color-foreground">Anastasiia Binsted</h1>
+                    <h1 class="page-title-role text-h1 color-foreground">Product UX/UI Designer</h1>
+                </div>
+                
+                <!-- Mobile Content Order -->
+                <div class="mobile-content">
+                    <!-- 2. Avatar + Playing in my head wrapper -->
+                    <div class="mobile-avatar-music-wrapper">
+                        <!-- Avatar GIF -->
+                        <div class="mobile-avatar-section">
+                            <div class="mobile-avatar-container">
+                                <img src="avatar.gif" alt="Anastasiia Binsted" class="mobile-avatar-image">
+                            </div>
+                        </div>
+
+                        <!-- Playing in my head section -->
+                        <div class="mobile-music-section">
+                            <h3 class="text-h3 color-foreground">PLAYING IN MY HEAD</h3>
+                            <a href="https://open.spotify.com/track/5IfBLN9VPPJOwcKmAZhdXe?si=131cb694aa604cbf" target="_blank" rel="noopener noreferrer" class="music-link">
+                                <div class="music-info">
+                                    <div class="music-song-wrapper">
+                                        <p class="text-nav color-foreground">Song</p>
+                                        <div class="marquee-container">
+                                            <div class="marquee-text">
+                                                <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
+                                                <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="music-album-wrapper">
+                                        <p class="text-nav color-foreground">Album</p>
+                                        <div class="marquee-container">
+                                            <div class="marquee-text">
+                                                <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
+                                                <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-cursive color-foreground">©1994 by Oasis</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4. Description text -->
+                    <div class="mobile-main-about">
+                        <h1 class="main-text text-h1 color-foreground">I design products, AI experiences, and tools that combine usability, technology, and strategy to simplify complex processes.</h1>
+                        <a href="#about" class="learn-more text-h1 color-foreground" data-page="about">Learn more→</a>
+                    </div>
+
+                    <!-- 5. Based section -->
+                    <div class="mobile-based-section">
                         <h3 class="text-h3 color-foreground">BASED</h3>
                         <p class="text-body color-foreground">Remotely with stable Wi-Fi and a standing desk, open to relocation.</p>
                     </div>
 
-                    <!-- Column 3: Empty -->
-                    <div class="grid-empty-1"></div>
-
-                    <!-- LATELY Section (Columns 4-7) -->
-                    <div class="grid-item lately-section">
+                    <!-- 6. Lately section -->
+                    <div class="mobile-lately-section">
                         <h3 class="text-h3 color-foreground">LATELY</h3>
                         <ul class="lately-list">
                             <li><a href="https://medium.com/@binsted/six-months-in-ux-design-what-surprised-me-most-48fc81ed385c" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Article about my early design journey (ext↗)</a></li>
@@ -135,47 +182,74 @@
                             <li><a href="https://dribbble.com/shots/24645744-Museum-Website-Concept?utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=Museum%20-%20Website%20Concept&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=Museum%20-%20Website%20Concept&utm_medium=Social_Share" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Museum website redesign (ext↗)</a></li>
                         </ul>
                     </div>
+                </div>
 
-                    <!-- Avatar Section (Columns 8-9) -->
-                    <div class="grid-item avatar-section">
-                        <div class="avatar-container">
-                            <img src="avatar.gif" alt="Anastasiia Binsted" class="avatar-image">
+                <!-- Desktop Grid Layout -->
+                <div class="desktop-grid">
+                    <!-- 12-Column Grid Layout -->
+                    <div class="grid-12">
+                        <!-- BASED Section (Columns 1-2) -->
+                        <div class="grid-item based-section">
+                            <h3 class="text-h3 color-foreground">BASED</h3>
+                            <p class="text-body color-foreground">Remotely with stable Wi-Fi and a standing desk, open to relocation.</p>
+                        </div>
+
+                        <!-- Column 3: Empty -->
+                        <div class="grid-empty-1"></div>
+
+                        <!-- LATELY Section (Columns 4-7) -->
+                        <div class="grid-item lately-section">
+                            <h3 class="text-h3 color-foreground">LATELY</h3>
+                            <ul class="lately-list">
+                                <li><a href="https://medium.com/@binsted/six-months-in-ux-design-what-surprised-me-most-48fc81ed385c" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Article about my early design journey (ext↗)</a></li>
+                                <li><a href="https://dribbble.com/shots/24797645-How-to?utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=How%20to...&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=How%20to...&utm_medium=Social_Share" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Printed zine: personal year experience (ext↗)</a></li>
+                                <li><a href="#" class="lately-link text-nav color-foreground" onclick="showPasswordModal('logic-solutions'); return false;">Vector illustrations: logistics software (work→)</a></li>
+                                <li><a href="https://www.tracking.logicapp.io/Login?nombreCliente=Schryver" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Login page for shipment tracking (ext↗)</a></li>
+                                <li><a href="https://dribbble.com/shots/24645744-Museum-Website-Concept?utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=Museum%20-%20Website%20Concept&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=abinsted&utm_content=Museum%20-%20Website%20Concept&utm_medium=Social_Share" class="lately-link text-nav color-foreground" target="_blank" rel="noopener noreferrer">Museum website redesign (ext↗)</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Avatar Section (Columns 8-9) -->
+                        <div class="grid-item avatar-section">
+                            <div class="avatar-container">
+                                <img src="avatar.gif" alt="Anastasiia Binsted" class="avatar-image">
+                            </div>
+                        </div>
+
+                        <!-- Music Section (Columns 10-12) -->
+                        <div class="grid-item music-section">
+                            <h3 class="text-h3 color-foreground">PLAYING IN MY HEAD</h3>
+                            <a href="https://open.spotify.com/track/5IfBLN9VPPJOwcKmAZhdXe?si=131cb694aa604cbf" target="_blank" rel="noopener noreferrer" class="music-link">
+                                <div class="music-info">
+                                    <div class="music-song-wrapper">
+                                        <p class="text-nav color-foreground">Song</p>
+                                        <div class="marquee-container">
+                                            <div class="marquee-text">
+                                                <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
+                                                <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="music-album-wrapper">
+                                        <p class="text-nav color-foreground">Album</p>
+                                        <div class="marquee-container">
+                                            <div class="marquee-text">
+                                                <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
+                                                <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-cursive color-foreground">©1994 by Oasis</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Music Section (Columns 10-12) -->
-                    <div class="grid-item music-section">
-                        <h3 class="text-h3 color-foreground">PLAYING IN MY HEAD</h3>
-                        <a href="https://open.spotify.com/track/5IfBLN9VPPJOwcKmAZhdXe?si=131cb694aa604cbf" target="_blank" rel="noopener noreferrer" class="music-link">
-                            <div class="music-info">
-                                <div class="music-song-wrapper">
-                                    <p class="text-nav color-foreground">Song</p>
-                                    <div class="marquee-container">
-                                        <div class="marquee-text">
-                                            <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
-                                            <span class="text-cursive color-foreground">Live Forever Live Forever Live Forever Live Forever Live Forever Live Forever</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="music-album-wrapper">
-                                    <p class="text-nav color-foreground">Album</p>
-                                    <div class="marquee-container">
-                                        <div class="marquee-text">
-                                            <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
-                                            <span class="text-cursive color-foreground">Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe Definitely Maybe</span>
-                                        </div>
-                                    </div>
-                                    <p class="text-cursive color-foreground">©1994 by Oasis</p>
-                                </div>
-                            </div>
-                        </a>
+                    <!-- Main About Text (Columns 1-6) -->
+                    <div class="main-about">
+                        <h1 class="main-text text-h1 color-foreground">I design products, AI experiences, and tools that combine usability, technology, and strategy to simplify complex processes.</h1>
+                        <a href="#about" class="learn-more text-h1 color-foreground" data-page="about">Learn more→</a>
                     </div>
-                </div>
-
-                <!-- Main About Text (Columns 1-6) -->
-                <div class="main-about">
-                    <h1 class="main-text text-h1 color-foreground">I design products, AI experiences, and tools that combine usability, technology, and strategy to simplify complex processes.</h1>
-                    <a href="#about" class="learn-more text-h1 color-foreground" data-page="about">Learn more→</a>
                 </div>
                 
                 <!-- Portfolio Cases -->
