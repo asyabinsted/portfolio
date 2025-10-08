@@ -3454,6 +3454,9 @@ body {
     align-items: center;
     opacity: 1;
     transition: opacity 0.5s ease;
+    /* Ensure preloader is always visible initially */
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .preloader.hidden {

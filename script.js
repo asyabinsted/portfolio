@@ -701,10 +701,12 @@ class PreloaderManager {
         this.minDisplayTime = 2000; // 2 seconds minimum
         this.startTime = Date.now();
         this.isPageLoaded = false;
+        this.isPreloaderHidden = false;
         this.animationInterval = null;
         this.imageInterval = null;
         this.currentImageIndex = 0;
         this.imagesLoaded = false;
+        this.loadTimeout = null;
 
         if (this.preloader && this.preloaderDots && this.preloaderImage) {
             this.init();
@@ -794,29 +796,31 @@ class PreloaderManager {
     }
 
     setupPageLoadListener() {
-        // Check if page is already loaded
-        if (document.readyState === 'complete') {
+        // Always wait for window.load event for complete page loading
+        window.addEventListener('load', () => {
             this.isPageLoaded = true;
             this.checkHidePreloader();
-        } else {
-            window.addEventListener('load', () => {
-                this.isPageLoaded = true;
-                this.checkHidePreloader();
-            });
-        }
+        });
         
-        // Fallback timeout to ensure preloader doesn't get stuck
-        setTimeout(() => {
+        // Fallback timeout to ensure preloader doesn't get stuck (increased to 10 seconds)
+        this.loadTimeout = setTimeout(() => {
             if (!this.isPageLoaded) {
+                console.log('Preloader: Fallback timeout reached, hiding preloader');
                 this.isPageLoaded = true;
                 this.checkHidePreloader();
             }
-        }, 5000); // 5 seconds maximum
+        }, 10000); // 10 seconds maximum
     }
 
     checkHidePreloader() {
+        if (this.isPreloaderHidden) {
+            return; // Already hidden
+        }
+
         const elapsedTime = Date.now() - this.startTime;
         const remainingTime = Math.max(0, this.minDisplayTime - elapsedTime);
+
+        console.log(`Preloader: Page loaded, elapsed time: ${elapsedTime}ms, remaining: ${remainingTime}ms`);
 
         setTimeout(() => {
             this.hidePreloader();
@@ -824,6 +828,17 @@ class PreloaderManager {
     }
 
     hidePreloader() {
+        if (this.isPreloaderHidden) {
+            return; // Already hidden
+        }
+
+        this.isPreloaderHidden = true;
+
+        // Clear timeout if it exists
+        if (this.loadTimeout) {
+            clearTimeout(this.loadTimeout);
+        }
+
         if (this.animationInterval) {
             clearInterval(this.animationInterval);
         }
@@ -832,6 +847,7 @@ class PreloaderManager {
             clearInterval(this.imageInterval);
         }
 
+        console.log('Preloader: Hiding preloader');
         this.preloader.classList.add('hidden');
         
         // Remove preloader from DOM after transition
@@ -843,7 +859,14 @@ class PreloaderManager {
     }
 }
 
-// Initialize preloader when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize preloader immediately when script loads
+// This ensures preloader starts as soon as possible
+if (document.readyState === 'loading') {
+    // DOM is still loading, wait for it
+    document.addEventListener('DOMContentLoaded', function() {
+        new PreloaderManager();
+    });
+} else {
+    // DOM is already loaded, start immediately
     new PreloaderManager();
-});
+}
