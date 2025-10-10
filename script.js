@@ -691,73 +691,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Preloader System
+// Simplified Preloader System
 class PreloaderManager {
     constructor() {
         this.preloader = document.getElementById('preloader');
         this.preloaderDots = document.getElementById('preloader-dots');
-        this.preloaderImage = document.getElementById('preloader-image');
-        this.currentTheme = body.getAttribute('data-theme');
-        this.minDisplayTime = 3000; // 3 seconds minimum
+        this.minDisplayTime = 2000; // Reduced to 2 seconds
         this.startTime = Date.now();
         this.isPageLoaded = false;
         this.animationInterval = null;
-        this.imageInterval = null;
-        this.currentImageIndex = 0;
-        this.imagesLoaded = false;
 
-        if (this.preloader && this.preloaderDots && this.preloaderImage) {
+        if (this.preloader && this.preloaderDots) {
             this.init();
         }
     }
 
     init() {
-        this.loadImages();
         this.startDotsAnimation();
-        this.startImageAnimation();
-        this.setupThemeListener();
         this.setupPageLoadListener();
-    }
-
-    loadImages() {
-        const themeImages = this.getThemeImages();
-        this.preloaderImage.src = themeImages[0];
-        this.preloaderImage.classList.add('active');
-        this.imagesLoaded = true;
-    }
-
-    getThemeImages() {
-        const theme = this.currentTheme;
-        const images = [];
-        
-        for (let i = 1; i <= 7; i++) {
-            images.push(`images/preloader/preloader-${theme}-${i}.svg`);
-        }
-        
-        return images;
-    }
-
-    startImageAnimation() {
-        if (!this.imagesLoaded) {
-            setTimeout(() => this.startImageAnimation(), 100);
-            return;
-        }
-
-        const themeImages = this.getThemeImages();
-        
-        this.imageInterval = setInterval(() => {
-            // Hide current image
-            this.preloaderImage.classList.remove('active');
-            
-            // Move to next image
-            this.currentImageIndex = (this.currentImageIndex + 1) % themeImages.length;
-            
-            // Update image source and show
-            setTimeout(() => {
-                this.preloaderImage.src = themeImages[this.currentImageIndex];
-                this.preloaderImage.classList.add('active');
-            }, 150); // Wait for fade out
-        }, 500); // 500ms between each image change to match text dots
     }
 
     startDotsAnimation() {
@@ -766,77 +717,38 @@ class PreloaderManager {
         
         this.animationInterval = setInterval(() => {
             dotCount = (dotCount + 1) % (maxDots + 1);
-            this.preloaderDots.textContent = '.'.repeat(dotCount);
-        }, 500); // 500ms between each dot appearance
-    }
-
-    setupThemeListener() {
-        // Listen for theme changes and update images
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-                    const newTheme = body.getAttribute('data-theme');
-                    if (newTheme !== this.currentTheme) {
-                        this.currentTheme = newTheme;
-                        this.updateImages();
-                    }
-                }
-            });
-        });
-
-        observer.observe(body, { attributes: true, attributeFilter: ['data-theme'] });
-    }
-
-    updateImages() {
-        const themeImages = this.getThemeImages();
-        this.currentImageIndex = 0;
-        this.preloaderImage.src = themeImages[0];
+            if (this.preloaderDots) {
+                this.preloaderDots.textContent = '.'.repeat(dotCount);
+            }
+        }, 500);
     }
 
     setupPageLoadListener() {
-        // Always wait for both DOM content loaded AND window load events
-        let domReady = false;
-        let windowLoaded = false;
-        
-        // Check DOM content loaded
+        // Simplified: only wait for DOM ready, not window load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
-                domReady = true;
-                this.checkIfReadyToHide();
+                this.checkHidePreloader();
             });
         } else {
-            domReady = true;
-        }
-        
-        // Check window load
-        if (document.readyState === 'complete') {
-            windowLoaded = true;
-            this.checkIfReadyToHide();
-        } else {
-            window.addEventListener('load', () => {
-                windowLoaded = true;
-                this.checkIfReadyToHide();
-            });
+            // DOM already loaded
+            this.checkHidePreloader();
         }
         
         // Fallback timeout to ensure preloader doesn't get stuck
         setTimeout(() => {
             if (!this.isPageLoaded) {
+                console.warn('Preloader timeout - showing content');
                 this.isPageLoaded = true;
-                this.checkHidePreloader();
+                this.hidePreloader();
             }
-        }, 8000); // 8 seconds maximum
-    }
-    
-    checkIfReadyToHide() {
-        // Only hide preloader when both DOM is ready AND window has loaded
-        if (this.isPageLoaded) return; // Already processed
-        
-        this.isPageLoaded = true;
-        this.checkHidePreloader();
+        }, 5000); // Reduced to 5 seconds
     }
 
     checkHidePreloader() {
+        if (this.isPageLoaded) return;
+        
+        this.isPageLoaded = true;
+        
         const elapsedTime = Date.now() - this.startTime;
         const remainingTime = Math.max(0, this.minDisplayTime - elapsedTime);
 
@@ -849,19 +761,17 @@ class PreloaderManager {
         if (this.animationInterval) {
             clearInterval(this.animationInterval);
         }
-        
-        if (this.imageInterval) {
-            clearInterval(this.imageInterval);
-        }
 
-        this.preloader.classList.add('hidden');
-        
-        // Remove preloader from DOM after transition
-        setTimeout(() => {
-            if (this.preloader && this.preloader.parentNode) {
-                this.preloader.parentNode.removeChild(this.preloader);
-            }
-        }, 500);
+        if (this.preloader) {
+            this.preloader.classList.add('hidden');
+            
+            // Remove preloader from DOM after transition
+            setTimeout(() => {
+                if (this.preloader && this.preloader.parentNode) {
+                    this.preloader.parentNode.removeChild(this.preloader);
+                }
+            }, 500);
+        }
     }
 }
 
