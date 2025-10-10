@@ -691,11 +691,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Simplified Preloader System
+// Theme-Aware Preloader System
 class PreloaderManager {
     constructor() {
         this.preloader = document.getElementById('preloader');
         this.preloaderDots = document.getElementById('preloader-dots');
+        this.preloaderImage = document.getElementById('preloader-image');
+        this.currentTheme = body.getAttribute('data-theme') || 'light';
         this.minDisplayTime = 2000; // Reduced to 2 seconds
         this.startTime = Date.now();
         this.isPageLoaded = false;
@@ -707,8 +709,25 @@ class PreloaderManager {
     }
 
     init() {
+        this.loadThemeImage();
         this.startDotsAnimation();
         this.setupPageLoadListener();
+        this.setupThemeListener();
+    }
+
+    loadThemeImage() {
+        if (!this.preloaderImage) return;
+        
+        // Map themes to appropriate preloader images
+        const themeImageMap = {
+            'light': 'images/preloader/preloader-light-1.svg',    // Black images for light mode
+            'dark': 'images/preloader/preloader-dark-1.svg',      // White images for dark mode
+            'color': 'images/preloader/preloader-color-1.svg'     // Blue images for color mode
+        };
+        
+        const imageSrc = themeImageMap[this.currentTheme] || themeImageMap['light'];
+        this.preloaderImage.src = imageSrc;
+        this.preloaderImage.classList.add('active');
     }
 
     startDotsAnimation() {
@@ -742,6 +761,23 @@ class PreloaderManager {
                 this.hidePreloader();
             }
         }, 5000); // Reduced to 5 seconds
+    }
+
+    setupThemeListener() {
+        // Listen for theme changes and update preloader image
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                    const newTheme = body.getAttribute('data-theme');
+                    if (newTheme !== this.currentTheme) {
+                        this.currentTheme = newTheme;
+                        this.loadThemeImage();
+                    }
+                }
+            });
+        });
+
+        observer.observe(body, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
     checkHidePreloader() {
