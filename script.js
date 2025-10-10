@@ -739,7 +739,9 @@ class PreloaderManager {
         };
         img.onerror = () => {
             console.warn('❌ Preloader image failed to load:', imageSrc);
-            // Don't set image src, let CSS animation handle it
+            // Hide the image element if it fails to load
+            this.preloaderImage.classList.remove('active');
+            this.preloaderImage.src = '';
         };
         img.src = imageSrc;
     }
