@@ -709,10 +709,10 @@ class PreloaderManager {
     }
 
     init() {
-        this.loadThemeImage();
         this.startDotsAnimation();
         this.setupPageLoadListener();
         this.setupThemeListener();
+        this.loadThemeImageWithDelay();
     }
 
     loadThemeImage() {
@@ -738,6 +738,16 @@ class PreloaderManager {
             // Don't set image src, let CSS animation handle it
         };
         img.src = imageSrc;
+    }
+
+    loadThemeImageWithDelay() {
+        // Wait for theme to be fully applied, then load appropriate image
+        setTimeout(() => {
+            // Re-detect theme after a short delay
+            this.currentTheme = body.getAttribute('data-theme') || 'light';
+            console.log('Preloader theme detected:', this.currentTheme);
+            this.loadThemeImage();
+        }, 100);
     }
 
     startDotsAnimation() {
@@ -791,6 +801,7 @@ class PreloaderManager {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
                     const newTheme = body.getAttribute('data-theme');
                     if (newTheme !== this.currentTheme) {
+                        console.log('Theme changed from', this.currentTheme, 'to', newTheme);
                         this.currentTheme = newTheme;
                         this.loadThemeImage();
                     }
