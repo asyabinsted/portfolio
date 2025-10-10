@@ -727,14 +727,18 @@ class PreloaderManager {
         
         const imageSrc = themeImageMap[this.currentTheme] || themeImageMap['light'];
         
+        console.log('🎨 Preloader theme:', this.currentTheme);
+        console.log('📸 Loading image:', imageSrc);
+        
         // Load image with error handling
         const img = new Image();
         img.onload = () => {
             this.preloaderImage.src = imageSrc;
             this.preloaderImage.classList.add('active');
+            console.log('✅ Image loaded successfully:', imageSrc);
         };
         img.onerror = () => {
-            console.warn('Preloader image failed to load, using CSS-only animation');
+            console.warn('❌ Preloader image failed to load:', imageSrc);
             // Don't set image src, let CSS animation handle it
         };
         img.src = imageSrc;
