@@ -698,7 +698,7 @@ class PreloaderManager {
         this.preloaderDots = document.getElementById('preloader-dots');
         this.preloaderImage = document.getElementById('preloader-image');
         this.currentTheme = body.getAttribute('data-theme') || 'light';
-        this.minDisplayTime = 2000; // Reduced to 2 seconds
+        this.minDisplayTime = 1000; // Reduced to 1 second
         this.startTime = Date.now();
         this.isPageLoaded = false;
         this.animationInterval = null;
@@ -726,8 +726,18 @@ class PreloaderManager {
         };
         
         const imageSrc = themeImageMap[this.currentTheme] || themeImageMap['light'];
-        this.preloaderImage.src = imageSrc;
-        this.preloaderImage.classList.add('active');
+        
+        // Load image with error handling
+        const img = new Image();
+        img.onload = () => {
+            this.preloaderImage.src = imageSrc;
+            this.preloaderImage.classList.add('active');
+        };
+        img.onerror = () => {
+            console.warn('Preloader image failed to load, using CSS-only animation');
+            // Don't set image src, let CSS animation handle it
+        };
+        img.src = imageSrc;
     }
 
     startDotsAnimation() {
@@ -743,7 +753,7 @@ class PreloaderManager {
     }
 
     setupPageLoadListener() {
-        // Simplified: only wait for DOM ready, not window load
+        // Show content as soon as DOM is ready, don't wait for images
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 this.checkHidePreloader();
@@ -753,14 +763,25 @@ class PreloaderManager {
             this.checkHidePreloader();
         }
         
-        // Fallback timeout to ensure preloader doesn't get stuck
+        // Aggressive fallback to ensure preloader never gets stuck
         setTimeout(() => {
             if (!this.isPageLoaded) {
                 console.warn('Preloader timeout - showing content');
                 this.isPageLoaded = true;
                 this.hidePreloader();
             }
-        }, 5000); // Reduced to 5 seconds
+        }, 3000); // Reduced to 3 seconds maximum
+        
+        // Additional safety timeout
+        setTimeout(() => {
+            this.forceHidePreloader();
+        }, 4000); // Force hide after 4 seconds no matter what
+    }
+    
+    forceHidePreloader() {
+        console.warn('Force hiding preloader - emergency fallback');
+        this.isPageLoaded = true;
+        this.hidePreloader();
     }
 
     setupThemeListener() {

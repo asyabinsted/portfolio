@@ -3485,8 +3485,7 @@ body {
     letter-spacing: var(--text-nav-ls);
     color: hsl(var(--color-foreground));
     margin: 0;
-    opacity: 0;
-    animation: preloaderFadeIn 0.3s ease 0.2s forwards;
+    opacity: 1;
     white-space: nowrap;
     display: flex;
     align-items: center;
@@ -3505,6 +3504,19 @@ body {
     text-align: left;
     flex-shrink: 0;
     overflow: hidden;
+}
+
+/* CSS-only loading dots animation as fallback */
+.preloader-dots::after {
+    content: '';
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 16.66% { content: '.'; }
+    33.33% { content: '..'; }
+    50% { content: '...'; }
+    66.66%, 100% { content: ''; }
 }
 
 @keyframes dotsPulse {
