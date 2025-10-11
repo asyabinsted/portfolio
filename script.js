@@ -699,7 +699,7 @@ class PreloaderManager {
         this.preloader = document.getElementById('preloader');
         this.preloaderImage = document.getElementById('preloader-image');
         this.currentTheme = body.getAttribute('data-theme') || 'light';
-        this.minDisplayTime = 300; // Maximum 300ms minimum
+        this.minDisplayTime = 1000; // Minimum 1 second for visibility
         this.startTime = Date.now();
         this.isHidden = false;
 
