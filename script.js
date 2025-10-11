@@ -692,27 +692,31 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Theme-Aware Preloader System
+// Preloader Manager - CSS-First Approach
+// JavaScript ONLY handles: theme detection, image loading, and hiding
 class PreloaderManager {
     constructor() {
         this.preloader = document.getElementById('preloader');
-        this.preloaderDots = document.getElementById('preloader-dots');
         this.preloaderImage = document.getElementById('preloader-image');
         this.currentTheme = body.getAttribute('data-theme') || 'light';
-        this.minDisplayTime = 1000; // Reduced to 1 second
+        this.minDisplayTime = 300; // Maximum 300ms minimum
         this.startTime = Date.now();
-        this.isPageLoaded = false;
-        this.animationInterval = null;
+        this.isHidden = false;
 
-        if (this.preloader && this.preloaderDots) {
+        if (this.preloader) {
             this.init();
         }
     }
 
     init() {
+        // Load theme-appropriate image (async, doesn't block)
         this.loadThemeImage();
-        this.startDotsAnimation();
-        this.setupPageLoadListener();
+        
+        // Setup theme change listener
         this.setupThemeListener();
+        
+        // Hide preloader when page loads
+        this.setupPageLoadListener();
     }
 
     loadThemeImage() {
@@ -720,76 +724,30 @@ class PreloaderManager {
         
         // Map themes to appropriate preloader images
         const themeImageMap = {
-            'light': 'images/preloader/preloader-light-1.svg',    // Black images for light mode
-            'dark': 'images/preloader/preloader-dark-1.svg',      // White images for dark mode
-            'color': 'images/preloader/preloader-color-1.svg'     // Blue images for color mode
+            'light': 'images/preloader/preloader-light-1.svg',
+            'dark': 'images/preloader/preloader-dark-1.svg',
+            'color': 'images/preloader/preloader-color-1.svg'
         };
         
         const imageSrc = themeImageMap[this.currentTheme] || themeImageMap['light'];
         
-        console.log('🎨 Preloader theme:', this.currentTheme);
-        console.log('📸 Loading image:', imageSrc);
-        
-        // Load image with error handling
+        // Preload image - only show when loaded
         const img = new Image();
         img.onload = () => {
-            this.preloaderImage.src = imageSrc;
-            this.preloaderImage.classList.add('active');
-            console.log('✅ Image loaded successfully:', imageSrc);
+            if (!this.isHidden) {
+                this.preloaderImage.src = imageSrc;
+                this.preloaderImage.classList.add('loaded');
+            }
         };
         img.onerror = () => {
-            console.warn('❌ Preloader image failed to load:', imageSrc);
-            // Don't set image src, let CSS animation handle it
+            // Silently fail - text remains visible without image
+            console.log('Preloader image not loaded, using text only');
         };
         img.src = imageSrc;
     }
 
-    startDotsAnimation() {
-        let dotCount = 0;
-        const maxDots = 3;
-        
-        this.animationInterval = setInterval(() => {
-            dotCount = (dotCount + 1) % (maxDots + 1);
-            if (this.preloaderDots) {
-                this.preloaderDots.textContent = '.'.repeat(dotCount);
-            }
-        }, 500);
-    }
-
-    setupPageLoadListener() {
-        // Show content as soon as DOM is ready, don't wait for images
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.checkHidePreloader();
-            });
-        } else {
-            // DOM already loaded
-            this.checkHidePreloader();
-        }
-        
-        // Aggressive fallback to ensure preloader never gets stuck
-        setTimeout(() => {
-            if (!this.isPageLoaded) {
-                console.warn('Preloader timeout - showing content');
-                this.isPageLoaded = true;
-                this.hidePreloader();
-            }
-        }, 3000); // Reduced to 3 seconds maximum
-        
-        // Additional safety timeout
-        setTimeout(() => {
-            this.forceHidePreloader();
-        }, 4000); // Force hide after 4 seconds no matter what
-    }
-    
-    forceHidePreloader() {
-        console.warn('Force hiding preloader - emergency fallback');
-        this.isPageLoaded = true;
-        this.hidePreloader();
-    }
-
     setupThemeListener() {
-        // Listen for theme changes and update preloader image
+        // Listen for theme changes and update image
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
@@ -805,38 +763,47 @@ class PreloaderManager {
         observer.observe(body, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
-    checkHidePreloader() {
-        if (this.isPageLoaded) return;
+    setupPageLoadListener() {
+        // Hide when window fully loads
+        window.addEventListener('load', () => {
+            this.hidePreloader();
+        });
         
-        this.isPageLoaded = true;
+        // Safety timeout - never show for more than 2 seconds
+        setTimeout(() => {
+            this.hidePreloader();
+        }, 2000);
+    }
+
+    hidePreloader() {
+        if (this.isHidden || !this.preloader) return;
         
         const elapsedTime = Date.now() - this.startTime;
         const remainingTime = Math.max(0, this.minDisplayTime - elapsedTime);
 
         setTimeout(() => {
-            this.hidePreloader();
-        }, remainingTime);
-    }
-
-    hidePreloader() {
-        if (this.animationInterval) {
-            clearInterval(this.animationInterval);
-        }
-
-        if (this.preloader) {
+            this.isHidden = true;
             this.preloader.classList.add('hidden');
             
-            // Remove preloader from DOM after transition
+            // Remove from DOM after fade out
             setTimeout(() => {
                 if (this.preloader && this.preloader.parentNode) {
                     this.preloader.parentNode.removeChild(this.preloader);
                 }
-            }, 500);
-        }
+            }, 300);
+        }, remainingTime);
     }
 }
 
-// Initialize preloader when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    new PreloaderManager();
-});
+// Initialize preloader FIRST, before other DOMContentLoaded listeners
+// Using IIFE to execute immediately when script loads
+(function() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            new PreloaderManager();
+        });
+    } else {
+        // DOM already loaded
+        new PreloaderManager();
+    }
+})();

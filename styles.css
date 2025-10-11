@@ -3444,7 +3444,7 @@ body {
     }
 }
 
-/* Preloader Styles */
+/* Preloader Styles - CSS-First Approach */
 .preloader {
     position: fixed;
     top: 0;
@@ -3457,10 +3457,8 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 1;
-    transition: opacity 0.5s ease;
-    /* Ensure preloader is always visible initially */
-    visibility: visible;
-    pointer-events: auto;
+    transition: opacity 0.3s ease;
+    pointer-events: all;
 }
 
 .preloader.hidden {
@@ -3474,7 +3472,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .preloader-text {
@@ -3485,28 +3483,25 @@ body {
     letter-spacing: var(--text-nav-ls);
     color: hsl(var(--color-foreground));
     margin: 0;
-    opacity: 1;
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 4px;
 }
 
 .preloader-main-text {
     display: inline-block;
-    flex-shrink: 0;
     white-space: nowrap;
 }
 
 .preloader-dots {
     display: inline-block;
-    width: 30px;
+    min-width: 30px;
     text-align: left;
-    flex-shrink: 0;
-    overflow: hidden;
 }
 
-/* CSS-only loading dots animation as fallback */
+/* Pure CSS loading dots animation - no JS needed */
 .preloader-dots::after {
     content: '';
     animation: loadingDots 1.5s infinite;
@@ -3519,21 +3514,8 @@ body {
     66.66%, 100% { content: ''; }
 }
 
-@keyframes dotsPulse {
-    0%, 20% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 1;
-    }
-    80%, 100% {
-        opacity: 0.3;
-    }
-}
-
 .preloader-icon {
-    width: 120px;
-    height: 120px;
+    min-height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3543,21 +3525,12 @@ body {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    opacity: 1;
-    transition: opacity 0.2s ease;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease;
 }
 
-.preloader-image.active {
+.preloader-image.loaded {
     opacity: 1;
-}
-
-@keyframes preloaderFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    display: block;
 }

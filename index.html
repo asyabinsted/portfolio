@@ -15,18 +15,6 @@
     <meta name="msapplication-TileImage" content="favicon.png">
     <meta name="msapplication-TileColor" content="#000000">
     
-    <!-- Initialize preloader immediately -->
-    <script>
-        // Show preloader immediately, don't wait for external JS
-        (function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'flex';
-                preloader.style.opacity = '1';
-            }
-        })();
-    </script>
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://asyabinsted.github.io/portfolio/">
@@ -45,12 +33,12 @@
     <!-- Preloader -->
     <div id="preloader" class="preloader">
         <div class="preloader-content">
-            <div class="preloader-icon" id="preloader-icon">
-                <img src="" alt="Loading..." class="preloader-image" id="preloader-image">
-            </div>
             <div class="preloader-text">
                 <span class="preloader-main-text">Shh.. Quiet please, machines are learning</span>
-                <span class="preloader-dots" id="preloader-dots">.</span>
+                <span class="preloader-dots"></span>
+            </div>
+            <div class="preloader-icon" id="preloader-icon">
+                <img src="" alt="" class="preloader-image" id="preloader-image">
             </div>
         </div>
     </div>
