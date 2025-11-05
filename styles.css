@@ -2146,6 +2146,28 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Override CSS variables for mobile */
+    :root {
+        --text-nav-size: 14px;
+        --text-cursive-size: 14px;
+        --text-nav-lh: 18px;
+        --text-cursive-lh: 18px;
+    }
+    
+    /* Ensure consistent font sizing in music section */
+    .mobile-music-section .text-nav,
+    .mobile-music-section .text-cursive,
+    .mobile-music-section .marquee-text span.text-cursive,
+    .mobile-music-section .marquee-text span,
+    .mobile-music-section p.text-cursive,
+    .music-album-wrapper p.text-cursive,
+    .music-song-wrapper .text-cursive {
+        font-size: var(--text-cursive-size) !important;
+        line-height: var(--text-cursive-lh) !important;
+        font-weight: var(--text-cursive-weight) !important;
+        letter-spacing: var(--text-cursive-ls) !important;
+    }
+    
     /* Mobile Header - Fixed position at top with glass effect */
     .header {
         position: fixed;
@@ -2548,11 +2570,6 @@ body {
     }
     
     /* Section headers and content - Playing in my head */
-    .mobile-music-section h3,
-    .mobile-music-section p {
-        font-size: 14px;
-    }
-    
     .mobile-music-section h3 {
         margin-bottom: 12px;
     }
@@ -3270,6 +3287,28 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Override CSS variables for smaller mobile screens */
+    :root {
+        --text-nav-size: 0.8rem;
+        --text-cursive-size: 0.8rem;
+        --text-nav-lh: 18px;
+        --text-cursive-lh: 18px;
+    }
+    
+    /* Ensure consistent font sizing in music section */
+    .mobile-music-section .text-nav,
+    .mobile-music-section .text-cursive,
+    .mobile-music-section .marquee-text span.text-cursive,
+    .mobile-music-section .marquee-text span,
+    .mobile-music-section p.text-cursive,
+    .music-album-wrapper p.text-cursive,
+    .music-song-wrapper .text-cursive {
+        font-size: var(--text-cursive-size) !important;
+        line-height: var(--text-cursive-lh) !important;
+        font-weight: var(--text-cursive-weight) !important;
+        letter-spacing: var(--text-cursive-ls) !important;
+    }
+    
     .container {
         margin: 0 16px;
         max-width: calc(100vw - 32px);
@@ -3396,13 +3435,6 @@ body {
         font-size: 0.9rem;
     }
     
-    .text-nav {
-        font-size: 0.8rem;
-    }
-    
-    .text-cursive {
-        font-size: 0.8rem;
-    }
     
     .challenge-image-img,
     .design-image-img,
