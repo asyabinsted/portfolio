@@ -994,6 +994,11 @@ body {
     display: none;
 }
 
+/* Sharing Map specific: add extra bottom margin to main content */
+.project-sharing-map .main-content {
+    margin-bottom: 140px;
+}
+
 /* Back to Top Button */
 .back-to-top-btn {
     position: relative;
@@ -1008,7 +1013,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 1001;
     transition: opacity 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
