@@ -603,7 +603,7 @@ body {
 }
 
 .portfolio-case {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: grid;
@@ -1223,6 +1223,7 @@ body {
     grid-column: 1 / 13;
     width: 100%;
     margin-top: 12px;
+    margin-bottom: 48px;
     border-radius: 6px;
     overflow: hidden;
 }
@@ -1288,6 +1289,7 @@ body {
 
 .design-image {
     width: 100%;
+    margin-bottom: 48px;
 }
 
 .design-image-img {
@@ -1390,6 +1392,7 @@ body {
 
 .screen-image {
     width: 100%;
+    margin-bottom: 48px;
 }
 
 .screen-image-img {
@@ -1479,6 +1482,7 @@ body {
 /* Shipment Creation Images */
 .shipment-creation-image {
     width: 100%;
+    margin-bottom: 48px;
 }
 
 .shipment-creation-image-img {
@@ -1563,6 +1567,7 @@ body {
 
 .consistency-image {
     width: 100%;
+    margin-bottom: 48px;
 }
 
 .consistency-image-img {
@@ -2462,7 +2467,7 @@ body {
     }
     
     .portfolio-case {
-        margin-bottom: 60px;
+        margin-bottom: 80px;
         display: flex;
         flex-direction: column;
         gap: 16px;
