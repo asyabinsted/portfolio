@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
         caseElement.addEventListener('click', function(e) {
             // Check if this is Logic Solutions project
             const projectUrl = this.getAttribute('data-project-url');
-            if (projectUrl === 'project-logic-solutions.html') {
+            if (projectUrl === 'project-logic-solutions') {
                 // Show password modal for Logic Solutions
                 if (window.showPasswordModal) {
                     window.showPasswordModal();
@@ -348,7 +348,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Submit password
     passwordSubmit.addEventListener('click', function() {
-        const enteredPassword = passwordInput.value.trim();
+        // Normalize the input: trim whitespace and normalize unicode characters
+        const enteredPassword = passwordInput.value.trim().normalize('NFC');
+        
+        // Debug logging (remove in production if needed)
+        console.log('Password length:', enteredPassword.length, 'Expected:', correctPassword.length);
+        console.log('Match:', enteredPassword === correctPassword);
         
         if (enteredPassword === correctPassword) {
             hidePasswordModal();
@@ -358,10 +363,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (projectType === 'logic-solutions') {
                 // Navigate to Logic Solutions project page and scroll to specific image
-                window.location.href = 'project-logic-solutions.html#journey-image';
+                window.location.href = 'project-logic-solutions#journey-image';
             } else {
                 // Default navigation to Logic Solutions project page
-                window.location.href = 'project-logic-solutions.html';
+                window.location.href = 'project-logic-solutions';
             }
         } else {
             passwordError.textContent = 'Wrong key, right designer.';
