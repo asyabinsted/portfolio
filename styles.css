@@ -3594,6 +3594,17 @@ body {
     display: block;
 }
 
+/* Desktop (≥1024px): Restrict Logic Solutions main text to columns 1-8 */
+@media (min-width: 1024px) {
+    .project-logic .challenge-content,
+    .project-logic .design-content,
+    .project-logic .key-screens-content,
+    .project-logic .consistency-content,
+    .project-logic .takeaways-content {
+        grid-column: 1 / 9;
+    }
+}
+
 @keyframes preloaderFadeIn {
     from {
         opacity: 0;
