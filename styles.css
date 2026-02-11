@@ -3603,8 +3603,9 @@ body {
     .project-logic .consistency-content > p,
     .project-logic .takeaways-content > ul,
     .project-logic .shipment-creation-text > p,
-    /* Globus AI - Target only direct paragraph children */
+    /* Globus AI - Target only direct paragraph children and lists */
     .project-globus .challenge-content > p,
+    .project-globus .challenge-content > ul,
     /* Sharing Map - Target only direct paragraph children and lists */
     .project-sharing-map .challenge-content > p,
     .project-sharing-map .challenge-content > ol,
