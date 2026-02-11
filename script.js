@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Submit password
     passwordSubmit.addEventListener('click', function() {
-        const enteredPassword = passwordInput.value;
+        const enteredPassword = passwordInput.value.trim();
         
         if (enteredPassword === correctPassword) {
             hidePasswordModal();
