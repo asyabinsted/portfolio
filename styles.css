@@ -3601,7 +3601,8 @@ body {
     .project-logic .key-screens-content,
     .project-logic .consistency-content,
     .project-logic .takeaways-content {
-        grid-column: 1 / 9;
+        grid-column: 1 / 9 !important;
+        max-width: none;
     }
 }
 
