@@ -3594,15 +3594,21 @@ body {
     display: block;
 }
 
-/* Desktop (≥1024px): Restrict Logic Solutions main text paragraphs to 8-column width */
+/* Desktop (≥1024px): Restrict project pages main text paragraphs to 8-column width */
 @media (min-width: 1024px) {
-    /* Target only direct paragraph children, not images or nested sections */
+    /* Logic Solutions - Target only direct paragraph children, not images or nested sections */
     .project-logic .challenge-content > p,
     .project-logic .design-content > p,
     .project-logic .key-screens-content > p,
     .project-logic .consistency-content > p,
     .project-logic .takeaways-content > ul,
-    .project-logic .shipment-creation-text > p {
+    .project-logic .shipment-creation-text > p,
+    /* Globus AI - Target only direct paragraph children */
+    .project-globus .challenge-content > p,
+    /* Sharing Map - Target only direct paragraph children and lists */
+    .project-sharing-map .challenge-content > p,
+    .project-sharing-map .challenge-content > ol,
+    .project-sharing-map .challenge-content > ul {
         max-width: 66.666%; /* 8 columns out of 12 = 66.666% */
     }
 }
