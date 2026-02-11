@@ -3601,7 +3601,8 @@ body {
     .project-logic .design-content > p,
     .project-logic .key-screens-content > p,
     .project-logic .consistency-content > p,
-    .project-logic .takeaways-content > ul {
+    .project-logic .takeaways-content > ul,
+    .project-logic .shipment-creation-text > p {
         max-width: 66.666%; /* 8 columns out of 12 = 66.666% */
     }
 }
