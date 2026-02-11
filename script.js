@@ -261,7 +261,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } else if (projectUrl) {
                 // Navigate directly to other project pages in same tab
-                window.location.href = projectUrl;
+                // Add .html extension for actual file access
+                window.location.href = projectUrl + '.html';
             }
         });
     });
@@ -363,10 +364,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (projectType === 'logic-solutions') {
                 // Navigate to Logic Solutions project page and scroll to specific image
-                window.location.href = 'project-logic-solutions#journey-image';
+                window.location.href = 'project-logic-solutions.html#journey-image';
             } else {
                 // Default navigation to Logic Solutions project page
-                window.location.href = 'project-logic-solutions';
+                window.location.href = 'project-logic-solutions.html';
             }
         } else {
             passwordError.textContent = 'Wrong key, right designer.';
