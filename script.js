@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordSubmit = document.getElementById('password-submit');
     const passwordToggle = document.getElementById('password-toggle');
     const passwordModalClose = document.getElementById('password-modal-close');
-    const correctPassword = 'hiremeORregretIT';
+    const validPasswords = ['hiremeORregretIT', 'Top*C8se!'];
     
     if (!passwordModal || !passwordInput || !passwordError || !passwordSubmit) return;
     
@@ -353,10 +353,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const enteredPassword = passwordInput.value.trim().normalize('NFC');
         
         // Debug logging (remove in production if needed)
-        console.log('Password length:', enteredPassword.length, 'Expected:', correctPassword.length);
-        console.log('Match:', enteredPassword === correctPassword);
+        console.log('Password length:', enteredPassword.length);
+        console.log('Match:', validPasswords.includes(enteredPassword));
         
-        if (enteredPassword === correctPassword) {
+        if (validPasswords.includes(enteredPassword)) {
             hidePasswordModal();
             
             // Get project type from modal
